@@ -3,6 +3,9 @@ Minnesota Metadata Editor
 
 MME is a DotNet incarnation of a simple editor for GIS metadata XML files that adhere to the Minnesota Geographic Data Standard, MGMG2. 
 
+####Version
+    1.1.23
+
 What it is
 ==========
 The Minnesota Metadata Editor (MME) is a desktop application that is intended to simplify and expedite the process of developing geospatial metadata.  
