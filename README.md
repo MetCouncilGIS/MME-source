@@ -20,6 +20,7 @@ MME can be installed and run in two modes:
 - As a portable application 
 
 MME normally installs as a normal Windows .Net program. When installed, a local copy of the application database is created from the program's \template directory on first run for each user. The user's copy of the application database can be further customized as needed per individual by selecting **Tools > Open Database**. 
+
      Admin privileges are required for this type of installation. 
 
 Run as portable application, MME needs no installation. Further, rather than making a copy of the template application database for each user, it uses just one copy of the application's database for everyone who runs it. Nothing is added or modified on the machine running the program. All files are kept in the folder containing the application. If the application is stored on the local computer or a USB drive, you can launch Access to edit the application database using Tools > Open Database. You may store the folder with the application on a network drive and run it directly from there. However, the help file will not display correctly nor can you use Access to directly edit a database on a networked drive due to security issues.
