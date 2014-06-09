@@ -15,7 +15,7 @@
     <AssemblyOriginatorKeyFile>eme.snk</AssemblyOriginatorKeyFile>
     <ApplicationIcon>Resources\MMEIcon_.ico</ApplicationIcon>
     <TargetZone>LocalIntranet</TargetZone>
-    <GenerateManifests>false</GenerateManifests>
+    <GenerateManifests>true</GenerateManifests>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
@@ -23,19 +23,21 @@
     <UpgradeBackupLocation />
     <TargetFrameworkProfile />
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>publish\</PublishUrl>
+    <PublishUrl>C:\JAG\GitHub\MME\Deploy-Portable\</PublishUrl>
     <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
+    <InstallFrom>Unc</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
     <UpdateMode>Foreground</UpdateMode>
     <UpdateInterval>7</UpdateInterval>
     <UpdateIntervalUnits>Days</UpdateIntervalUnits>
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
+    <InstallUrl>\\rafs2a.mc.local\gis\Applications\MME-portable\</InstallUrl>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -62,6 +64,15 @@
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>D2511765CB222EEFFA183547A7CB586018C0FBA6</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>MetadataEditor_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="NetSpell.SpellChecker, Version=2.1.7.376, Culture=neutral, PublicKeyToken=318b389f0db66e46, processorArchitecture=MSIL">
@@ -198,6 +209,7 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="eme.snk" />
+    <None Include="MetadataEditor_TemporaryKey.pfx" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -235,11 +247,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\chm_icon.gif" />
-    <Content Include="Resources\splashbanner.png" />
     <None Include="Resources\MMEIcon.ico" />
     <None Include="Resources\MME_Duck.bmp" />
     <None Include="Resources\MMEIcon_.ico" />
-    <None Include="Resources\MMEIcon.bmp" />
     <None Include="Resources\eainfo.xml" />
     <None Include="Resources\config_form.jpg" />
     <Content Include="Resources\logo_icon.gif" />
