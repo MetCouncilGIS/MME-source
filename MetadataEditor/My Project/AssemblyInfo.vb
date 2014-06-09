@@ -8,10 +8,10 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("Minnesota Metadata Editor v1.1")> 
-<Assembly: AssemblyDescription("Minnesota Metadata Editor v1.1")> 
-<Assembly: AssemblyCompany("MnGeo")> 
-<Assembly: AssemblyProduct("Minnesota Metadata Editor v1.1")> 
+<Assembly: AssemblyTitle("Minnesota Metadata Editor v1.2")> 
+<Assembly: AssemblyDescription("Minnesota Metadata Editor v1.2")> 
+<Assembly: AssemblyCompany("")> 
+<Assembly: AssemblyProduct("Minnesota Metadata Editor v1.2")> 
 <Assembly: AssemblyCopyright("Innovate! Inc.")> 
 <Assembly: AssemblyTrademark("")> 
 
