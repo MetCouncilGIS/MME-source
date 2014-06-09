@@ -3,6 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "MetadataEditor", "MetadataEditor\MetadataEditor.vbproj", "{D6BC81CC-9C5A-4596-9085-928F31F61394}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{73469032-AC04-464D-86CC-063C1299F74F}"
+	ProjectSection(SolutionItems) = preProject
+		stylesheet\ArcGIS_MGMG.xsl = stylesheet\ArcGIS_MGMG.xsl
+		stylesheet\MGMG Metadata.cfg = stylesheet\MGMG Metadata.cfg
+		stylesheet\MGMG.xslt = stylesheet\MGMG.xslt
+		Deploy-Portable\MMEv1_1 Setup Readme.txt = Deploy-Portable\MMEv1_1 Setup Readme.txt
+		README.md = README.md
+		stylesheet\README.txt = stylesheet\README.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
