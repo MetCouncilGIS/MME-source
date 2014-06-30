@@ -6,70 +6,361 @@ MetadataEditor
 </name>
 </assembly>
 <members>
-<member name="F:MetadataEditor.MdUtils.quit">
+<member name="M:MetadataEditor.PageController.thatControls(System.String)">
 	<summary>
- Quit hint. Set to true when the application is expected to exit based on user interaction
+ Find the PageController oject that controls the form control with the given name.
+ </summary>
+	<param name="ctrlName">Name of form control</param>
+	<returns>PageController object that controls the form control</returns>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.PageController.readFromDb">
+	<summary>
+ Create and initialize PageController objects based on information stored in the database.
+ </summary>
+	<remarks>EME table in the database drives this process.</remarks>
+</member><member name="M:MetadataEditor.PageController.#ctor(System.Int64,System.String,System.String,System.String,System.Int32,System.Boolean,System.String,System.Boolean,System.String)">
+	<summary>
+ Create a new PageController object with given information.
+ </summary>
+	<param name="orderedId">Unique id for the PageController that also determines the order in which its associated FGDC element is read/written</param>
+	<param name="tag">Name of the FGDC element tag</param>
+	<param name="srcTable">Name of database table to read element info from</param>
+	<param name="srcField">Name of field in the database table to read info from</param>
+	<param name="tabNo">Tab number on the EME user interface where the element is displayed</param>
+	<param name="spellcheck">Whether the element will be a target of spellchecking</param>
+	<param name="cluster">The name of element cluster (parent tag) that this tag is part of, if applicable.</param>
+	<param name="help">Name of the help screen associated with this element, if different from default naming scheme</param>
+	<remarks>
+ A PageController is associated with form control whose value determines the value of an FGDC element's XML tag. 
+ This is critical to understanding the operation of EME.
+ </remarks>
+</member><member name="M:MetadataEditor.PageController.SimpleGetProperty(System.String)">
+	<summary>
+ A utility function to get the value of simple tags (non-repeated, no child tags) 
+ </summary>
+	<param name="name">XSL pattern for the element relative to the top-level "metadata" tag</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.PageController.GetTextControls(MetadataEditor.EditorForm@,System.Int32)">
+	<summary>
+ Return all text controls marked for spellchecking, optionally filtered by tab number
+ </summary>
+	<param name="frm"></param>
+	<param name="tabNo"></param>
+	<returns>Returns array of TextBox objects that will be spellchecked.</returns>
+	<remarks>
+ If <paramref name="tabNo">tabNo</paramref> is specified (in base-1 index),
+ only controls from the specified tab are returned.
+ </remarks>
+</member><member name="M:MetadataEditor.PageController.ElementPopulator(MetadataEditor.EditorForm@)">
+	<summary>
+ Iterate through all PageControllers and populate the elements/form controls that they control.
+ </summary>
+	<param name="frm"></param>
+	<remarks></remarks>
+</member><member name="P:MetadataEditor.PageController.parentTag">
+	<summary>
+ Determine the parent tag of a given semi-simple xpath to a tag.
+ </summary>
+	<value></value>
+	<returns>The xpath to parent tag</returns>
+	<remarks>Cheesy but works with the tag xpaths we deal with.</remarks>
+</member><member name="M:MetadataEditor.PageController.populate(MetadataEditor.EditorForm@)">
+	<summary>
+ Populate this PageController object's form control
+ </summary>
+	<param name="frm">The editor form to find associated form control</param>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.PageController.comboBoxLoader(System.Windows.Forms.ComboBox,System.Boolean)">
+	<summary>
+ Load the ComboBox object associated with this PageController.
+ </summary>
+	<param name="ctrl">The ComboBox control</param>
+	<param name="reload">Whether this is a reload or an initial load (optional)</param>
+	<remarks>
+ Stay away if you haven't fully grokked workings of table-driven ComboBox objects, EME's database driven operation, 
+ complex FGDC elements  and their mapping to ComboBox objects.
+ </remarks>
+</member><member name="M:MetadataEditor.PageController.propagateClusterSelectionChanged(System.Object,System.EventArgs)">
+	<summary>
+ Event handler for cluster controlling ComboBox objects that propagates the selection change to controlled cluster members.
+ </summary>
+	<param name="sender">Event sender. Cluster controlling ComboBox.</param>
+	<param name="e">Event arguments. Not used.</param>
+	<remarks>A cluster is a set of FGDC sibling tags whose values are determined by the selected item in ComboBox.</remarks>
+</member><member name="M:MetadataEditor.PageController.populateClusterEntry(System.Windows.Forms.ComboBox)">
+	<summary>
+ Populate cluster members based on applicable selections on the form.
+ </summary>
+	<param name="ctrl">Cluster controlling control</param>
+	<remarks>Too convoluted. Lenght of the sub is testament to that. Prime for refactoring.</remarks>
+</member><member name="M:MetadataEditor.PageController.listBoxLoader(System.Windows.Forms.ListBox,System.Boolean)">
+	<summary>
+ Load the ListBox object associated with this PageController.
+ </summary>
+	<param name="ctrl">The ListBox control</param>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.PageController.dataGridViewLoaderFromMetadata(System.Windows.Forms.DataGridView,System.Boolean)">
+	<summary>
+ Load the DataGridView object associated with this PageController.
+ </summary>
+	<param name="ctrl">The DataGridView control</param>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.PageController.listBoxLoaderFromMetadata(System.Windows.Forms.ListBox,System.Boolean)">
+	<summary>
+ Load the ListBox object associated with this PageController.
+ </summary>
+	<param name="ctrl">The ListBox control</param>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.PageController.DefaultSetter(MetadataEditor.EditorForm@,System.Int32)">
+	<summary>
+ Set defaults for each PageController controlled form controls on the given tab.
+ </summary>
+	<param name="frm">Editor form</param>
+	<param name="tabNo">Tab number where default settings will be applied</param>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.PageController.setDefault(MetadataEditor.EditorForm@)">
+	<summary>
+ Set the form control controlled by this PageController to its default value.
+ </summary>
+	<param name="frm">Editor form</param>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.PageController.listBoxSetDefault(System.Windows.Forms.ListBox)">
+	<summary>
+ Set the ListBox control controlled by this PageController to its default value(s).
+ </summary>
+	<param name="ctrl">Editor form</param>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.PageController.comboBoxSetDefault(System.Windows.Forms.ComboBox)">
+	<summary>
+ Set the ComboBox control controlled by this PageController to its default value.
+ </summary>
+	<param name="ctrl">Editor form</param>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.PageController.textBoxSetDefault(System.Windows.Forms.TextBox)">
+	<summary>
+ Set the TextBox control controlled by this PageController to its default value.
+ </summary>
+	<param name="ctrl">Editor form</param>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.PageController.ValidateAction(MetadataEditor.EditorForm@)">
+	<summary>
+ Attempt webservice or local validation depending on current setting.
+ </summary>
+	<param name="frm">Editor form</param>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.PageController.showValidationResultsInBrowser(System.String)">
+	<summary>
+ Display validation results using the application associated with .xml files.
+ This is typically Internet Explorer, though not necessarily.
+ </summary>
+	<param name="filename">String containing name of file to be displayed.</param>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.PageController.showValidationResultsInEME(MetadataEditor.EditorForm,System.Xml.XmlDocument)">
+	<summary>
+ Display validation results on EME GUI. 
+ </summary>
+	<param name="frm">The EditorForm object used for EME GUI.</param>
+	<param name="dom">The DOM containing the results of validation.</param>
+	<remarks>Real action is performed by showValidationResultsInEMEDo().</remarks>
+</member><member name="T:MetadataEditor.PageController.showValidationResultsInEMEDoCallback">
+	<summary>
+ Delegate for showValidationResultsInEMEDo().
+ </summary>
+	<param name="frm"></param>
+	<param name="ctrlName"></param>
+	<param name="msg"></param>
+	<remarks>See showValidationResultsInEMEDo() for parameters. The delegate is required cross-thread calling of target.</remarks>
+</member><member name="M:MetadataEditor.PageController.showValidationResultsInEMEDo(MetadataEditor.EditorForm,System.String,System.String)">
+	<summary>
+ The workhorse subroutine to display validation results on the EME GUI using little blinking led lights and hover tooltips.
+ </summary>
+	<param name="frm">The EditorForm object used for EME GUI.</param>
+	<param name="ctrlName">Name of the control for which to display validation results.</param>
+	<param name="msg">The message to be displayed in a hover tooltip.</param>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.PageController.ValidationTimerFired(System.Object,System.EventArgs)">
+	<summary>
+ Event handler that cancels the executing validation thread when validation timeout occurs.
+ </summary>
+	<param name="sender">Event sender. Not used.</param>
+	<param name="e">Event arguments. Not used.</param>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.PageController.ValidateAction(System.Object,System.ComponentModel.DoWorkEventArgs)">
+	<summary>
+ The worker process that will run in a separate thread and perform the actual validation work.
+ </summary>
+	<param name="sender">Event sender. Not used.</param>
+	<param name="e">Event arguments. Used to return information about the type and outcome of validation work performed.</param>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.PageController.ValidationWorker_RunWorkerCompleted(System.Object,System.ComponentModel.RunWorkerCompletedEventArgs)">
+	<summary>
+ Event handler that runs when validation worker thread completes its run.
+ Informs user if something went wrong.
+ </summary>
+	<param name="sender">Event sender. Not used.</param>
+	<param name="e">Event arguments. Used to examine information about the type and outcome of validation work performed.</param>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.PageController.findParentName(System.String)">
+	<summary>
+ Determine the parent control's name.
+ </summary>
+	<param name="name">String containing a control's name whose parent is being sought,</param>
+	<returns>String containing parent control's name.</returns>
+	<remarks>This is an imperfect method for determining the parent of a control as it relies on removing 
+ the part after the last name separator chracter. Caller should not assume that the returned name corresponds 
+ to an existing control's name.</remarks>
+</member><member name="P:MetadataEditor.PageController.isPartOfCluster">
+	<summary>
+ Determine if this PageController is part of a cluster.
+ </summary>
+	<returns>Returns true if this PageController is part of a cluster. Otherwise, returns false.</returns>
+	<remarks></remarks>
+</member><member name="P:MetadataEditor.PageController.formFieldName">
+	<summary>
+ Determine the name of the form control associated with this PageController.
+ </summary>
+	<returns>Returns the name of the form control associated with this PageController.</returns>
+	<remarks></remarks>
+</member><member name="P:MetadataEditor.PageController.sortProperty">
+	<summary>
+ Determine the sort property of this PageController.
+ </summary>
+	<returns>Returns the sort property of this PageController.</returns>
+	<remarks>Sort property determines the order in which PageControllers, hence their, FGDC elements are processed.</remarks>
+</member><member name="P:MetadataEditor.PageController.isClusterController">
+	<summary>
+ Determine if this PageController is a cluster controller.
+ </summary>
+	<returns>Returns true if this PageController is a cluster controller. Otherwise, returns false.</returns>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.PageController.addToCluster">
+	<summary>
+ Add this PageController to its cluster, if applicable.
  </summary>
 	<remarks></remarks>
-</member><member name="F:MetadataEditor.MdUtils.loadNext">
+</member><member name="M:MetadataEditor.PageController.PageSaver(MetadataEditor.EditorForm@)">
 	<summary>
- The File to load next. Full file path name.
+ Save all PageControllers back to metadata record.
  </summary>
+	<param name="frm">Editor form</param>
 	<remarks></remarks>
-</member><member name="F:MetadataEditor.MdUtils.currentlyEditing">
+</member><member name="M:MetadataEditor.PageController.eainfoSave(System.String)">
 	<summary>
- File currently being edited. Full file path name.
+ Save the eainfo section of the metadata.
  </summary>
+	<param name="eainfoXml">The XML representation of eainfo FGDC element as manipulated by EME.</param>
+	<remarks>This is a divergence from the more straightforward mapping between form controls and 
+ CSDGM sections that they control implemented using PageController objects. This is a necessary evil as 
+ eainfo is too complicated to be mapped to a single form control.</remarks>
+</member><member name="M:MetadataEditor.PageController.save(System.Windows.Forms.Control)">
+	<summary>
+ Save this PageController back to metadata record.
+ </summary>
+	<param name="ctrl">The control associated with this PageController.</param>
 	<remarks></remarks>
-</member><member name="M:MetadataEditor.MdUtils.loadDefaultMd">
+</member><member name="M:MetadataEditor.PageController.updateMetadata(System.String,System.Int32)">
 	<summary>
- Load a default metadata record which is essentially empty.
+ Update/delete the metadata tag associated with this PageController.
  </summary>
+	<param name="tagValue">Value of the tag</param>
+	<param name="index">Index of the tag if a repeated tag. 1-based.</param>
+	<remarks>If the value is empty, the tag is deleted from the metadata record.</remarks>
+</member><member name="M:MetadataEditor.PageController.textBoxSaver(System.Windows.Forms.TextBox@)">
+	<summary>
+ Save the contents of the TextBox object associated with this PageController to the metadata record.
+ </summary>
+	<param name="ctrl">The TextBox object associated with the PageController</param>
 	<remarks></remarks>
-</member><member name="M:MetadataEditor.MdUtils.getFilenameFromCommandLine">
+</member><member name="M:MetadataEditor.PageController.listBoxSaver(System.Windows.Forms.ListBox@)">
 	<summary>
- Extract metadata filename from command-line arguments if given.
- First argument is assumed to be the filename (full path).
+ Save the contents of the ListBox object associated with this PageController to the metadata record.
  </summary>
-	<returns>The metadata filename if passed as command-line argument, Nothing otherwise</returns>
+	<param name="ctrl">The ListBox object associated with the PageController</param>
 	<remarks></remarks>
-</member><member name="M:MetadataEditor.MdUtils.promptForMdFile">
+</member><member name="M:MetadataEditor.PageController.comboBoxSaver(System.Windows.Forms.ComboBox@)">
 	<summary>
- Open a file dialog to prompt for metadata file selection.
- Selected filename (full path) is stored in loadNext variable, if successful.
+ Save the contents of the ComboBox object associated with this PageController to the metadata record.
  </summary>
-	<returns>True if a file selection is made, False otherwise.</returns>
+	<param name="ctrl">The ComboBox object associated with the PageController</param>
 	<remarks></remarks>
-</member><member name="M:MetadataEditor.MdUtils.loadMdFile(System.String)">
+</member><member name="M:MetadataEditor.PageController.dataGridViewSaver(System.Windows.Forms.DataGridView@)">
 	<summary>
- Load the metadata file at the given path.
+ Save the contents of the DataGridView object associated with this PageController to the metadata record.
  </summary>
-	<param name="mdFilename">Full file path name to the metadata file to be loaded</param>
-	<remarks>Checks are performed on the file to give meaningful messages if file can not be loaded.</remarks>
-</member><member name="M:MetadataEditor.MdUtils.editMd(System.String,System.Boolean)">
-	<summary>
- Edit the metadata record whose content is given.
- </summary>
-	<param name="mdXml">The XML metadata record</param>
-	<param name="readOnlyFile">Hint to indicate that the metadata record was opened in read-only mode if true. False (read-write) by default.</param>
+	<param name="ctrl">The DataGridView object associated with the PageController</param>
 	<remarks></remarks>
-</member><member name="M:MetadataEditor.MdUtils.Edit(MetadataEditor.XmlMetadata)">
+</member><member name="M:MetadataEditor.PageController.orderedPageControllers">
 	<summary>
- Main entry point into metadata editor.
+ Order all PageControllers.
  </summary>
-	<param name="metadata">Metadata record copy to be edited.</param>
-	<returns>
- Boolean return value indicates if the metadata record was modified by the editor
- </returns>
+	<returns>Returns an ArrayList of PageController objects sorted by their "orderedId"</returns>
 	<remarks></remarks>
-</member><member name="M:MetadataEditor.MdUtils.splash">
+</member><member name="M:MetadataEditor.PageController.isOnTab(System.Int32)">
 	<summary>
- Put up a splash screen.
+ Determine if the control associated with this PageController is on a given tab.
  </summary>
-	<remarks>Disabled but left here for other users of EME source code.</remarks>
-</member><member name="T:MetadataEditor.MdUtils">
+	<param name="tabNum">Tab number</param>
+	<returns>Returns true if the this PageController's form control is on the given tab. Otherwise, returns false.</returns>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.PageController.CompareTo(System.Object)">
 	<summary>
- Loose collection of metadata file utilities
+ Compares the PageController object to another based on orderedId
+ </summary>
+	<param name="obj">PageController object to compare against</param>
+	<returns>Returns a negative value if this PageController preceeds obj, 0 if equivalent (should not happen) or a positive value it succeeds obj.</returns>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.PageController.wipeEsriRequired(MetadataEditor.EditorForm)">
+	<summary>
+ Removes text content from all controls that start with "REQUIRED: ", something typically inserted by ESRI tools.
+ </summary>
+	<param name="frm">The EditorForm object whose controls will be inspected.</param>
+	<returns>Boolean value indicating if any modifications were made.</returns>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.PageController.findAndReplaceAll(MetadataEditor.EditorForm,System.String,System.String)">
+	<summary>
+ Find and replace all occurrences of some string with another one for all controls.
+ </summary>
+	<param name="frm">The EditorForm object whose controls will be inspected.</param>
+	<param name="oldValue">String containing text to be replaced.</param>
+	<param name="newValue">String containing text to replace with.</param>
+	<returns>The number of replacements made.</returns>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.PageController.dataGridViewFindAndReplace(System.Windows.Forms.DataGridView,System.String,System.String)">
+	<summary>
+ Specialized find and replace for text controlled via a DataGridView control.
+ </summary>
+	<param name="ctrl">DataGridView control to operate on.</param>
+	<param name="oldValue">String containing text to be replaced.</param>
+	<param name="newValue">String containing text to replace with.</param>
+	<returns>The number of replacements made.</returns>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.PageController.findAndReplace(MetadataEditor.EditorForm,System.String,System.String)">
+	<summary>
+ Find and replace for all controls that have a "Text" property.
+ </summary>
+	<param name="frm">The EditorForm object whose controls will be inspected.</param>
+	<param name="oldValue">String containing text to be replaced.</param>
+	<param name="newValue">String containing text to replace with.</param>
+	<returns>The number of replacements made.</returns>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.PageController.disableCluster(System.String)">
+	<summary>
+ Disable all controls participating in a cluster.
+ </summary>
+	<param name="name">String containing name of cluster whose participating controls will be disabled.</param>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.PageController.getHelpPageFor(System.String,System.String)">
+	<summary>
+ Try to find and open the help page for the metadata element with the given name/xpath
+ </summary>
+	<param name="name">The xpath for the metadata element/tag</param>
+	<param name="defaultHelp">Default hekp page to open if can't find the specific help page</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="T:MetadataEditor.PageController">
+	<summary>
+ Class that manages all manipulations to and operations on metadata - within the editor.
  </summary>
 	<remarks></remarks>
 </member><member name="M:MetadataEditor.FindReplaceForm.btnReplaceAll_Click(System.Object,System.EventArgs)">
@@ -102,26 +393,225 @@ MetadataEditor
  A simple class to provide user interface for find/replace functionality.
  </summary>
 	<remarks></remarks>
-</member><member name="M:MetadataEditor.DummyForm.checkAndCopyTemplate">
+</member><member name="F:MetadataEditor.XmlMetadata.dom">
 	<summary>
- Initialize essential files by copying from template if ncessary.
+ Internal structure to hold the metadata document
  </summary>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.XmlMetadata.SetPropertyX(System.String,System.String)">
+	<summary>
+ Set the element with the given xpath to the given value.
+ </summary>
+	<param name="xpathStr">xpath expression of element to update. Does not have to pre-exist in the metadata document.</param>
+	<param name="value">New content for element</param>
+	<remarks>Assumes that the xpath points at most to a single target. Only the first occurence is updated.</remarks>
+</member><member name="M:MetadataEditor.XmlMetadata.makeXpath(System.String,System.Xml.XmlNodeType)">
+	<summary>
+ Create the given element hierarchy as dictated by the given xpath. All elements leading up to the leaf tag will be created if not already there.
+ </summary>
+	<param name="xpathStr">xpath expression for the element hierarchy to create</param>
+	<param name="nodeType">The type of leaf node to create. Default is a text node which is currently the only supported node.</param>
+	<returns>True if succesful, False otherwise.</returns>
+	<remarks>Logic does handle xpaths involving integer indexes.</remarks>
+</member><member name="M:MetadataEditor.XmlMetadata.GetXml(System.String,System.Boolean,System.Boolean)">
+	<summary>
+ Get the XML snippet pointed to by the given xpath expression.
+ </summary>
+	<param name="xpathStr">xpath expression of the XML snippet targeted.</param>
+	<param name="normalize">Normalize the xpath expression to start with root element (/metadata/) if not already.</param>
+	<param name="outerXml">Return outer XML for the xpath target if True, return inner XML otherwise.</param>
+	<returns>Returns the inner/outer XML snippet targeted by the xpath expression.</returns>
+	<remarks>Some xpaths have special meaning: empty xpath return entire XML including any XML declaration; slash returns starting at root element without any headers.</remarks>
+</member><member name="M:MetadataEditor.XmlMetadata.SetXml(System.String)">
+	<summary>
+ Set the XML document to the given xml content.
+ </summary>
+	<param name="xmlStr">String with XML content.</param>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.XmlMetadata.copyFrom(MetadataEditor.XmlMetadata,System.String,System.String)">
+	<summary>
+ Copy an XML snippet from one document and graft into current.
+ </summary>
+	<param name="src">Souce XmlMetadata object to copy from</param>
+	<param name="xpathStrSource">Source xpath expression to copy from</param>
+	<param name="xpathStrTarget">Traget xpath expression denoting where the XML snippet will be copied to. If Nothing, then same as source xpath.</param>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.XmlMetadata.SetXml(System.String,System.String)">
+	<summary>
+ Copy the given XML snippet and graft at the element pointed by given xpath expression
+ </summary>
+	<param name="xpathStr">xpath target to receive XML snippet</param>
+	<param name="xmlStr">The XML snippet to be received.</param>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.XmlMetadata.DeleteProperty(System.String)">
+	<summary>
+ Delete the element(s) pointed by the given xpath expression
+ </summary>
+	<param name="xpathStr">xpath expression for element(s) to be deleted</param>
+	<remarks>All elements targeted by the xpath expression are deleted.</remarks>
+</member><member name="M:MetadataEditor.XmlMetadata.SimpleGetProperty(System.String)">
+	<summary>
+ Get element value
+ </summary>
+	<param name="xpathStr">xpath expression for element targeted</param>
+	<returns>String value of the element at given xpath.</returns>
+	<remarks>If element is compound, then value is compound values of all subelements - though it's unusual to use that way.</remarks>
+</member><member name="M:MetadataEditor.XmlMetadata.GetProperty(System.String)">
+	<summary>
+ Get element values
+ </summary>
+	<param name="xpathStr">xpath expression for elements targeted</param>
+	<returns>List of String values with one entry for each element matching the given xpath expression. Nothing is returned if no matches.</returns>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.XmlMetadata.CountX(System.String)">
+	<summary>
+ Determine the no of occurences of the given xpath expression.
+ </summary>
+	<param name="xpathStr">xpath expression to count the occurrences of</param>
+	<returns>The number of time that the given xpath expression is encountered.</returns>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.XmlMetadata.getRootTag">
+	<summary>
+ Get the name of the root element of the XML document.
+ </summary>
+	<returns>Name of the root element as String</returns>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.XmlMetadata.checkDeleteKTTags">
+	<summary>
+ Delete XSL pattern indexed tags if not used in the metadata record.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.XmlMetadata.checkCreateKTTags">
+	<summary>
+ Create XSL pattern indexed tags if not already in the metadata record.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.XmlMetadata.normalize(System.String)">
+	<summary>
+ Normalize the given xpath expression to start with the root element (/metadata/), if not already.
+ </summary>
+	<param name="xpathStr">xpath expression to normalize</param>
+	<returns>Normalized xpath expression</returns>
+	<remarks>Handles only simple xpath expressions</remarks>
+</member><member name="T:MetadataEditor.XmlMetadata">
+	<summary>
+ XmlMetadata represents a metadata document that is serialized from/to XML and provides basic operations to manipulate metadata.
+ </summary>
+	<remarks>XmlMetadata class was designed to remove reliance on several ArcObjects metadata objects such as IXMLPropertySet2.
+ It does not attempt to be 100% compatible in function or API coverage but implements enough to fulfill its design goal.</remarks>
+</member><member name="M:MetadataEditor.LocalValidator.errorxml(System.String,System.String,System.String,System.String)">
+	<summary>
+ Generate an XML snippet (for use in metadata validation error reporting) with the provided information.
+ </summary>
+	<param name="type">Type of validation issue</param>
+	<param name="message">Message describing the issue</param>
+	<param name="linenum">Metadata XML file line number if available</param>
+	<param name="errid">An identifier for the element with the reported issue if available. Constructed using the XPath for the element</param>
+	<returns>Returns a string containing the XML snippet.</returns>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.LocalValidator.escapeXml(System.String)">
+	<summary>
+ Replace special XML characters with their escape codes
+ </summary>
+	<param name="txt">Text to be XML-escaped</param>
+	<returns>A String with content XML-escaped.</returns>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.LocalValidator.validate_mp(System.String,System.String)">
+	<summary>
+ Perform MP validation on the provided XML metadata record.
+ </summary>
+	<param name="root_dir">Root directory for EME.</param>
+	<param name="inxml">Metadata XML to be validated.</param>
+	<returns>Returns an XML snippet containing issues found with the metadata record</returns>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.LocalValidator.validate_epa(System.String,System.String)">
+	<summary>
+ Perform EPA validation on the provided XML metadata record.
+ </summary>
+	<param name="root_dir">Root directory for EME</param>
+	<param name="inxml">Metadata XML to be validated</param>
+	<returns>Returns an XML snippet containing issues found with the metadata record</returns>
+	<remarks>Utilizes a Schematron generated XSL transform to identify issues with respect to metadata rules that EPA enforces. 
+ Needs to be made optional to better accomodate non-EPA users.</remarks>
+</member><member name="M:MetadataEditor.LocalValidator.transform_epa(System.String,System.String,System.String,System.String)">
+	<summary>
+ Apply an XSL transform to an XML file.
+ </summary>
+	<param name="xslfile">Full filepathname of the XSLT file</param>
+	<param name="fin">Full filepathname of the input file</param>
+	<param name="fout">Full filepathname of the output file</param>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.LocalValidator.type_to_dir(System.String)">
+	<summary>
+ Given the type of validation, return the subdirectory name to use.
+ </summary>
+	<param name="type">Validation type</param>
 	<returns></returns>
 	<remarks></remarks>
-</member><member name="T:MetadataEditor.DummyForm">
+</member><member name="M:MetadataEditor.LocalValidator.file_in(System.String,System.String,System.String)">
 	<summary>
- EME loads up slowly due to lots of parsing processing at start up. This form is displayed meanwhile.
- It also acts as the parent window controlling the EditorForm.
+ Write file with given name and contents under appropriate validation subdirectory to feed into the validation system.
+ </summary>
+	<param name="type">Validation type</param>
+	<param name="fname">Filename</param>
+	<param name="contents">File contents</param>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.LocalValidator.file_out(System.String,System.String)">
+	<summary>
+ Read file with given name under appropriate validation subdirectory to get feed back from the validation system.
+ </summary>
+	<param name="type">Validation type</param>
+	<param name="fname">Filename</param>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.LocalValidator.date_changed(System.String)">
+	<summary>
+ Return date that validation rules were last updated
+ </summary>
+	<param name="root_dir">Root directory for EME install</param>
+	<returns></returns>
+	<remarks>Relies on "date_changed.xml" file. Only useful on the server side.</remarks>
+</member><member name="M:MetadataEditor.LocalValidator.delete_files(System.String,System.String)">
+	<summary>
+ Delete files in MP or EPA subdirectory matching the given name specification.
+ </summary>
+	<param name="type">Type ("mp" or "epa")</param>
+	<param name="fname">Filename starts with this string</param>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.LocalValidator.parseErrors(System.String,System.String,System.String@)">
+	<summary>
+ Parse errors and warnings in MP output.
+ </summary>
+	<param name="errorFileName">Fully qualified filename for the file that contains MP output.</param>
+	<param name="inputFile">Fully qualified filename for the metadata file.</param>
+	<param name="ans">This parameter is not used. Should be removed and locally declared.</param>
+	<returns>Returns an XML snippet containing errors/warnings found with the metadata record </returns>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.LocalValidator.runMP(System.String,System.String,System.String,System.String@)">
+	<summary>
+ Run the mp_win.exe application.
+ </summary>
+	<param name="workdir">Working directory where mp_win.exe resides and temporary files are created.</param>
+	<param name="outputFile">Output filename where MP output will go.</param>
+	<param name="errorFileName">Error filename where MP errors will go.</param>
+	<param name="ans">Anny errors that occur will be reported in this parameter passed by reference.</param>
+	<returns>True if successful. False otherwise.</returns>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.ProgressDialog.ShowMessage(System.String)">
+	<summary>
+ Display a progress dialog with provided message.
+ </summary>
+	<param name="msg">Message to display on the progress dialog.</param>
+	<remarks>If a progress dialog is already being displayed, it is replaced with a new one</remarks>
+</member><member name="M:MetadataEditor.ProgressDialog.CancelMessage">
+	<summary>
+ Close the currently displayed progress dialog if there is one.
  </summary>
 	<remarks></remarks>
-</member><member name="P:MetadataEditor.MMEConfig.MdbFilepathname">
-	<remarks/>
-</member><member name="T:MetadataEditor.MMEConfig">
-	<remarks/>
-</member><member name="P:MetadataEditor.NewDataSet.Items">
-	<remarks/>
-</member><member name="T:MetadataEditor.NewDataSet">
-	<remarks/>
+</member><member name="T:MetadataEditor.ProgressDialog">
+	<summary>
+ Class that provides a progress dialog to display during validation.
+ </summary>
+	<remarks></remarks>
 </member><member name="T:MetadataEditor.State">
 	<summary>
  Enum representing the important phases of a form's lifetime.
@@ -908,363 +1398,347 @@ MetadataEditor
  EditorForm implements EME's user interface.
  </summary>
 	<remarks></remarks>
-</member><member name="M:MetadataEditor.PageController.thatControls(System.String)">
+</member><member name="F:MetadataEditor.XmlFragment.name">
 	<summary>
- Find the PageController oject that controls the form control with the given name.
+ Name of the FGDC element this XMLFragment represents.
  </summary>
-	<param name="ctrlName">Name of form control</param>
-	<returns>PageController object that controls the form control</returns>
 	<remarks></remarks>
-</member><member name="M:MetadataEditor.PageController.readFromDb">
+</member><member name="F:MetadataEditor.XmlFragment.node">
 	<summary>
- Create and initialize PageController objects based on information stored in the database.
+ The DOM node (from the shared DOM) that corresponds to the FGDC element that this XMLFragment represents.
  </summary>
-	<remarks>EME table in the database drives this process.</remarks>
-</member><member name="M:MetadataEditor.PageController.#ctor(System.Int64,System.String,System.String,System.String,System.Int32,System.Boolean,System.String,System.Boolean,System.String)">
-	<summary>
- Create a new PageController object with given information.
- </summary>
-	<param name="orderedId">Unique id for the PageController that also determines the order in which its associated FGDC element is read/written</param>
-	<param name="tag">Name of the FGDC element tag</param>
-	<param name="srcTable">Name of database table to read element info from</param>
-	<param name="srcField">Name of field in the database table to read info from</param>
-	<param name="tabNo">Tab number on the EME user interface where the element is displayed</param>
-	<param name="spellcheck">Whether the element will be a target of spellchecking</param>
-	<param name="cluster">The name of element cluster (parent tag) that this tag is part of, if applicable.</param>
-	<param name="help">Name of the help screen associated with this element, if different from default naming scheme</param>
-	<remarks>
- A PageController is associated with form control whose value determines the value of an FGDC element's XML tag. 
- This is critical to understanding the operation of EME.
- </remarks>
-</member><member name="M:MetadataEditor.PageController.SimpleGetProperty(System.String)">
-	<summary>
- A utility function to get the value of simple tags (non-repeated, no child tags) 
- </summary>
-	<param name="name">XSL pattern for the element relative to the top-level "metadata" tag</param>
-	<returns></returns>
 	<remarks></remarks>
-</member><member name="M:MetadataEditor.PageController.GetTextControls(MetadataEditor.EditorForm@,System.Int32)">
+</member><member name="F:MetadataEditor.XmlFragment.dom">
 	<summary>
- Return all text controls marked for spellchecking, optionally filtered by tab number
+ Shared DOM representing the entire eainfo FGDC element.
  </summary>
-	<param name="frm"></param>
-	<param name="tabNo"></param>
-	<returns>Returns array of TextBox objects that will be spellchecked.</returns>
-	<remarks>
- If <paramref name="tabNo">tabNo</paramref> is specified (in base-1 index),
- only controls from the specified tab are returned.
- </remarks>
-</member><member name="M:MetadataEditor.PageController.ElementPopulator(MetadataEditor.EditorForm@)">
-	<summary>
- Iterate through all PageControllers and populate the elements/form controls that they control.
- </summary>
-	<param name="frm"></param>
 	<remarks></remarks>
-</member><member name="P:MetadataEditor.PageController.parentTag">
+</member><member name="F:MetadataEditor.XmlFragment.controlledChildren">
 	<summary>
- Determine the parent tag of a given semi-simple xpath to a tag.
+ Controlled children dictionary. Keyed by FGDC element names of children. 
+ Since children with a given name may be repeated, values are list of XMLFrament objects.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.XmlFragment.fromXml(System.String@,System.Boolean)">
+	<summary>
+ Construct an XMLFragment from an xml string.
+ </summary>
+	<param name="xml">A string containing well-formed XML.</param>
+	<param name="edomFix">Boolean value indicating if edom fix should be applied (see edomFixApply).</param>
+	<returns>The newly created XMLFragment instance representing the given XML string.</returns>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.XmlFragment.fromXmlNode(System.Xml.XmlNode)">
+	<summary>
+ Construct an XMLFragment from a DOM node (and its children).
+ </summary>
+	<param name="xn">A DOM node.</param>
+	<returns>The newly created XMLFragment instance representing the given DOM node (and its children).</returns>
+	<remarks></remarks>
+</member><member name="P:MetadataEditor.XmlFragment.displayName">
+	<summary>
+ The display name of an XMLFragment is the text content of its DOM node.
  </summary>
 	<value></value>
-	<returns>The xpath to parent tag</returns>
-	<remarks>Cheesy but works with the tag xpaths we deal with.</remarks>
-</member><member name="M:MetadataEditor.PageController.populate(MetadataEditor.EditorForm@)">
-	<summary>
- Populate this PageController object's form control
- </summary>
-	<param name="frm">The editor form to find associated form control</param>
+	<returns>A string with the contents of the XMLFragment.</returns>
 	<remarks></remarks>
-</member><member name="M:MetadataEditor.PageController.comboBoxLoader(System.Windows.Forms.ComboBox,System.Boolean)">
+</member><member name="M:MetadataEditor.XmlFragment.extract">
 	<summary>
- Load the ComboBox object associated with this PageController.
+ Extract the shared DOM into XMLFragments. We only extract names we might manipulate, not everything.
  </summary>
-	<param name="ctrl">The ComboBox control</param>
-	<param name="reload">Whether this is a reload or an initial load (optional)</param>
-	<remarks>
- Stay away if you haven't fully grokked workings of table-driven ComboBox objects, EME's database driven operation, 
- complex FGDC elements  and their mapping to ComboBox objects.
- </remarks>
-</member><member name="M:MetadataEditor.PageController.propagateClusterSelectionChanged(System.Object,System.EventArgs)">
+	<remarks>This is where this implementation get eainfo specific.</remarks>
+</member><member name="M:MetadataEditor.XmlFragment.extract(System.String[])">
 	<summary>
- Event handler for cluster controlling ComboBox objects that propagates the selection change to controlled cluster members.
+ Extract each of the given names. 
  </summary>
-	<param name="sender">Event sender. Cluster controlling ComboBox.</param>
-	<param name="e">Event arguments. Not used.</param>
-	<remarks>A cluster is a set of FGDC sibling tags whose values are determined by the selected item in ComboBox.</remarks>
-</member><member name="M:MetadataEditor.PageController.populateClusterEntry(System.Windows.Forms.ComboBox)">
+	<param name="nameArray">Array of string containing the FGDC element names that need to be extracted.</param>
+	<remarks>extract(String()) is just the middleman between extract() and extract(String)</remarks>
+</member><member name="M:MetadataEditor.XmlFragment.extract(System.String)">
 	<summary>
- Populate cluster members based on applicable selections on the form.
+ Extract instances of the given FGDC element. They are moved from being DOM children to controlled children.
  </summary>
-	<param name="ctrl">Cluster controlling control</param>
-	<remarks>Too convoluted. Lenght of the sub is testament to that. Prime for refactoring.</remarks>
-</member><member name="M:MetadataEditor.PageController.listBoxLoader(System.Windows.Forms.ListBox,System.Boolean)">
-	<summary>
- Load the ListBox object associated with this PageController.
- </summary>
-	<param name="ctrl">The ListBox control</param>
+	<param name="name">String containing the FGDC element name that need to be extracted.</param>
 	<remarks></remarks>
-</member><member name="M:MetadataEditor.PageController.dataGridViewLoaderFromMetadata(System.Windows.Forms.DataGridView,System.Boolean)">
+</member><member name="P:MetadataEditor.XmlFragment.value(System.String)">
 	<summary>
- Load the DataGridView object associated with this PageController.
+ Get the value of the XMLFragment at the given XSL pattern.
  </summary>
-	<param name="ctrl">The DataGridView control</param>
+	<param name="name">String containing the XSL pattern for the FGDC element of interest.</param>
+	<value>Not used.</value>
+	<returns></returns>
+	<remarks>We should have combined setValue() sub with the set() part of this property.</remarks>
+</member><member name="P:MetadataEditor.XmlFragment.valueList(System.String)">
+	<summary>
+ Get the list of XMLFragments identified by an XSL pattern.
+ </summary>
+	<param name="name">The XSL pattern identifying the values of interest.</param>
+	<value>Not used.</value>
+	<returns>List of XMLFragment.</returns>
 	<remarks></remarks>
-</member><member name="M:MetadataEditor.PageController.listBoxLoaderFromMetadata(System.Windows.Forms.ListBox,System.Boolean)">
+</member><member name="M:MetadataEditor.XmlFragment.setValue(System.String,System.String)">
 	<summary>
- Load the ListBox object associated with this PageController.
+ Set the value of the XMLFragment identified by an XSL pattern.
  </summary>
-	<param name="ctrl">The ListBox control</param>
+	<param name="name">The XSL pattern identifying the values of interest.</param>
+	<param name="val">String containing the value to set.</param>
+	<remarks>We should have combined setValue() sub with the set() part of this property.</remarks>
+</member><member name="M:MetadataEditor.XmlFragment.edomFixApply(System.Xml.XmlDocument)">
+	<summary>
+ Fix edom (if necessary) to comply with CSDGM.
+ </summary>
+	<param name="dom"></param>
+	<remarks>While a no of sources (NOAA XSD and FGDC DTD for CSDGM as well as FGDC Editor in ArcGIS) 
+ appear to allow for multiple edom elements under an attrdomv element, 
+ these are divergent from CSDGM itself.</remarks>
+</member><member name="M:MetadataEditor.XmlFragment.collectFromTwoLevels(System.String,System.String,System.String,System.Boolean)">
+	<summary>
+ Collect a list of XMLFragment objects representing repeated elements at two levels deep, optionally keeping duplicates.
+ </summary>
+	<param name="level1">Name of first level to go down from this XMLFragment.</param>
+	<param name="level2">Name of second level to go down from the first level.</param>
+	<param name="name">The name from which to collect values.</param>
+	<param name="keepDuplicates">Boolean indicating if the duplicate values need to be kept.</param>
+	<returns>List of XMLFragment.</returns>
 	<remarks></remarks>
-</member><member name="M:MetadataEditor.PageController.DefaultSetter(MetadataEditor.EditorForm@,System.Int32)">
+</member><member name="M:MetadataEditor.XmlFragment.collectFromThreeLevels(System.String,System.String,System.String,System.String,System.Boolean)">
 	<summary>
- Set defaults for each PageController controlled form controls on the given tab.
+ Collect a list of XMLFragment objects representing repeated elements at two levels deep, optionally keeping duplicates.
  </summary>
-	<param name="frm">Editor form</param>
-	<param name="tabNo">Tab number where default settings will be applied</param>
+	<param name="level1">Name of first level to go down from this XMLFragment.</param>
+	<param name="level2">Name of second level to go down from the first level.</param>
+	<param name="level3">Name of third level to go down from the second level.</param>
+	<param name="name">The name from which to collect values.</param>
+	<param name="keepDuplicates">Boolean indicating if the duplicate values need to be kept.</param>
+	<returns>List of XMLFragment.</returns>
 	<remarks></remarks>
-</member><member name="M:MetadataEditor.PageController.setDefault(MetadataEditor.EditorForm@)">
+</member><member name="M:MetadataEditor.XmlFragment.collectInner(System.String,MetadataEditor.XmlFragment,System.Collections.Generic.List{MetadataEditor.XmlFragment},System.Boolean)">
 	<summary>
- Set the form control controlled by this PageController to its default value.
+ Collect the XMLFragment at the given name.
  </summary>
-	<param name="frm">Editor form</param>
+	<param name="name">The name of interest.</param>
+	<param name="xfa">XMLFragment object to collect from.</param>
+	<param name="lst">List of previously collected XMLFragment objects.</param>
+	<param name="keepDuplicates">Boolean indicating if the duplicate values need to be kept.</param>
+	<remarks>This should've been designed to operate on the target object.</remarks>
+</member><member name="M:MetadataEditor.XmlFragment.collectFromEntities(System.String)">
+	<summary>
+ Front-end function to collect a repeated value from every entity.
+ </summary>
+	<param name="name">Name of repeated element to collect.</param>
+	<returns>Array of XMLFragment.</returns>
 	<remarks></remarks>
-</member><member name="M:MetadataEditor.PageController.listBoxSetDefault(System.Windows.Forms.ListBox)">
+</member><member name="M:MetadataEditor.XmlFragment.collectFromAttributes(System.String)">
 	<summary>
- Set the ListBox control controlled by this PageController to its default value(s).
+ Front-end function to collect a repeated value from every attribute.
  </summary>
-	<param name="ctrl">Editor form</param>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.PageController.comboBoxSetDefault(System.Windows.Forms.ComboBox)">
-	<summary>
- Set the ComboBox control controlled by this PageController to its default value.
- </summary>
-	<param name="ctrl">Editor form</param>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.PageController.textBoxSetDefault(System.Windows.Forms.TextBox)">
-	<summary>
- Set the TextBox control controlled by this PageController to its default value.
- </summary>
-	<param name="ctrl">Editor form</param>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.PageController.ValidateAction(MetadataEditor.EditorForm@)">
-	<summary>
- Attempt webservice or local validation depending on current setting.
- </summary>
-	<param name="frm">Editor form</param>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.PageController.showValidationResultsInBrowser(System.String)">
-	<summary>
- Display validation results using the application associated with .xml files.
- This is typically Internet Explorer, though not necessarily.
- </summary>
-	<param name="filename">String containing name of file to be displayed.</param>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.PageController.showValidationResultsInEME(MetadataEditor.EditorForm,System.Xml.XmlDocument)">
-	<summary>
- Display validation results on EME GUI. 
- </summary>
-	<param name="frm">The EditorForm object used for EME GUI.</param>
-	<param name="dom">The DOM containing the results of validation.</param>
-	<remarks>Real action is performed by showValidationResultsInEMEDo().</remarks>
-</member><member name="T:MetadataEditor.PageController.showValidationResultsInEMEDoCallback">
-	<summary>
- Delegate for showValidationResultsInEMEDo().
- </summary>
-	<param name="frm"></param>
-	<param name="ctrlName"></param>
-	<param name="msg"></param>
-	<remarks>See showValidationResultsInEMEDo() for parameters. The delegate is required cross-thread calling of target.</remarks>
-</member><member name="M:MetadataEditor.PageController.showValidationResultsInEMEDo(MetadataEditor.EditorForm,System.String,System.String)">
-	<summary>
- The workhorse subroutine to display validation results on the EME GUI using little blinking led lights and hover tooltips.
- </summary>
-	<param name="frm">The EditorForm object used for EME GUI.</param>
-	<param name="ctrlName">Name of the control for which to display validation results.</param>
-	<param name="msg">The message to be displayed in a hover tooltip.</param>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.PageController.ValidationTimerFired(System.Object,System.EventArgs)">
-	<summary>
- Event handler that cancels the executing validation thread when validation timeout occurs.
- </summary>
-	<param name="sender">Event sender. Not used.</param>
-	<param name="e">Event arguments. Not used.</param>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.PageController.ValidateAction(System.Object,System.ComponentModel.DoWorkEventArgs)">
-	<summary>
- The worker process that will run in a separate thread and perform the actual validation work.
- </summary>
-	<param name="sender">Event sender. Not used.</param>
-	<param name="e">Event arguments. Used to return information about the type and outcome of validation work performed.</param>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.PageController.ValidationWorker_RunWorkerCompleted(System.Object,System.ComponentModel.RunWorkerCompletedEventArgs)">
-	<summary>
- Event handler that runs when validation worker thread completes its run.
- Informs user if something went wrong.
- </summary>
-	<param name="sender">Event sender. Not used.</param>
-	<param name="e">Event arguments. Used to examine information about the type and outcome of validation work performed.</param>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.PageController.findParentName(System.String)">
-	<summary>
- Determine the parent control's name.
- </summary>
-	<param name="name">String containing a control's name whose parent is being sought,</param>
-	<returns>String containing parent control's name.</returns>
-	<remarks>This is an imperfect method for determining the parent of a control as it relies on removing 
- the part after the last name separator chracter. Caller should not assume that the returned name corresponds 
- to an existing control's name.</remarks>
-</member><member name="P:MetadataEditor.PageController.isPartOfCluster">
-	<summary>
- Determine if this PageController is part of a cluster.
- </summary>
-	<returns>Returns true if this PageController is part of a cluster. Otherwise, returns false.</returns>
-	<remarks></remarks>
-</member><member name="P:MetadataEditor.PageController.formFieldName">
-	<summary>
- Determine the name of the form control associated with this PageController.
- </summary>
-	<returns>Returns the name of the form control associated with this PageController.</returns>
-	<remarks></remarks>
-</member><member name="P:MetadataEditor.PageController.sortProperty">
-	<summary>
- Determine the sort property of this PageController.
- </summary>
-	<returns>Returns the sort property of this PageController.</returns>
-	<remarks>Sort property determines the order in which PageControllers, hence their, FGDC elements are processed.</remarks>
-</member><member name="P:MetadataEditor.PageController.isClusterController">
-	<summary>
- Determine if this PageController is a cluster controller.
- </summary>
-	<returns>Returns true if this PageController is a cluster controller. Otherwise, returns false.</returns>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.PageController.addToCluster">
-	<summary>
- Add this PageController to its cluster, if applicable.
- </summary>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.PageController.PageSaver(MetadataEditor.EditorForm@)">
-	<summary>
- Save all PageControllers back to metadata record.
- </summary>
-	<param name="frm">Editor form</param>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.PageController.eainfoSave(System.String)">
-	<summary>
- Save the eainfo section of the metadata.
- </summary>
-	<param name="eainfoXml">The XML representation of eainfo FGDC element as manipulated by EME.</param>
-	<remarks>This is a divergence from the more straightforward mapping between form controls and 
- CSDGM sections that they control implemented using PageController objects. This is a necessary evil as 
- eainfo is too complicated to be mapped to a single form control.</remarks>
-</member><member name="M:MetadataEditor.PageController.save(System.Windows.Forms.Control)">
-	<summary>
- Save this PageController back to metadata record.
- </summary>
-	<param name="ctrl">The control associated with this PageController.</param>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.PageController.updateMetadata(System.String,System.Int32)">
-	<summary>
- Update/delete the metadata tag associated with this PageController.
- </summary>
-	<param name="tagValue">Value of the tag</param>
-	<param name="index">Index of the tag if a repeated tag. 1-based.</param>
-	<remarks>If the value is empty, the tag is deleted from the metadata record.</remarks>
-</member><member name="M:MetadataEditor.PageController.textBoxSaver(System.Windows.Forms.TextBox@)">
-	<summary>
- Save the contents of the TextBox object associated with this PageController to the metadata record.
- </summary>
-	<param name="ctrl">The TextBox object associated with the PageController</param>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.PageController.listBoxSaver(System.Windows.Forms.ListBox@)">
-	<summary>
- Save the contents of the ListBox object associated with this PageController to the metadata record.
- </summary>
-	<param name="ctrl">The ListBox object associated with the PageController</param>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.PageController.comboBoxSaver(System.Windows.Forms.ComboBox@)">
-	<summary>
- Save the contents of the ComboBox object associated with this PageController to the metadata record.
- </summary>
-	<param name="ctrl">The ComboBox object associated with the PageController</param>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.PageController.dataGridViewSaver(System.Windows.Forms.DataGridView@)">
-	<summary>
- Save the contents of the DataGridView object associated with this PageController to the metadata record.
- </summary>
-	<param name="ctrl">The DataGridView object associated with the PageController</param>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.PageController.orderedPageControllers">
-	<summary>
- Order all PageControllers.
- </summary>
-	<returns>Returns an ArrayList of PageController objects sorted by their "orderedId"</returns>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.PageController.isOnTab(System.Int32)">
-	<summary>
- Determine if the control associated with this PageController is on a given tab.
- </summary>
-	<param name="tabNum">Tab number</param>
-	<returns>Returns true if the this PageController's form control is on the given tab. Otherwise, returns false.</returns>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.PageController.CompareTo(System.Object)">
-	<summary>
- Compares the PageController object to another based on orderedId
- </summary>
-	<param name="obj">PageController object to compare against</param>
-	<returns>Returns a negative value if this PageController preceeds obj, 0 if equivalent (should not happen) or a positive value it succeeds obj.</returns>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.PageController.wipeEsriRequired(MetadataEditor.EditorForm)">
-	<summary>
- Removes text content from all controls that start with "REQUIRED: ", something typically inserted by ESRI tools.
- </summary>
-	<param name="frm">The EditorForm object whose controls will be inspected.</param>
-	<returns>Boolean value indicating if any modifications were made.</returns>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.PageController.findAndReplaceAll(MetadataEditor.EditorForm,System.String,System.String)">
-	<summary>
- Find and replace all occurrences of some string with another one for all controls.
- </summary>
-	<param name="frm">The EditorForm object whose controls will be inspected.</param>
-	<param name="oldValue">String containing text to be replaced.</param>
-	<param name="newValue">String containing text to replace with.</param>
-	<returns>The number of replacements made.</returns>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.PageController.dataGridViewFindAndReplace(System.Windows.Forms.DataGridView,System.String,System.String)">
-	<summary>
- Specialized find and replace for text controlled via a DataGridView control.
- </summary>
-	<param name="ctrl">DataGridView control to operate on.</param>
-	<param name="oldValue">String containing text to be replaced.</param>
-	<param name="newValue">String containing text to replace with.</param>
-	<returns>The number of replacements made.</returns>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.PageController.findAndReplace(MetadataEditor.EditorForm,System.String,System.String)">
-	<summary>
- Find and replace for all controls that have a "Text" property.
- </summary>
-	<param name="frm">The EditorForm object whose controls will be inspected.</param>
-	<param name="oldValue">String containing text to be replaced.</param>
-	<param name="newValue">String containing text to replace with.</param>
-	<returns>The number of replacements made.</returns>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.PageController.disableCluster(System.String)">
-	<summary>
- Disable all controls participating in a cluster.
- </summary>
-	<param name="name">String containing name of cluster whose participating controls will be disabled.</param>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.PageController.getHelpPageFor(System.String,System.String)">
-	<summary>
- Try to find and open the help page for the metadata element with the given name/xpath
- </summary>
-	<param name="name">The xpath for the metadata element/tag</param>
-	<param name="defaultHelp">Default hekp page to open if can't find the specific help page</param>
+	<param name="name"></param>
 	<returns></returns>
 	<remarks></remarks>
-</member><member name="T:MetadataEditor.PageController">
+</member><member name="M:MetadataEditor.XmlFragment.collectFromAttributeDomains(System.String)">
 	<summary>
- Class that manages all manipulations to and operations on metadata - within the editor.
+ Front-end function to collect a repeated value from every attrdomv element.
+ </summary>
+	<param name="name"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.XmlFragment.count(System.String)">
+	<summary>
+ Get the no of names at the given XSL pattern.
+ </summary>
+	<param name="name">An XSL pattern identifying the name of of interest.</param>
+	<returns>An integer value.</returns>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.XmlFragment.delete(System.String,System.Int32)">
+	<summary>
+ Delete the name identified by the given XSL pattern and index.
+ </summary>
+	<param name="name">An XSL pattern identifying the name of of interest.</param>
+	<param name="deleteIndex">The index of the XMLFragment to be deleted.</param>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.XmlFragment.add(System.String,System.Int32,MetadataEditor.XmlFragment)">
+	<summary>
+ Add the given XMLFragment at the given XSL pattern and index.
+ </summary>
+	<param name="name">An XSL pattern identifying the name of of interest.</param>
+	<param name="addIndex">The index at which to add the XMLFragment.</param>
+	<param name="xf">The XMLFragment to be added.</param>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.XmlFragment.construct(System.Boolean)">
+	<summary>
+ Reconstruct the XML representation of an XMLFragment from its name, controlled children and DOM children.
+ </summary>
+	<param name="topLevel">Boolean indicating if this XMLFragment is a top-level element.</param>
+	<returns>A string containing the XML representation.</returns>
+	<remarks></remarks>
+</member><member name="T:MetadataEditor.XmlFragment">
+	<summary>
+ An XmlFragment holds a fragment of a larger XML document.
+ Structurally, XmlFragment is a cross between a DOM node and a specialized object. 
+ All XMLFragment instances share a DOM and each one points to itw own DOM node as 
+ well as a set of its children that we care about (conrolled children). Controlled
+ children are extracted out of the DOM during XMLFragment creation and all other 
+ children (if any) are left behind in the DOM. When serialized, DOM is reconstructed
+ from controlled children and DOM children at every level.
+ </summary>
+	<remarks>Current implementation allows for only one DOM shared by all class members. 
+ This implementation is geared towards handling eainfo FGDC element and its children.</remarks>
+</member><member name="M:MetadataEditor.SplashScreen.#ctor">
+	<summary>
+ Create and initialize the splash screen form.
  </summary>
 	<remarks></remarks>
+</member><member name="M:MetadataEditor.SplashScreen.SplashScreen_Click(System.Object,System.EventArgs)">
+	<summary>
+ Event handler for the click on the form. Closes the form.
+ </summary>
+	<param name="sender">Not used.</param>
+	<param name="e">Not used.</param>
+	<remarks></remarks>
+</member><member name="T:MetadataEditor.SplashScreen">
+	<summary>
+ Class that provides a splash screen for the MME extension.
+ Has been disabled by request but still here if anyone wants to use it.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.AboutBox.pbMnGeo_Click(System.Object,System.EventArgs)">
+	<summary>
+ Open MnGeo website in a browser window.
+ </summary>
+	<param name="sender">Event sender. Not used.</param>
+	<param name="e">Event arguments. Not used.</param>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.AboutBox.pbOEI_Click(System.Object,System.EventArgs)">
+	<summary>
+ Open EPA OEI website in a browser window.
+ </summary>
+	<param name="sender">Event sender. Not used.</param>
+	<param name="e">Event arguments. Not used.</param>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.DummyForm.checkAndCopyTemplate">
+	<summary>
+ Initialize essential files by copying from template if ncessary.
+ </summary>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="T:MetadataEditor.DummyForm">
+	<summary>
+ EME loads up slowly due to lots of parsing processing at start up. This form is displayed meanwhile.
+ It also acts as the parent window controlling the EditorForm.
+ </summary>
+	<remarks></remarks>
+</member><member name="P:MetadataEditor.MMEConfig.MdbFilepathname">
+	<remarks/>
+</member><member name="T:MetadataEditor.MMEConfig">
+	<remarks/>
+</member><member name="P:MetadataEditor.NewDataSet.Items">
+	<remarks/>
+</member><member name="T:MetadataEditor.NewDataSet">
+	<remarks/>
+</member><member name="F:MetadataEditor.SpaciousEntryForm.elt">
+	<summary>
+ The name of the input element for which the form is opened.
+ </summary>
+	<remarks></remarks>
+</member><member name="F:MetadataEditor.SpaciousEntryForm.origText">
+	<summary>
+ Original text that will be made available for editing on the form.
+ </summary>
+	<remarks></remarks>
+</member><member name="F:MetadataEditor.SpaciousEntryForm.saved">
+	<summary>
+ Flag to indicate if the element has been saved after last edit on the form.
+ </summary>
+	<remarks></remarks>
+</member><member name="P:MetadataEditor.SpaciousEntryForm.element">
+	<summary>
+ The name of the control on main EME form that this form is associated with.
+ </summary>
+	<value>A control's name string.</value>
+	<remarks></remarks>
+</member><member name="P:MetadataEditor.SpaciousEntryForm.elementDisplayName">
+	<summary>
+ The name to display for the element being edited on this form.
+ </summary>
+	<value>User friendly name string.</value>
+	<remarks></remarks>
+</member><member name="P:MetadataEditor.SpaciousEntryForm.content">
+	<summary>
+ The content being edited on this form.
+ </summary>
+	<value>A string containing the text content.</value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:MetadataEditor.SpaciousEntryForm.optionalityColor">
+	<summary>
+ The background color for the form depending on optionality of the element being edited.
+ </summary>
+	<value></value>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.SpaciousEntryForm.changed">
+	<summary>
+ Indicates that the content has changed.
+ </summary>
+	<returns>True if the content is different from the original text when the form was opened or last saved.</returns>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.SpaciousEntryForm.btnCloseSave_Click(System.Object,System.EventArgs)">
+	<summary>
+ Event handler for the "Close and save" button.
+ </summary>
+	<param name="sender">Not used.</param>
+	<param name="e">Not used.</param>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.SpaciousEntryForm.btnSave_Click(System.Object,System.EventArgs)">
+	<summary>
+ Event handler for the "Save" button. Updated origText field so changes aren't discarded.
+ </summary>
+	<param name="sender">Not used.</param>
+	<param name="e">Not used.</param>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.SpaciousEntryForm.btnCloseDiscard_Click(System.Object,System.EventArgs)">
+	<summary>
+ Event handler for the "Close and Discard" button. Prompts user to confirm.
+ </summary>
+	<param name="sender">Not used.</param>
+	<param name="e">Not used.</param>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.SpaciousEntryForm.llHelp_LinkClicked(System.Object,System.Windows.Forms.LinkLabelLinkClickedEventArgs)">
+	<summary>
+ Event handler for the help link. Opens help for the element being edited.
+ </summary>
+	<param name="sender">Not used.</param>
+	<param name="e">Not used.</param>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.SpaciousEntryForm.SpaciousEntryForm_Activated(System.Object,System.EventArgs)">
+	<summary>
+ Focus on the input area as soon as the form is loaded.
+ </summary>
+	<param name="sender"></param>
+	<param name="e"></param>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.SpaciousEntryForm.SendMessage(System.IntPtr,System.Int32,System.IntPtr,System.IntPtr)">
+	<summary>
+ Hook into a win32 function
+ </summary>
+	<param name="hwnd"></param>
+	<param name="wMsg"></param>
+	<param name="wParam"></param>
+	<param name="lParam"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.SpaciousEntryForm.ProcessCmdKey(System.Windows.Forms.Message@,System.Windows.Forms.Keys)">
+	<summary>
+ Override the Pressed Key Processing Routine of the MDI-Parent primarily to be able to pass down ctrl-x/c/v keypresses
+ </summary>
+	<param name="msg"></param>
+	<param name="keyData"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="T:MetadataEditor.SpaciousEntryForm">
+	<summary>
+ Class that provides a spacious entry form, i.e. a form that has more space for entering text
+ for the particular data element it is associated with.
+ </summary>
+	<remarks>Only one form is allowed to be open currently. Maybe we should relax this constraint 
+ to allow easier copy/paste, viewing/comparing content, etc.?</remarks>
 </member><member name="M:MetadataEditor.Utils.getAppFolder">
 	<summary>
  Returns the folder path where EME is installed in.
@@ -1624,425 +2098,6 @@ MetadataEditor
  Miscellenaous utility functions utilized by EME.
  </summary>
 	<remarks></remarks>
-</member><member name="F:MetadataEditor.SpaciousEntryForm.elt">
-	<summary>
- The name of the input element for which the form is opened.
- </summary>
-	<remarks></remarks>
-</member><member name="F:MetadataEditor.SpaciousEntryForm.origText">
-	<summary>
- Original text that will be made available for editing on the form.
- </summary>
-	<remarks></remarks>
-</member><member name="F:MetadataEditor.SpaciousEntryForm.saved">
-	<summary>
- Flag to indicate if the element has been saved after last edit on the form.
- </summary>
-	<remarks></remarks>
-</member><member name="P:MetadataEditor.SpaciousEntryForm.element">
-	<summary>
- The name of the control on main EME form that this form is associated with.
- </summary>
-	<value>A control's name string.</value>
-	<remarks></remarks>
-</member><member name="P:MetadataEditor.SpaciousEntryForm.elementDisplayName">
-	<summary>
- The name to display for the element being edited on this form.
- </summary>
-	<value>User friendly name string.</value>
-	<remarks></remarks>
-</member><member name="P:MetadataEditor.SpaciousEntryForm.content">
-	<summary>
- The content being edited on this form.
- </summary>
-	<value>A string containing the text content.</value>
-	<returns></returns>
-	<remarks></remarks>
-</member><member name="P:MetadataEditor.SpaciousEntryForm.optionalityColor">
-	<summary>
- The background color for the form depending on optionality of the element being edited.
- </summary>
-	<value></value>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.SpaciousEntryForm.changed">
-	<summary>
- Indicates that the content has changed.
- </summary>
-	<returns>True if the content is different from the original text when the form was opened or last saved.</returns>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.SpaciousEntryForm.btnCloseSave_Click(System.Object,System.EventArgs)">
-	<summary>
- Event handler for the "Close and save" button.
- </summary>
-	<param name="sender">Not used.</param>
-	<param name="e">Not used.</param>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.SpaciousEntryForm.btnSave_Click(System.Object,System.EventArgs)">
-	<summary>
- Event handler for the "Save" button. Updated origText field so changes aren't discarded.
- </summary>
-	<param name="sender">Not used.</param>
-	<param name="e">Not used.</param>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.SpaciousEntryForm.btnCloseDiscard_Click(System.Object,System.EventArgs)">
-	<summary>
- Event handler for the "Close and Discard" button. Prompts user to confirm.
- </summary>
-	<param name="sender">Not used.</param>
-	<param name="e">Not used.</param>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.SpaciousEntryForm.llHelp_LinkClicked(System.Object,System.Windows.Forms.LinkLabelLinkClickedEventArgs)">
-	<summary>
- Event handler for the help link. Opens help for the element being edited.
- </summary>
-	<param name="sender">Not used.</param>
-	<param name="e">Not used.</param>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.SpaciousEntryForm.SpaciousEntryForm_Activated(System.Object,System.EventArgs)">
-	<summary>
- Focus on the input area as soon as the form is loaded.
- </summary>
-	<param name="sender"></param>
-	<param name="e"></param>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.SpaciousEntryForm.SendMessage(System.IntPtr,System.Int32,System.IntPtr,System.IntPtr)">
-	<summary>
- Hook into a win32 function
- </summary>
-	<param name="hwnd"></param>
-	<param name="wMsg"></param>
-	<param name="wParam"></param>
-	<param name="lParam"></param>
-	<returns></returns>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.SpaciousEntryForm.ProcessCmdKey(System.Windows.Forms.Message@,System.Windows.Forms.Keys)">
-	<summary>
- Override the Pressed Key Processing Routine of the MDI-Parent primarily to be able to pass down ctrl-x/c/v keypresses
- </summary>
-	<param name="msg"></param>
-	<param name="keyData"></param>
-	<returns></returns>
-	<remarks></remarks>
-</member><member name="T:MetadataEditor.SpaciousEntryForm">
-	<summary>
- Class that provides a spacious entry form, i.e. a form that has more space for entering text
- for the particular data element it is associated with.
- </summary>
-	<remarks>Only one form is allowed to be open currently. Maybe we should relax this constraint 
- to allow easier copy/paste, viewing/comparing content, etc.?</remarks>
-</member><member name="M:MetadataEditor.SplashScreen.#ctor">
-	<summary>
- Create and initialize the splash screen form.
- </summary>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.SplashScreen.SplashScreen_Click(System.Object,System.EventArgs)">
-	<summary>
- Event handler for the click on the form. Closes the form.
- </summary>
-	<param name="sender">Not used.</param>
-	<param name="e">Not used.</param>
-	<remarks></remarks>
-</member><member name="T:MetadataEditor.SplashScreen">
-	<summary>
- Class that provides a splash screen for the MME extension.
- Has been disabled by request but still here if anyone wants to use it.
- </summary>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.LocalValidator.errorxml(System.String,System.String,System.String,System.String)">
-	<summary>
- Generate an XML snippet (for use in metadata validation error reporting) with the provided information.
- </summary>
-	<param name="type">Type of validation issue</param>
-	<param name="message">Message describing the issue</param>
-	<param name="linenum">Metadata XML file line number if available</param>
-	<param name="errid">An identifier for the element with the reported issue if available. Constructed using the XPath for the element</param>
-	<returns>Returns a string containing the XML snippet.</returns>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.LocalValidator.escapeXml(System.String)">
-	<summary>
- Replace special XML characters with their escape codes
- </summary>
-	<param name="txt">Text to be XML-escaped</param>
-	<returns>A String with content XML-escaped.</returns>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.LocalValidator.validate_mp(System.String,System.String)">
-	<summary>
- Perform MP validation on the provided XML metadata record.
- </summary>
-	<param name="root_dir">Root directory for EME.</param>
-	<param name="inxml">Metadata XML to be validated.</param>
-	<returns>Returns an XML snippet containing issues found with the metadata record</returns>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.LocalValidator.validate_epa(System.String,System.String)">
-	<summary>
- Perform EPA validation on the provided XML metadata record.
- </summary>
-	<param name="root_dir">Root directory for EME</param>
-	<param name="inxml">Metadata XML to be validated</param>
-	<returns>Returns an XML snippet containing issues found with the metadata record</returns>
-	<remarks>Utilizes a Schematron generated XSL transform to identify issues with respect to metadata rules that EPA enforces. 
- Needs to be made optional to better accomodate non-EPA users.</remarks>
-</member><member name="M:MetadataEditor.LocalValidator.transform_epa(System.String,System.String,System.String,System.String)">
-	<summary>
- Apply an XSL transform to an XML file.
- </summary>
-	<param name="xslfile">Full filepathname of the XSLT file</param>
-	<param name="fin">Full filepathname of the input file</param>
-	<param name="fout">Full filepathname of the output file</param>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.LocalValidator.type_to_dir(System.String)">
-	<summary>
- Given the type of validation, return the subdirectory name to use.
- </summary>
-	<param name="type">Validation type</param>
-	<returns></returns>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.LocalValidator.file_in(System.String,System.String,System.String)">
-	<summary>
- Write file with given name and contents under appropriate validation subdirectory to feed into the validation system.
- </summary>
-	<param name="type">Validation type</param>
-	<param name="fname">Filename</param>
-	<param name="contents">File contents</param>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.LocalValidator.file_out(System.String,System.String)">
-	<summary>
- Read file with given name under appropriate validation subdirectory to get feed back from the validation system.
- </summary>
-	<param name="type">Validation type</param>
-	<param name="fname">Filename</param>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.LocalValidator.date_changed(System.String)">
-	<summary>
- Return date that validation rules were last updated
- </summary>
-	<param name="root_dir">Root directory for EME install</param>
-	<returns></returns>
-	<remarks>Relies on "date_changed.xml" file. Only useful on the server side.</remarks>
-</member><member name="M:MetadataEditor.LocalValidator.delete_files(System.String,System.String)">
-	<summary>
- Delete files in MP or EPA subdirectory matching the given name specification.
- </summary>
-	<param name="type">Type ("mp" or "epa")</param>
-	<param name="fname">Filename starts with this string</param>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.LocalValidator.parseErrors(System.String,System.String,System.String@)">
-	<summary>
- Parse errors and warnings in MP output.
- </summary>
-	<param name="errorFileName">Fully qualified filename for the file that contains MP output.</param>
-	<param name="inputFile">Fully qualified filename for the metadata file.</param>
-	<param name="ans">This parameter is not used. Should be removed and locally declared.</param>
-	<returns>Returns an XML snippet containing errors/warnings found with the metadata record </returns>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.LocalValidator.runMP(System.String,System.String,System.String,System.String@)">
-	<summary>
- Run the mp_win.exe application.
- </summary>
-	<param name="workdir">Working directory where mp_win.exe resides and temporary files are created.</param>
-	<param name="outputFile">Output filename where MP output will go.</param>
-	<param name="errorFileName">Error filename where MP errors will go.</param>
-	<param name="ans">Anny errors that occur will be reported in this parameter passed by reference.</param>
-	<returns>True if successful. False otherwise.</returns>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.Validator.#ctor">
-	<remarks/>
-</member><member name="E:MetadataEditor.Validator.validate_mpCompleted">
-	<remarks/>
-</member><member name="E:MetadataEditor.Validator.validate_epaCompleted">
-	<remarks/>
-</member><member name="E:MetadataEditor.Validator.date_changedCompleted">
-	<remarks/>
-</member><member name="M:MetadataEditor.Validator.validate_mp(System.String)">
-	<remarks/>
-</member><member name="M:MetadataEditor.Validator.Beginvalidate_mp(System.String,System.AsyncCallback,System.Object)">
-	<remarks/>
-</member><member name="M:MetadataEditor.Validator.Endvalidate_mp(System.IAsyncResult)">
-	<remarks/>
-</member><member name="M:MetadataEditor.Validator.validate_mpAsync(System.String)">
-	<remarks/>
-</member><member name="M:MetadataEditor.Validator.validate_mpAsync(System.String,System.Object)">
-	<remarks/>
-</member><member name="M:MetadataEditor.Validator.validate_epa(System.String)">
-	<remarks/>
-</member><member name="M:MetadataEditor.Validator.Beginvalidate_epa(System.String,System.AsyncCallback,System.Object)">
-	<remarks/>
-</member><member name="M:MetadataEditor.Validator.Endvalidate_epa(System.IAsyncResult)">
-	<remarks/>
-</member><member name="M:MetadataEditor.Validator.validate_epaAsync(System.String)">
-	<remarks/>
-</member><member name="M:MetadataEditor.Validator.validate_epaAsync(System.String,System.Object)">
-	<remarks/>
-</member><member name="M:MetadataEditor.Validator.date_changed">
-	<remarks/>
-</member><member name="M:MetadataEditor.Validator.Begindate_changed(System.AsyncCallback,System.Object)">
-	<remarks/>
-</member><member name="M:MetadataEditor.Validator.Enddate_changed(System.IAsyncResult)">
-	<remarks/>
-</member><member name="M:MetadataEditor.Validator.date_changedAsync">
-	<remarks/>
-</member><member name="M:MetadataEditor.Validator.date_changedAsync(System.Object)">
-	<remarks/>
-</member><member name="M:MetadataEditor.Validator.CancelAsync(System.Object)">
-	<remarks/>
-</member><member name="T:MetadataEditor.Validator">
-	<remarks>
-This source code was auto-generated by wsdl, Version=2.0.50727.42.
-</remarks>
-</member><member name="T:MetadataEditor.validate_mpCompletedEventHandler">
-	<remarks/>
-</member><member name="P:MetadataEditor.validate_mpCompletedEventArgs.Result">
-	<remarks/>
-</member><member name="T:MetadataEditor.validate_mpCompletedEventArgs">
-	<remarks/>
-</member><member name="T:MetadataEditor.validate_epaCompletedEventHandler">
-	<remarks/>
-</member><member name="P:MetadataEditor.validate_epaCompletedEventArgs.Result">
-	<remarks/>
-</member><member name="T:MetadataEditor.validate_epaCompletedEventArgs">
-	<remarks/>
-</member><member name="T:MetadataEditor.date_changedCompletedEventHandler">
-	<remarks/>
-</member><member name="P:MetadataEditor.date_changedCompletedEventArgs.Result">
-	<remarks/>
-</member><member name="T:MetadataEditor.date_changedCompletedEventArgs">
-	<remarks/>
-</member><member name="F:MetadataEditor.XmlMetadata.dom">
-	<summary>
- Internal structure to hold the metadata document
- </summary>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.XmlMetadata.SetPropertyX(System.String,System.String)">
-	<summary>
- Set the element with the given xpath to the given value.
- </summary>
-	<param name="xpathStr">xpath expression of element to update. Does not have to pre-exist in the metadata document.</param>
-	<param name="value">New content for element</param>
-	<remarks>Assumes that the xpath points at most to a single target. Only the first occurence is updated.</remarks>
-</member><member name="M:MetadataEditor.XmlMetadata.makeXpath(System.String,System.Xml.XmlNodeType)">
-	<summary>
- Create the given element hierarchy as dictated by the given xpath. All elements leading up to the leaf tag will be created if not already there.
- </summary>
-	<param name="xpathStr">xpath expression for the element hierarchy to create</param>
-	<param name="nodeType">The type of leaf node to create. Default is a text node which is currently the only supported node.</param>
-	<returns>True if succesful, False otherwise.</returns>
-	<remarks>Logic does handle xpaths involving integer indexes.</remarks>
-</member><member name="M:MetadataEditor.XmlMetadata.GetXml(System.String,System.Boolean,System.Boolean)">
-	<summary>
- Get the XML snippet pointed to by the given xpath expression.
- </summary>
-	<param name="xpathStr">xpath expression of the XML snippet targeted.</param>
-	<param name="normalize">Normalize the xpath expression to start with root element (/metadata/) if not already.</param>
-	<param name="outerXml">Return outer XML for the xpath target if True, return inner XML otherwise.</param>
-	<returns>Returns the inner/outer XML snippet targeted by the xpath expression.</returns>
-	<remarks>Some xpaths have special meaning: empty xpath return entire XML including any XML declaration; slash returns starting at root element without any headers.</remarks>
-</member><member name="M:MetadataEditor.XmlMetadata.SetXml(System.String)">
-	<summary>
- Set the XML document to the given xml content.
- </summary>
-	<param name="xmlStr">String with XML content.</param>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.XmlMetadata.copyFrom(MetadataEditor.XmlMetadata,System.String,System.String)">
-	<summary>
- Copy an XML snippet from one document and graft into current.
- </summary>
-	<param name="src">Souce XmlMetadata object to copy from</param>
-	<param name="xpathStrSource">Source xpath expression to copy from</param>
-	<param name="xpathStrTarget">Traget xpath expression denoting where the XML snippet will be copied to. If Nothing, then same as source xpath.</param>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.XmlMetadata.SetXml(System.String,System.String)">
-	<summary>
- Copy the given XML snippet and graft at the element pointed by given xpath expression
- </summary>
-	<param name="xpathStr">xpath target to receive XML snippet</param>
-	<param name="xmlStr">The XML snippet to be received.</param>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.XmlMetadata.DeleteProperty(System.String)">
-	<summary>
- Delete the element(s) pointed by the given xpath expression
- </summary>
-	<param name="xpathStr">xpath expression for element(s) to be deleted</param>
-	<remarks>All elements targeted by the xpath expression are deleted.</remarks>
-</member><member name="M:MetadataEditor.XmlMetadata.SimpleGetProperty(System.String)">
-	<summary>
- Get element value
- </summary>
-	<param name="xpathStr">xpath expression for element targeted</param>
-	<returns>String value of the element at given xpath.</returns>
-	<remarks>If element is compound, then value is compound values of all subelements - though it's unusual to use that way.</remarks>
-</member><member name="M:MetadataEditor.XmlMetadata.GetProperty(System.String)">
-	<summary>
- Get element values
- </summary>
-	<param name="xpathStr">xpath expression for elements targeted</param>
-	<returns>List of String values with one entry for each element matching the given xpath expression. Nothing is returned if no matches.</returns>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.XmlMetadata.CountX(System.String)">
-	<summary>
- Determine the no of occurences of the given xpath expression.
- </summary>
-	<param name="xpathStr">xpath expression to count the occurrences of</param>
-	<returns>The number of time that the given xpath expression is encountered.</returns>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.XmlMetadata.getRootTag">
-	<summary>
- Get the name of the root element of the XML document.
- </summary>
-	<returns>Name of the root element as String</returns>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.XmlMetadata.checkDeleteKTTags">
-	<summary>
- Delete XSL pattern indexed tags if not used in the metadata record.
- </summary>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.XmlMetadata.checkCreateKTTags">
-	<summary>
- Create XSL pattern indexed tags if not already in the metadata record.
- </summary>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.XmlMetadata.normalize(System.String)">
-	<summary>
- Normalize the given xpath expression to start with the root element (/metadata/), if not already.
- </summary>
-	<param name="xpathStr">xpath expression to normalize</param>
-	<returns>Normalized xpath expression</returns>
-	<remarks>Handles only simple xpath expressions</remarks>
-</member><member name="T:MetadataEditor.XmlMetadata">
-	<summary>
- XmlMetadata represents a metadata document that is serialized from/to XML and provides basic operations to manipulate metadata.
- </summary>
-	<remarks>XmlMetadata class was designed to remove reliance on several ArcObjects metadata objects such as IXMLPropertySet2.
- It does not attempt to be 100% compatible in function or API coverage but implements enough to fulfill its design goal.</remarks>
-</member><member name="M:MetadataEditor.ProgressDialog.ShowMessage(System.String)">
-	<summary>
- Display a progress dialog with provided message.
- </summary>
-	<param name="msg">Message to display on the progress dialog.</param>
-	<remarks>If a progress dialog is already being displayed, it is replaced with a new one</remarks>
-</member><member name="M:MetadataEditor.ProgressDialog.CancelMessage">
-	<summary>
- Close the currently displayed progress dialog if there is one.
- </summary>
-	<remarks></remarks>
-</member><member name="T:MetadataEditor.ProgressDialog">
-	<summary>
- Class that provides a progress dialog to display during validation.
- </summary>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.AboutBox.pbMnGeo_Click(System.Object,System.EventArgs)">
-	<summary>
- Open MnGeo website in a browser window.
- </summary>
-	<param name="sender">Event sender. Not used.</param>
-	<param name="e">Event arguments. Not used.</param>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.AboutBox.pbOEI_Click(System.Object,System.EventArgs)">
-	<summary>
- Open EPA OEI website in a browser window.
- </summary>
-	<param name="sender">Event sender. Not used.</param>
-	<param name="e">Event arguments. Not used.</param>
-	<remarks></remarks>
 </member><member name="F:MetadataEditor.GlobalVars.config">
 	<summary>
  Configuration from XML file.
@@ -2146,6 +2201,72 @@ This source code was auto-generated by wsdl, Version=2.0.50727.42.
  Gets/sets the validation mode in effect.
  </summary>
 	<remarks></remarks>
+</member><member name="F:MetadataEditor.MdUtils.quit">
+	<summary>
+ Quit hint. Set to true when the application is expected to exit based on user interaction
+ </summary>
+	<remarks></remarks>
+</member><member name="F:MetadataEditor.MdUtils.loadNext">
+	<summary>
+ The File to load next. Full file path name.
+ </summary>
+	<remarks></remarks>
+</member><member name="F:MetadataEditor.MdUtils.currentlyEditing">
+	<summary>
+ File currently being edited. Full file path name.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.MdUtils.loadDefaultMd">
+	<summary>
+ Load a default metadata record which is essentially empty.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.MdUtils.getFilenameFromCommandLine">
+	<summary>
+ Extract metadata filename from command-line arguments if given.
+ First argument is assumed to be the filename (full path).
+ </summary>
+	<returns>The metadata filename if passed as command-line argument, Nothing otherwise</returns>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.MdUtils.promptForMdFile">
+	<summary>
+ Open a file dialog to prompt for metadata file selection.
+ Selected filename (full path) is stored in loadNext variable, if successful.
+ </summary>
+	<returns>True if a file selection is made, False otherwise.</returns>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.MdUtils.loadMdFile(System.String)">
+	<summary>
+ Load the metadata file at the given path.
+ </summary>
+	<param name="mdFilename">Full file path name to the metadata file to be loaded</param>
+	<remarks>Checks are performed on the file to give meaningful messages if file can not be loaded.</remarks>
+</member><member name="M:MetadataEditor.MdUtils.editMd(System.String,System.Boolean)">
+	<summary>
+ Edit the metadata record whose content is given.
+ </summary>
+	<param name="mdXml">The XML metadata record</param>
+	<param name="readOnlyFile">Hint to indicate that the metadata record was opened in read-only mode if true. False (read-write) by default.</param>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.MdUtils.Edit(MetadataEditor.XmlMetadata)">
+	<summary>
+ Main entry point into metadata editor.
+ </summary>
+	<param name="metadata">Metadata record copy to be edited.</param>
+	<returns>
+ Boolean return value indicates if the metadata record was modified by the editor
+ </returns>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.MdUtils.splash">
+	<summary>
+ Put up a splash screen.
+ </summary>
+	<remarks>Disabled but left here for other users of EME source code.</remarks>
+</member><member name="T:MetadataEditor.MdUtils">
+	<summary>
+ Loose collection of metadata file utilities
+ </summary>
+	<remarks></remarks>
 </member><member name="P:MetadataEditor.My.Resources.Resources.ResourceManager">
 	<summary>
   Returns the cached ResourceManager instance used by this class.
@@ -2207,189 +2328,68 @@ This source code was auto-generated by wsdl, Version=2.0.50727.42.
 	<summary>
   A strongly-typed resource class, for looking up localized strings, etc.
 </summary>
-</member><member name="F:MetadataEditor.XmlFragment.name">
-	<summary>
- Name of the FGDC element this XMLFragment represents.
- </summary>
-	<remarks></remarks>
-</member><member name="F:MetadataEditor.XmlFragment.node">
-	<summary>
- The DOM node (from the shared DOM) that corresponds to the FGDC element that this XMLFragment represents.
- </summary>
-	<remarks></remarks>
-</member><member name="F:MetadataEditor.XmlFragment.dom">
-	<summary>
- Shared DOM representing the entire eainfo FGDC element.
- </summary>
-	<remarks></remarks>
-</member><member name="F:MetadataEditor.XmlFragment.controlledChildren">
-	<summary>
- Controlled children dictionary. Keyed by FGDC element names of children. 
- Since children with a given name may be repeated, values are list of XMLFrament objects.
- </summary>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.XmlFragment.fromXml(System.String@,System.Boolean)">
-	<summary>
- Construct an XMLFragment from an xml string.
- </summary>
-	<param name="xml">A string containing well-formed XML.</param>
-	<param name="edomFix">Boolean value indicating if edom fix should be applied (see edomFixApply).</param>
-	<returns>The newly created XMLFragment instance representing the given XML string.</returns>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.XmlFragment.fromXmlNode(System.Xml.XmlNode)">
-	<summary>
- Construct an XMLFragment from a DOM node (and its children).
- </summary>
-	<param name="xn">A DOM node.</param>
-	<returns>The newly created XMLFragment instance representing the given DOM node (and its children).</returns>
-	<remarks></remarks>
-</member><member name="P:MetadataEditor.XmlFragment.displayName">
-	<summary>
- The display name of an XMLFragment is the text content of its DOM node.
- </summary>
-	<value></value>
-	<returns>A string with the contents of the XMLFragment.</returns>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.XmlFragment.extract">
-	<summary>
- Extract the shared DOM into XMLFragments. We only extract names we might manipulate, not everything.
- </summary>
-	<remarks>This is where this implementation get eainfo specific.</remarks>
-</member><member name="M:MetadataEditor.XmlFragment.extract(System.String[])">
-	<summary>
- Extract each of the given names. 
- </summary>
-	<param name="nameArray">Array of string containing the FGDC element names that need to be extracted.</param>
-	<remarks>extract(String()) is just the middleman between extract() and extract(String)</remarks>
-</member><member name="M:MetadataEditor.XmlFragment.extract(System.String)">
-	<summary>
- Extract instances of the given FGDC element. They are moved from being DOM children to controlled children.
- </summary>
-	<param name="name">String containing the FGDC element name that need to be extracted.</param>
-	<remarks></remarks>
-</member><member name="P:MetadataEditor.XmlFragment.value(System.String)">
-	<summary>
- Get the value of the XMLFragment at the given XSL pattern.
- </summary>
-	<param name="name">String containing the XSL pattern for the FGDC element of interest.</param>
-	<value>Not used.</value>
-	<returns></returns>
-	<remarks>We should have combined setValue() sub with the set() part of this property.</remarks>
-</member><member name="P:MetadataEditor.XmlFragment.valueList(System.String)">
-	<summary>
- Get the list of XMLFragments identified by an XSL pattern.
- </summary>
-	<param name="name">The XSL pattern identifying the values of interest.</param>
-	<value>Not used.</value>
-	<returns>List of XMLFragment.</returns>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.XmlFragment.setValue(System.String,System.String)">
-	<summary>
- Set the value of the XMLFragment identified by an XSL pattern.
- </summary>
-	<param name="name">The XSL pattern identifying the values of interest.</param>
-	<param name="val">String containing the value to set.</param>
-	<remarks>We should have combined setValue() sub with the set() part of this property.</remarks>
-</member><member name="M:MetadataEditor.XmlFragment.edomFixApply(System.Xml.XmlDocument)">
-	<summary>
- Fix edom (if necessary) to comply with CSDGM.
- </summary>
-	<param name="dom"></param>
-	<remarks>While a no of sources (NOAA XSD and FGDC DTD for CSDGM as well as FGDC Editor in ArcGIS) 
- appear to allow for multiple edom elements under an attrdomv element, 
- these are divergent from CSDGM itself.</remarks>
-</member><member name="M:MetadataEditor.XmlFragment.collectFromTwoLevels(System.String,System.String,System.String,System.Boolean)">
-	<summary>
- Collect a list of XMLFragment objects representing repeated elements at two levels deep, optionally keeping duplicates.
- </summary>
-	<param name="level1">Name of first level to go down from this XMLFragment.</param>
-	<param name="level2">Name of second level to go down from the first level.</param>
-	<param name="name">The name from which to collect values.</param>
-	<param name="keepDuplicates">Boolean indicating if the duplicate values need to be kept.</param>
-	<returns>List of XMLFragment.</returns>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.XmlFragment.collectFromThreeLevels(System.String,System.String,System.String,System.String,System.Boolean)">
-	<summary>
- Collect a list of XMLFragment objects representing repeated elements at two levels deep, optionally keeping duplicates.
- </summary>
-	<param name="level1">Name of first level to go down from this XMLFragment.</param>
-	<param name="level2">Name of second level to go down from the first level.</param>
-	<param name="level3">Name of third level to go down from the second level.</param>
-	<param name="name">The name from which to collect values.</param>
-	<param name="keepDuplicates">Boolean indicating if the duplicate values need to be kept.</param>
-	<returns>List of XMLFragment.</returns>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.XmlFragment.collectInner(System.String,MetadataEditor.XmlFragment,System.Collections.Generic.List{MetadataEditor.XmlFragment},System.Boolean)">
-	<summary>
- Collect the XMLFragment at the given name.
- </summary>
-	<param name="name">The name of interest.</param>
-	<param name="xfa">XMLFragment object to collect from.</param>
-	<param name="lst">List of previously collected XMLFragment objects.</param>
-	<param name="keepDuplicates">Boolean indicating if the duplicate values need to be kept.</param>
-	<remarks>This should've been designed to operate on the target object.</remarks>
-</member><member name="M:MetadataEditor.XmlFragment.collectFromEntities(System.String)">
-	<summary>
- Front-end function to collect a repeated value from every entity.
- </summary>
-	<param name="name">Name of repeated element to collect.</param>
-	<returns>Array of XMLFragment.</returns>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.XmlFragment.collectFromAttributes(System.String)">
-	<summary>
- Front-end function to collect a repeated value from every attribute.
- </summary>
-	<param name="name"></param>
-	<returns></returns>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.XmlFragment.collectFromAttributeDomains(System.String)">
-	<summary>
- Front-end function to collect a repeated value from every attrdomv element.
- </summary>
-	<param name="name"></param>
-	<returns></returns>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.XmlFragment.count(System.String)">
-	<summary>
- Get the no of names at the given XSL pattern.
- </summary>
-	<param name="name">An XSL pattern identifying the name of of interest.</param>
-	<returns>An integer value.</returns>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.XmlFragment.delete(System.String,System.Int32)">
-	<summary>
- Delete the name identified by the given XSL pattern and index.
- </summary>
-	<param name="name">An XSL pattern identifying the name of of interest.</param>
-	<param name="deleteIndex">The index of the XMLFragment to be deleted.</param>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.XmlFragment.add(System.String,System.Int32,MetadataEditor.XmlFragment)">
-	<summary>
- Add the given XMLFragment at the given XSL pattern and index.
- </summary>
-	<param name="name">An XSL pattern identifying the name of of interest.</param>
-	<param name="addIndex">The index at which to add the XMLFragment.</param>
-	<param name="xf">The XMLFragment to be added.</param>
-	<remarks></remarks>
-</member><member name="M:MetadataEditor.XmlFragment.construct(System.Boolean)">
-	<summary>
- Reconstruct the XML representation of an XMLFragment from its name, controlled children and DOM children.
- </summary>
-	<param name="topLevel">Boolean indicating if this XMLFragment is a top-level element.</param>
-	<returns>A string containing the XML representation.</returns>
-	<remarks></remarks>
-</member><member name="T:MetadataEditor.XmlFragment">
-	<summary>
- An XmlFragment holds a fragment of a larger XML document.
- Structurally, XmlFragment is a cross between a DOM node and a specialized object. 
- All XMLFragment instances share a DOM and each one points to itw own DOM node as 
- well as a set of its children that we care about (conrolled children). Controlled
- children are extracted out of the DOM during XMLFragment creation and all other 
- children (if any) are left behind in the DOM. When serialized, DOM is reconstructed
- from controlled children and DOM children at every level.
- </summary>
-	<remarks>Current implementation allows for only one DOM shared by all class members. 
- This implementation is geared towards handling eainfo FGDC element and its children.</remarks>
+</member><member name="M:MetadataEditor.Validator.#ctor">
+	<remarks/>
+</member><member name="E:MetadataEditor.Validator.validate_mpCompleted">
+	<remarks/>
+</member><member name="E:MetadataEditor.Validator.validate_epaCompleted">
+	<remarks/>
+</member><member name="E:MetadataEditor.Validator.date_changedCompleted">
+	<remarks/>
+</member><member name="M:MetadataEditor.Validator.validate_mp(System.String)">
+	<remarks/>
+</member><member name="M:MetadataEditor.Validator.Beginvalidate_mp(System.String,System.AsyncCallback,System.Object)">
+	<remarks/>
+</member><member name="M:MetadataEditor.Validator.Endvalidate_mp(System.IAsyncResult)">
+	<remarks/>
+</member><member name="M:MetadataEditor.Validator.validate_mpAsync(System.String)">
+	<remarks/>
+</member><member name="M:MetadataEditor.Validator.validate_mpAsync(System.String,System.Object)">
+	<remarks/>
+</member><member name="M:MetadataEditor.Validator.validate_epa(System.String)">
+	<remarks/>
+</member><member name="M:MetadataEditor.Validator.Beginvalidate_epa(System.String,System.AsyncCallback,System.Object)">
+	<remarks/>
+</member><member name="M:MetadataEditor.Validator.Endvalidate_epa(System.IAsyncResult)">
+	<remarks/>
+</member><member name="M:MetadataEditor.Validator.validate_epaAsync(System.String)">
+	<remarks/>
+</member><member name="M:MetadataEditor.Validator.validate_epaAsync(System.String,System.Object)">
+	<remarks/>
+</member><member name="M:MetadataEditor.Validator.date_changed">
+	<remarks/>
+</member><member name="M:MetadataEditor.Validator.Begindate_changed(System.AsyncCallback,System.Object)">
+	<remarks/>
+</member><member name="M:MetadataEditor.Validator.Enddate_changed(System.IAsyncResult)">
+	<remarks/>
+</member><member name="M:MetadataEditor.Validator.date_changedAsync">
+	<remarks/>
+</member><member name="M:MetadataEditor.Validator.date_changedAsync(System.Object)">
+	<remarks/>
+</member><member name="M:MetadataEditor.Validator.CancelAsync(System.Object)">
+	<remarks/>
+</member><member name="T:MetadataEditor.Validator">
+	<remarks>
+This source code was auto-generated by wsdl, Version=2.0.50727.42.
+</remarks>
+</member><member name="T:MetadataEditor.validate_mpCompletedEventHandler">
+	<remarks/>
+</member><member name="P:MetadataEditor.validate_mpCompletedEventArgs.Result">
+	<remarks/>
+</member><member name="T:MetadataEditor.validate_mpCompletedEventArgs">
+	<remarks/>
+</member><member name="T:MetadataEditor.validate_epaCompletedEventHandler">
+	<remarks/>
+</member><member name="P:MetadataEditor.validate_epaCompletedEventArgs.Result">
+	<remarks/>
+</member><member name="T:MetadataEditor.validate_epaCompletedEventArgs">
+	<remarks/>
+</member><member name="T:MetadataEditor.date_changedCompletedEventHandler">
+	<remarks/>
+</member><member name="P:MetadataEditor.date_changedCompletedEventArgs.Result">
+	<remarks/>
+</member><member name="T:MetadataEditor.date_changedCompletedEventArgs">
+	<remarks/>
 </member>
 </members>
 </doc>

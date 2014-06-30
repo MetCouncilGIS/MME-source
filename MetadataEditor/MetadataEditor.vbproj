@@ -208,6 +208,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="bin\Debug\en-US.dic" />
+    <None Include="bin\Debug\MetadataEditor.application" />
+    <None Include="bin\Debug\MetadataEditor.exe.config" />
+    <None Include="bin\Debug\MetadataEditor.exe.manifest" />
+    <None Include="bin\Debug\Minnesota Metadata Editor v1.1 Help.chm" />
+    <None Include="bin\Debug\MME_user.dic" />
+    <None Include="bin\Debug\stylesheet\MGMG Metadata.cfg" />
     <None Include="eme.snk" />
     <None Include="MetadataEditor_TemporaryKey.pfx" />
     <None Include="My Project\Application.myapp">
@@ -246,6 +253,27 @@
     <None Include="Resources\open.gif" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\Debug\date_changed.xml" />
+    <Content Include="bin\Debug\Interop.MSXML2.dll" />
+    <Content Include="bin\Debug\MetadataEditor.exe" />
+    <Content Include="bin\Debug\MetadataEditor.pdb" />
+    <Content Include="bin\Debug\MetadataEditor.xml" />
+    <Content Include="bin\Debug\NetSpell.SpellChecker.dll" />
+    <Content Include="bin\Debug\portable\config.xml" />
+    <Content Include="bin\Debug\portable\metadata.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="bin\Debug\portable\mp_interface\mp_win.exe" />
+    <Content Include="bin\Debug\remove_ESRI_tags.xsl" />
+    <Content Include="bin\Debug\stylesheet\ArcGIS_MGMG.xsl" />
+    <Content Include="bin\Debug\stylesheet\MGMG.xslt" />
+    <Content Include="bin\Debug\stylesheet\README.txt" />
+    <Content Include="bin\Debug\template\config.xml" />
+    <Content Include="bin\Debug\template\metadata.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="bin\Debug\template\mp_interface\mp_win.exe" />
+    <Content Include="bin\Debug\validation_results.xsl" />
     <Content Include="Resources\chm_icon.gif" />
     <None Include="Resources\MMEIcon.ico" />
     <None Include="Resources\MME_Duck.bmp" />
@@ -284,6 +312,7 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
