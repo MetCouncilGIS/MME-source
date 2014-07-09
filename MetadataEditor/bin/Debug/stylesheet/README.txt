@@ -8,11 +8,10 @@ Installation:
 
 These customized stylesheet files are added to the installed ArcGIS program location:
 > if Windows 7 32-bit 
-      > if ArcGIS 10.0, default program location is C:\Program Files\ArcGIS\Desktop10.0
-      > if ArcGIS 10.1, default program location is C:\Program Files\ArcGIS\Desktop10.1	 
+      > if ArcGIS 10.x, default program location is C:\Program Files\ArcGIS\Desktop10.x	 
 > if WIndow7 64-bit 
-      > if ArcGIS 10.0, default program location is C:\Program Files (x86)\ArcGIS\Desktop10.0
-      > if ArcGIS 10.1, default program location is C:\Program Files (x86)\ArcGIS\Desktop10.1
+      > if ArcGIS 10.x, default program location is C:\Program Files (x86)\ArcGIS\Desktop10.x
+
 	  
 1.) ArcGIS_MGMG.xsl
 

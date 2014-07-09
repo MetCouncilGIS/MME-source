@@ -60,13 +60,9 @@ Namespace My.Resources
             End Set
         End Property
         
-        Friend ReadOnly Property AgencyLogo() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("AgencyLogo", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
         Friend ReadOnly Property BatchValidatorBitmap() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("BatchValidatorBitmap", resourceCulture)

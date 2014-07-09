@@ -1599,13 +1599,6 @@ MetadataEditor
  Has been disabled by request but still here if anyone wants to use it.
  </summary>
 	<remarks></remarks>
-</member><member name="M:MetadataEditor.AboutBox.pbMnGeo_Click(System.Object,System.EventArgs)">
-	<summary>
- Open MnGeo website in a browser window.
- </summary>
-	<param name="sender">Event sender. Not used.</param>
-	<param name="e">Event arguments. Not used.</param>
-	<remarks></remarks>
 </member><member name="M:MetadataEditor.AboutBox.pbOEI_Click(System.Object,System.EventArgs)">
 	<summary>
  Open EPA OEI website in a browser window.
@@ -2275,6 +2268,10 @@ MetadataEditor
 	<summary>
   Overrides the current thread's CurrentUICulture property for all
   resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="P:MetadataEditor.My.Resources.Resources.BatchValidatorBitmap">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
 </member><member name="P:MetadataEditor.My.Resources.Resources.BlinkingRedLed">
 	<summary>

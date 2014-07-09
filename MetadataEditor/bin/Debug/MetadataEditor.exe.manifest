@@ -71,19 +71,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>YowPDl1YP+OGF+UCZbBv8mSveYQ=</dsig:DigestValue>
+        <dsig:DigestValue>whFi2GuNqolvJkPq4ivfZ0zvMMc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MetadataEditor.exe" size="406528">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MetadataEditor.exe" size="404480">
       <assemblyIdentity name="MetadataEditor" version="1.1.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>0Y28vJaul289Vf326eGp/4wNSCI=</dsig:DigestValue>
+        <dsig:DigestValue>H5/U77j8Ux1R6J4BUdXrVbbr6iU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

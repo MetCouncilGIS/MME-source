@@ -2071,7 +2071,8 @@ Public Class EditorForm
     ''' <param name="e"></param>
     ''' <remarks></remarks>
     Private Sub ContentsToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ContentsToolStripMenuItem.Click
-        HelpSeeker("")
+        'HelpSeeker("")
+        OpenInIE("http://www.mngeo.state.mn.us/chouse/mme/Minnesota_Metadata_Editor_Help.pdf")
     End Sub
 
     ''' <summary>
