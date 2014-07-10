@@ -57,9 +57,9 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 			</xsl:when>
 			<!-- ===== SPACE AFTER URL: OUTPUT LINK AND PARSE REMAINING == -->
 			<xsl:when test="contains($urlremaining,' ')">
-				<xsl:variable name="url" select="substring-before($urlremaining,' ')" />
+				<xsl:variable name="url" select="concat('http://',substring-before($urlremaining,' '))" />
 				<xsl:variable name="remaining" select="substring-after($urlremaining,$url)" />
-				<xsl:call-template name="WriteHTTPLink" >
+				<xsl:call-template name="WriteLink" >
 					<xsl:with-param name="url">
 						<xsl:value-of select="$url"/>
 					</xsl:with-param>
@@ -72,9 +72,9 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 			</xsl:when>
 			<!-- ===== URL BUT NO SPACE: OUTPUT REST AS LINK ============= -->
 			<xsl:otherwise>
-				<xsl:variable name="url" select="$urlremaining" />
+				<xsl:variable name="url" select="concat('http://',$urlremaining)" />
 				<xsl:variable name="remaining" select="''" />
-				<xsl:call-template name="WriteHTTPLink" >
+				<xsl:call-template name="WriteLink" >
 					<xsl:with-param name="url">
 						<xsl:value-of select="$url"/>
 					</xsl:with-param>
@@ -82,9 +82,47 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
+  <xsl:template name="ReplaceHTTPSLinks">
+    <xsl:param name="text" />
+    <xsl:variable name="prefix"       select="substring-before($text, 'https://')" />
+    <xsl:variable name="urlremaining" select="substring-after($text, 'https://')" />
+    <!-- ==== OUTPUT EVERYTHING UP TO "HTTP" (IF ANY) ============== -->
+    <xsl:value-of select="$prefix" disable-output-escaping="yes"/>
+    <xsl:choose>
+      <!-- ===== NO URL : OUTPUT TEXT ============================== -->
+      <xsl:when test="not($urlremaining)">
+        <xsl:value-of select="$text" disable-output-escaping="yes"/>
+      </xsl:when>
+      <!-- ===== SPACE AFTER URL: OUTPUT LINK AND PARSE REMAINING == -->
+      <xsl:when test="contains($urlremaining,' ')">
+        <xsl:variable name="url" select="concat('https://',substring-before($urlremaining,' '))" />
+        <xsl:variable name="remaining" select="substring-after($urlremaining,$url)" />
+        <xsl:call-template name="WriteLink" >
+          <xsl:with-param name="url">
+            <xsl:value-of select="$url"/>
+          </xsl:with-param>
+        </xsl:call-template>
+        <xsl:if test="$remaining">
+          <xsl:call-template name="ReplaceHTTPLinks">
+            <xsl:with-param name="text" select="$remaining" />
+          </xsl:call-template>
+        </xsl:if>
+      </xsl:when>
+      <!-- ===== URL BUT NO SPACE: OUTPUT REST AS LINK ============= -->
+      <xsl:otherwise>
+        <xsl:variable name="url" select="concat('https://',$urlremaining)" />
+        <xsl:variable name="remaining" select="''" />
+        <xsl:call-template name="WriteLink" >
+          <xsl:with-param name="url">
+            <xsl:value-of select="$url"/>
+          </xsl:with-param>
+        </xsl:call-template>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
 	<xsl:template name="ReplaceLinks">
 		<xsl:param name="text" />
-		<xsl:variable name="prefix"       select="substring-before($text, 'ftp://')" />
+		<xsl:variable name="prefix"       select="substring-before($text, 'ftp://')" /> 
 		<xsl:variable name="urlremaining" select="substring-after($text, 'ftp://')" />
 		<!-- ==== OUTPUT EVERYTHING UP TO "HTTP" (IF ANY) ============== -->
 		<xsl:value-of select="$prefix" disable-output-escaping="yes"/>
@@ -100,9 +138,9 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 			</xsl:when>
 			<!-- ===== SPACE AFTER URL: OUTPUT LINK AND PARSE REMAINING == -->
 			<xsl:when test="contains($urlremaining,' ')">
-				<xsl:variable name="url" select="substring-before($urlremaining,' ')" />
+				<xsl:variable name="url" select="concat('ftp://',substring-before($urlremaining,' '))" />
 				<xsl:variable name="remaining" select="substring-after($urlremaining,$url)" />
-				<xsl:call-template name="WriteFTPLink" >
+				<xsl:call-template name="WriteLink" >
 					<xsl:with-param name="url">
 						<xsl:value-of select="$url"/>
 					</xsl:with-param>
@@ -115,9 +153,9 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 			</xsl:when>
 			<!-- ===== URL BUT NO SPACE: OUTPUT REST AS LINK ============= -->
 			<xsl:otherwise>
-				<xsl:variable name="url" select="$urlremaining" />
+				<xsl:variable name="url" select="concat('ftp://',$urlremaining)" />
 				<xsl:variable name="remaining" select="''" />
-				<xsl:call-template name="WriteFTPLink" >
+				<xsl:call-template name="WriteLink" >
 					<xsl:with-param name="url">
 						<xsl:value-of select="$url"/>
 					</xsl:with-param>
@@ -125,41 +163,23 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
-	<xsl:template name="WriteHTTPLink">
+	<xsl:template name="WriteLink">
 		<xsl:param name="url" />
 		<xsl:variable name="lastc" select="substring($url,string-length($url),1)" />
 		<xsl:choose>
 			<xsl:when test="$lastc='.' or $lastc=',' or $lastc='?' or $lastc='!'">
-				<a target="_blank" href="http://{substring($url,1,string-length($url)-1)}">
+				<a target="_blank" href="{substring($url,1,string-length($url)-1)}">
 					<xsl:value-of select="substring($url,1,string-length($url)-1)" />
 				</a>
 				<xsl:value-of select="$lastc" />
 			</xsl:when>
 			<xsl:otherwise>
-				<a target="_blank" href="http://{$url}">
+				<a target="_blank" href="{$url}">
 					<xsl:value-of select="$url" />
 				</a>
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
-	<xsl:template name="WriteFTPLink">
-		<xsl:param name="url" />
-		<xsl:variable name="lastc" select="substring($url,string-length($url),1)" />
-		<xsl:choose>
-			<xsl:when test="$lastc='.' or $lastc=',' or $lastc='?' or $lastc='!'">
-				<a target="_blank" href="ftp://{substring($url,1,string-length($url)-1)}">
-					<xsl:value-of select="substring($url,1,string-length($url)-1)" />
-				</a>
-				<xsl:value-of select="$lastc" />
-			</xsl:when>
-			<xsl:otherwise>
-				<a target="_blank" href="ftp://{$url}">
-					<xsl:value-of select="$url" />
-				</a>
-			</xsl:otherwise>
-		</xsl:choose>
-	</xsl:template>
-
 
 	<xsl:template name="FormatDate">
 		<xsl:param name="date"/>
@@ -1265,7 +1285,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 									<xsl:if test="contains(metadata/idinfo/citation/citeinfo/onlink, '://')">
 										<font size="3" />
 										<A href="{metadata/idinfo/citation/citeinfo/onlink}"> I AGREE</A>
-										to the notice in "Distribution Liability" above. Clicking to agree will either begin the download process or link to download information. See "Ordering Instructions" above for details.
+										to the notice in "Distribution Liability" above. Clicking to agree will either begin the download process, link to a service, or provide more instructions. See "Ordering Instructions" above for details.
 									</xsl:if>
 
 									<xsl:if test="not (contains(metadata/idinfo/citation/citeinfo/onlink, '://'))">
