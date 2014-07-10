@@ -2013,6 +2013,17 @@ Public Class EditorForm
         ' Save form (this will update iXPS)
         PageController.PageSaver(Me)
 
+        ' Trap the contact information and force a tag for each 'addrtype' to equal 'Mailing and Physical'
+        If Not tagIsEmpty("idinfo/ptcontac/cntinfo/cntaddr/address") And tagIsEmpty("idinfo/ptcontac/cntinfo/cntaddr/addrtype") Then
+            iXPS.SetPropertyX("idinfo/ptcontac/cntinfo/cntaddr/addrtype", "mailing and physical")
+        End If
+        If Not tagIsEmpty("distinfo/distrib/cntinfo/cntaddr/address") And tagIsEmpty("distinfo/distrib/cntinfo/cntaddr/address/addrtype") Then
+            iXPS.SetPropertyX("distinfo/distrib/cntinfo/cntaddr/addrtype", "mailing and physical")
+        End If
+        If Not tagIsEmpty("metainfo/metc/cntinfo/cntaddr/address") And tagIsEmpty("metainfo/metc/cntinfo/cntaddr/address/addrtype") Then
+            iXPS.SetPropertyX("metainfo/metc/cntinfo/cntaddr/addrtype", "mailing and physical")
+        End If
+
         ' Write out current metadata XML to filesystem.
         My.Computer.FileSystem.WriteAllText(filename, iXPS.GetXml(""), False)
         Me.FormChanged = Modified.Clean
@@ -2221,5 +2232,4 @@ Public Class EditorForm
     Protected Overrides Function ProcessCmdKey(ByRef msg As System.Windows.Forms.Message, ByVal keyData As System.Windows.Forms.Keys) As Boolean
         If Me.ActiveMdiChild IsNot Nothing Then SendMessage(Me.ActiveMdiChild.Handle, msg.Msg, msg.WParam, msg.LParam)
     End Function
-
 End Class
