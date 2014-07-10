@@ -2014,13 +2014,13 @@ Public Class EditorForm
         PageController.PageSaver(Me)
 
         ' Trap the contact information and force a tag for each 'addrtype' to equal 'Mailing and Physical'
-        If Not tagIsEmpty("idinfo/ptcontac/cntinfo/cntaddr/address") And tagIsEmpty("idinfo/ptcontac/cntinfo/cntaddr/addrtype") Then
+        If Not tagIsEmpty("idinfo/ptcontac/cntinfo/cntaddr") And tagIsEmpty("idinfo/ptcontac/cntinfo/cntaddr/addrtype") Then
             iXPS.SetPropertyX("idinfo/ptcontac/cntinfo/cntaddr/addrtype", "mailing and physical")
         End If
-        If Not tagIsEmpty("distinfo/distrib/cntinfo/cntaddr/address") And tagIsEmpty("distinfo/distrib/cntinfo/cntaddr/address/addrtype") Then
+        If Not tagIsEmpty("distinfo/distrib/cntinfo/cntaddr") And tagIsEmpty("distinfo/distrib/cntinfo/cntaddr/address/addrtype") Then
             iXPS.SetPropertyX("distinfo/distrib/cntinfo/cntaddr/addrtype", "mailing and physical")
         End If
-        If Not tagIsEmpty("metainfo/metc/cntinfo/cntaddr/address") And tagIsEmpty("metainfo/metc/cntinfo/cntaddr/address/addrtype") Then
+        If Not tagIsEmpty("metainfo/metc/cntinfo/cntaddr") And tagIsEmpty("metainfo/metc/cntinfo/cntaddr/address/addrtype") Then
             iXPS.SetPropertyX("metainfo/metc/cntinfo/cntaddr/addrtype", "mailing and physical")
         End If
 
