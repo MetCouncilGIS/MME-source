@@ -3,6 +3,9 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	
 	<!-- An xsl template for displaying geospatial metadata specifically formatted for metadata create
 	with the Minnesota Metadata Editor and using the Minnesota Geographic Metadata Guidelines.
+  
+  This stylesheet automatically converts URL links embedded in text fields into HTML HyperLinks using <a> tags.
+  It also preserves line breaks embedded in the text fields.
 
 	Revision History: 
 	Original template created for a previous metadata editor.
@@ -14,10 +17,6 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	Updated June 2012 Jon Hoekenga, Matt McGuire and Mark Kotz, Met Council and Zeb Thomas, DNR 
   Updated July 2014 Jim Gonsoski, Met Council
   -->
-	
-	
-	
-	
 	<xsl:output method="html" encoding="ISO-8859-1" indent="no" standalone="yes" />
 	<xsl:template name="PreserveLineBreaks">
 		<xsl:param name="text"/>
@@ -46,8 +45,9 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	</xsl:template>
 	<xsl:template name="ReplaceHTTPLinks">
 		<xsl:param name="text" />
-		<xsl:variable name="prefix"       select="substring-before($text, 'http://')" />
-		<xsl:variable name="urlremaining" select="substring-after($text, 'http://')" />
+    <!-- JAG 6/14 modified to handle 'https' links as well as 'http' per MnGeo request-->
+		<xsl:variable name="prefix"       select="substring-before($text, 'http')" />
+		<xsl:variable name="urlremaining" select="substring-after($text, 'http')" />
 		<!-- ==== OUTPUT EVERYTHING UP TO "HTTP" (IF ANY) ============== -->
 		<xsl:value-of select="$prefix" disable-output-escaping="yes"/>
 		<xsl:choose>
@@ -57,7 +57,8 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 			</xsl:when>
 			<!-- ===== SPACE AFTER URL: OUTPUT LINK AND PARSE REMAINING == -->
 			<xsl:when test="contains($urlremaining,' ')">
-				<xsl:variable name="url" select="concat('http://',substring-before($urlremaining,' '))" />
+        <!-- JAG 6/14 Added back in the explicit 'http' prefix to the link per MnGeo request-->
+				<xsl:variable name="url" select="concat('http',substring-before($urlremaining,' '))" />
 				<xsl:variable name="remaining" select="substring-after($urlremaining,$url)" />
 				<xsl:call-template name="WriteLink" >
 					<xsl:with-param name="url">
@@ -72,7 +73,8 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 			</xsl:when>
 			<!-- ===== URL BUT NO SPACE: OUTPUT REST AS LINK ============= -->
 			<xsl:otherwise>
-				<xsl:variable name="url" select="concat('http://',$urlremaining)" />
+        <!-- JAG 6/14 Added back in the explicit 'http' prefix to the likn per MnGeo request-->
+				<xsl:variable name="url" select="concat('http',$urlremaining)" />
 				<xsl:variable name="remaining" select="''" />
 				<xsl:call-template name="WriteLink" >
 					<xsl:with-param name="url">
@@ -82,44 +84,6 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
-  <xsl:template name="ReplaceHTTPSLinks">
-    <xsl:param name="text" />
-    <xsl:variable name="prefix"       select="substring-before($text, 'https://')" />
-    <xsl:variable name="urlremaining" select="substring-after($text, 'https://')" />
-    <!-- ==== OUTPUT EVERYTHING UP TO "HTTP" (IF ANY) ============== -->
-    <xsl:value-of select="$prefix" disable-output-escaping="yes"/>
-    <xsl:choose>
-      <!-- ===== NO URL : OUTPUT TEXT ============================== -->
-      <xsl:when test="not($urlremaining)">
-        <xsl:value-of select="$text" disable-output-escaping="yes"/>
-      </xsl:when>
-      <!-- ===== SPACE AFTER URL: OUTPUT LINK AND PARSE REMAINING == -->
-      <xsl:when test="contains($urlremaining,' ')">
-        <xsl:variable name="url" select="concat('https://',substring-before($urlremaining,' '))" />
-        <xsl:variable name="remaining" select="substring-after($urlremaining,$url)" />
-        <xsl:call-template name="WriteLink" >
-          <xsl:with-param name="url">
-            <xsl:value-of select="$url"/>
-          </xsl:with-param>
-        </xsl:call-template>
-        <xsl:if test="$remaining">
-          <xsl:call-template name="ReplaceHTTPLinks">
-            <xsl:with-param name="text" select="$remaining" />
-          </xsl:call-template>
-        </xsl:if>
-      </xsl:when>
-      <!-- ===== URL BUT NO SPACE: OUTPUT REST AS LINK ============= -->
-      <xsl:otherwise>
-        <xsl:variable name="url" select="concat('https://',$urlremaining)" />
-        <xsl:variable name="remaining" select="''" />
-        <xsl:call-template name="WriteLink" >
-          <xsl:with-param name="url">
-            <xsl:value-of select="$url"/>
-          </xsl:with-param>
-        </xsl:call-template>
-      </xsl:otherwise>
-    </xsl:choose>
-  </xsl:template>
 	<xsl:template name="ReplaceLinks">
 		<xsl:param name="text" />
 		<xsl:variable name="prefix"       select="substring-before($text, 'ftp://')" /> 
@@ -138,6 +102,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 			</xsl:when>
 			<!-- ===== SPACE AFTER URL: OUTPUT LINK AND PARSE REMAINING == -->
 			<xsl:when test="contains($urlremaining,' ')">
+        <!-- JAG 6/14 Added back in the explicit 'ftp://' prefix per MnGeo request-->
 				<xsl:variable name="url" select="concat('ftp://',substring-before($urlremaining,' '))" />
 				<xsl:variable name="remaining" select="substring-after($urlremaining,$url)" />
 				<xsl:call-template name="WriteLink" >
@@ -153,6 +118,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 			</xsl:when>
 			<!-- ===== URL BUT NO SPACE: OUTPUT REST AS LINK ============= -->
 			<xsl:otherwise>
+        <!-- JAG 6/14 Added back in the explicit 'ftp://' prefix per MnGeo request-->
 				<xsl:variable name="url" select="concat('ftp://',$urlremaining)" />
 				<xsl:variable name="remaining" select="''" />
 				<xsl:call-template name="WriteLink" >
