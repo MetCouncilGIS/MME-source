@@ -3947,8 +3947,8 @@ Partial Class EditorForm
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(193, 39)
         Me.Label2.TabIndex = 200
-        Me.Label2.Text = "Hint: Double-click  in a text field to pop" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "         open a larger window for edi" & _
-    "ting." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & " "
+        Me.Label2.Text = "Hint: Double-click in a text field to pop" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "         open a larger window for edit" & _
+    "ing." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & " "
         '
         'EditorForm
         '
