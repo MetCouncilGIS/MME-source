@@ -6,6 +6,23 @@ MME is a DotNet incarnation of a simple editor for GIS metadata XML files that a
 ####MME Version
     1.1.24
 
+1. Force 'mailing and physical' in addrtype fields for contacts if none provided on these tags:
+    * 10290 idinfo/ptcontac/cntinfo/cntaddr/addrtype
+    * 13250 distinfo/distrib/cntinfo/cntaddr/addrtype
+    * 13450 metainfo/metc/cntinfo/cntaddr/addrtype
+2. XSL template MGMG.xsl
+   * return the 'HTTP' protocol that was stripped during formatting on output
+   * allow HTTPS as a URL protocol that HyperLinks
+3. Remove all references to MnGeo
+4. Change the spatial extent of data field to a text box (from a combo with pull-down list).
+5. Fix Online linkage field wipe-out when doing a 'refresh from database'
+
+Pending:
+
+1. New fields / tags for Vertical Datum.
+
+    
+
 What it is
 ==========
 The Minnesota Metadata Editor (MME) is a desktop application that is intended to simplify and expedite the process of developing geospatial metadata.  
