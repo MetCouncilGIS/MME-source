@@ -798,8 +798,9 @@ Public Class EditorForm
         HelpSeeker("dummy", helpPage)
     End Sub
 
-    Public Shared Sub HelpSeeker(ByVal name As String, Optional ByVal defaultHelp As String = "/Help_Main.html")
-        Utils.HelpSeeker(PageController.getHelpPageFor(name, defaultHelp), GlobalVars.proc)
+    Public Shared Sub HelpSeeker(ByVal name As String, Optional ByVal defaultHelp As String = "/index.html")
+        'Utils.HelpSeeker(PageController.getHelpPageFor(name, defaultHelp), GlobalVars.proc)
+        Utils.OpenInIE(My.Settings.HelpURL & PageController.getHelpPageFor(name, defaultHelp))
     End Sub
 
 
@@ -868,13 +869,14 @@ Public Class EditorForm
 
         If coordSys = "Geographic" Then
             Me.spref_horizsys_Units.DataSource.rowfilter = "appliesToGeographic"
-        Else
-            If coordSys = "Universal Transverse Mercator" OrElse coordSys = "Minnesota County Coordinate System" Then
-                Me.spref_horizsys_Units.DataSource.rowfilter = "appliesToUTM"
-                Me.spref_horizsys_Datum.DataSource.rowfilter = "horizdn='North American Datum of 1983'"
-            ElseIf coordSys = "State Plane Coordinate System" Then
-                Me.spref_horizsys_Units.DataSource.rowfilter = "appliesToSPCS"
-            End If
+        ElseIf coordSys = "Universal Transverse Mercator" Then
+            Me.spref_horizsys_Units.DataSource.rowfilter = "appliesToUTM"
+            Me.spref_horizsys_Datum.DataSource.rowfilter = "horizdn='North American Datum of 1983'"
+        ElseIf coordSys = "State Plane Coordinate System" Then
+            Me.spref_horizsys_Units.DataSource.rowfilter = "appliesToSPCS"
+        ElseIf coordSys = "Minnesota County Coordinate System" Then
+            Me.spref_horizsys_Units.DataSource.rowfilter = "appliesToMCCS"
+            Me.spref_horizsys_Datum.DataSource.rowfilter = "horizdn='North American Datum of 1983'"
         End If
 
         If coordSys > "" AndAlso zone > "" Then
@@ -2082,8 +2084,7 @@ Public Class EditorForm
     ''' <param name="e"></param>
     ''' <remarks></remarks>
     Private Sub ContentsToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ContentsToolStripMenuItem.Click
-        'HelpSeeker("")
-        OpenInIE("http://www.mngeo.state.mn.us/chouse/mme/Minnesota_Metadata_Editor_Help.pdf")
+        HelpSeeker("")
     End Sub
 
     ''' <summary>

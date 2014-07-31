@@ -83,7 +83,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>ufHJwqwENQJuqjIiGnp3YP0cVwc=</dsig:DigestValue>
+        <dsig:DigestValue>PPo39PLWe/0Gr7CaqF+kYNgoNsM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -99,13 +99,13 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="MetadataEditor.exe.config" size="5993">
+  <file name="MetadataEditor.exe.config" size="6154">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>6DbZ3EzAsW8K0QznLNvbh1jTdIU=</dsig:DigestValue>
+      <dsig:DigestValue>di/gVi9igelrzOX13jLOdhovYrk=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Resources\chm_icon.gif" size="183">

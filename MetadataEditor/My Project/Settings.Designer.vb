@@ -412,6 +412,18 @@ Namespace My
                 Me("ValidationURL") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("http://www.mngeo.state.mn.us/chouse/mme/help/")>  _
+        Public Property HelpURL() As String
+            Get
+                Return CType(Me("HelpURL"),String)
+            End Get
+            Set
+                Me("HelpURL") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

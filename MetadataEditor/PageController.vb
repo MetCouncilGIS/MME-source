@@ -1253,7 +1253,7 @@ Public Class PageController
     ''' <param name="defaultHelp">Default hekp page to open if can't find the specific help page</param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    Public Shared Function getHelpPageFor(ByVal name As String, Optional ByVal defaultHelp As String = "/Help_Main.html") As String
+    Public Shared Function getHelpPageFor(ByVal name As String, Optional ByVal defaultHelp As String = "/index.html") As String
         Dim pc As PageController = PageController.thatControls(name)
 
         If pc Is Nothing Then
