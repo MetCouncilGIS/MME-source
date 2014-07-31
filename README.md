@@ -16,11 +16,15 @@ MME is a DotNet incarnation of a simple editor for GIS metadata XML files that a
 3. Remove all references to MnGeo
 4. Change the spatial extent of data field to a text box (from a combo with pull-down list).
 5. Fix Online linkage field wipe-out when doing a 'refresh from database'
+6. Help links from menu and field label link directly to MnGeo Help URL.
+7. Minnesota County Coordinate System now supports 'feet' as well as 'meters' for NAD83 datum.
+8. Extraneous blank rows in database tables removed. This should prevent poeple from setting blank values as default.
 
 Pending:
 
 1. New fields / tags for Vertical Datum.
-2. Links to Help
+2. Lineage imports reported as not working correctly -- still seekly example of this.
+3. Browse Graphic Description to support GeoSpatial Commons -- still needed??
 
     
 

@@ -21,10 +21,10 @@ Partial Class EditorForm
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(EditorForm))
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel9 = New System.Windows.Forms.Panel()
         Me.dataqual_complete = New System.Windows.Forms.TextBox()
         Me.dataqual_complete_____warning = New System.Windows.Forms.PictureBox()
@@ -350,6 +350,8 @@ Partial Class EditorForm
         Me.toolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.spref_vertdef_altsys_altdatum_____help = New System.Windows.Forms.LinkLabel()
+        Me.spref_vertdef_altsys_altdatum = New System.Windows.Forms.ComboBox()
         Me.Panel9.SuspendLayout()
         CType(Me.dataqual_complete_____warning, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dataqual_logic_____warning, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -2494,6 +2496,7 @@ Partial Class EditorForm
         '
         Me.idinfo_status_update.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.idinfo_status_update.FormattingEnabled = True
+        Me.idinfo_status_update.Items.AddRange(New Object() {"Continually", "Daily", "Monthly", "Annually", "As needed", "Irregular", "None Planned", "Unknown"})
         Me.idinfo_status_update.Location = New System.Drawing.Point(307, 40)
         Me.idinfo_status_update.Name = "idinfo_status_update"
         Me.idinfo_status_update.Size = New System.Drawing.Size(135, 21)
@@ -2514,6 +2517,7 @@ Partial Class EditorForm
         '
         Me.idinfo_status_progress.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.idinfo_status_progress.FormattingEnabled = True
+        Me.idinfo_status_progress.Items.AddRange(New Object() {"Planned", "In work", "Complete"})
         Me.idinfo_status_progress.Location = New System.Drawing.Point(307, 14)
         Me.idinfo_status_progress.Name = "idinfo_status_progress"
         Me.idinfo_status_progress.Size = New System.Drawing.Size(135, 21)
@@ -3312,14 +3316,14 @@ Partial Class EditorForm
         Me.dgv_edom.Location = New System.Drawing.Point(3, 3)
         Me.dgv_edom.Name = "dgv_edom"
         Me.dgv_edom.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
-        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgv_edom.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
+        DataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle8.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgv_edom.RowHeadersDefaultCellStyle = DataGridViewCellStyle8
         Me.dgv_edom.RowHeadersVisible = False
         Me.dgv_edom.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgv_edom.Size = New System.Drawing.Size(295, 239)
@@ -3328,8 +3332,8 @@ Partial Class EditorForm
         'Value
         '
         Me.Value.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
-        Me.Value.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
+        Me.Value.DefaultCellStyle = DataGridViewCellStyle5
         Me.Value.HeaderText = "Value"
         Me.Value.MinimumWidth = 4
         Me.Value.Name = "Value"
@@ -3339,8 +3343,8 @@ Partial Class EditorForm
         'Definition
         '
         Me.Definition.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
-        Me.Definition.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
+        Me.Definition.DefaultCellStyle = DataGridViewCellStyle6
         Me.Definition.HeaderText = "Definition"
         Me.Definition.MinimumWidth = 4
         Me.Definition.Name = "Definition"
@@ -3351,8 +3355,8 @@ Partial Class EditorForm
         '
         Me.DefinitionSource.AutoComplete = False
         Me.DefinitionSource.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
-        Me.DefinitionSource.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
+        Me.DefinitionSource.DefaultCellStyle = DataGridViewCellStyle7
         Me.DefinitionSource.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox
         Me.DefinitionSource.HeaderText = "Defn Src"
         Me.DefinitionSource.MinimumWidth = 4
@@ -3509,6 +3513,8 @@ Partial Class EditorForm
         'Panel11
         '
         Me.Panel11.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.Panel11.Controls.Add(Me.spref_vertdef_altsys_altdatum)
+        Me.Panel11.Controls.Add(Me.spref_vertdef_altsys_altdatum_____help)
         Me.Panel11.Controls.Add(Me.spref_horizsys_planar_planci_coordrep_ordres)
         Me.Panel11.Controls.Add(Me.spref_horizsys_planar_planci_coordrep_absres)
         Me.Panel11.Controls.Add(Me.spref_horizsys_planar_planci_coordrep_ordres_____help)
@@ -3949,6 +3955,31 @@ Partial Class EditorForm
         Me.Label2.TabIndex = 200
         Me.Label2.Text = "Hint: Double-click in a text field to pop" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "         open a larger window for edit" & _
     "ing." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & " "
+        '
+        'spref_vertdef_altsys_altdatum_____help
+        '
+        Me.spref_vertdef_altsys_altdatum_____help.AutoSize = True
+        Me.spref_vertdef_altsys_altdatum_____help.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.spref_vertdef_altsys_altdatum_____help.Location = New System.Drawing.Point(255, 3)
+        Me.spref_vertdef_altsys_altdatum_____help.Name = "spref_vertdef_altsys_altdatum_____help"
+        Me.spref_vertdef_altsys_altdatum_____help.Size = New System.Drawing.Size(76, 13)
+        Me.spref_vertdef_altsys_altdatum_____help.TabIndex = 13
+        Me.spref_vertdef_altsys_altdatum_____help.TabStop = True
+        Me.spref_vertdef_altsys_altdatum_____help.Text = "Vertical Datum"
+        Me.HoverToolTip.SetToolTip(Me.spref_vertdef_altsys_altdatum_____help, "The level surface of reference from which altitudes are measured, if applicable. " & _
+        "")
+        '
+        'spref_vertdef_altsys_altdatum
+        '
+        Me.spref_vertdef_altsys_altdatum.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
+        Me.spref_vertdef_altsys_altdatum.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.spref_vertdef_altsys_altdatum.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.spref_vertdef_altsys_altdatum.FormattingEnabled = True
+        Me.spref_vertdef_altsys_altdatum.Items.AddRange(New Object() {"NGVD29", "NAVD88", "NAVD88 (Geoid 03)", "NAVD88 (Geoid 09)", "NAVD88 (Geoid 12A)"})
+        Me.spref_vertdef_altsys_altdatum.Location = New System.Drawing.Point(258, 21)
+        Me.spref_vertdef_altsys_altdatum.Name = "spref_vertdef_altsys_altdatum"
+        Me.spref_vertdef_altsys_altdatum.Size = New System.Drawing.Size(121, 21)
+        Me.spref_vertdef_altsys_altdatum.TabIndex = 14
         '
         'EditorForm
         '
@@ -4451,5 +4482,7 @@ Partial Class EditorForm
     Friend WithEvents dataqual_attracc_attraccr As System.Windows.Forms.TextBox
     Friend WithEvents idinfo_descript_supplinf As System.Windows.Forms.TextBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents spref_vertdef_altsys_altdatum As System.Windows.Forms.ComboBox
+    Friend WithEvents spref_vertdef_altsys_altdatum_____help As System.Windows.Forms.LinkLabel
 
 End Class

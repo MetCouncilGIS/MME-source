@@ -76,14 +76,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MetadataEditor.exe" size="405504">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MetadataEditor.exe" size="407552">
       <assemblyIdentity name="MetadataEditor" version="1.1.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>PPo39PLWe/0Gr7CaqF+kYNgoNsM=</dsig:DigestValue>
+        <dsig:DigestValue>AmSj4aL3uC9uYx6NlKJ+S1lT1zU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

@@ -227,61 +227,64 @@ Public Class PageController
             ctrl.AutoCompleteSource = AutoCompleteSource.ListItems
         End If
 
-        Dim SQLStr As String = ""
-        If Me.isPartOfCluster Then
-            SQLStr = "SELECT * FROM [" & Me.srcTable & "_cluster]"
-            SQLStr &= " ORDER BY orderedId"
-        Else
-            ' Some entries may show up multiple times in the lookup table and it's not enough 
-            ' to just say DISTINCT as we are also pulling 'default' which may have different values.
-            SQLStr = "SELECT DISTINCT [" & Me.srcField & "], default FROM [" & Me.srcTable
-            SQLStr &= "] AS t WHERE NOT EXISTS (SELECT * FROM [" & Me.srcTable & "] WHERE "
-            SQLStr &= "[" & Me.srcField & "]=t.[" & Me.srcField & "] AND default AND NOT t.default) "
-            SQLStr &= "AND [" & Me.srcField & "] > '' "
-            SQLStr &= "ORDER BY [" & Me.srcField & "]"
-        End If
-        'Debug.Print(SQLStr)
-        Dim dt As DataTable = Utils.datatableFromSQL(SQLStr)
+        ' JAG modified to allow for combobox fields that have a hard-coded ListItems rather than an Access Tabls
+        If Not (Me.srcTable Is Nothing) Then
+            Dim SQLStr As String = ""
+            If Me.isPartOfCluster Then
+                SQLStr = "SELECT * FROM [" & Me.srcTable & "_cluster]"
+                SQLStr &= " ORDER BY orderedId"
+            Else
+                ' Some entries may show up multiple times in the lookup table and it's not enough 
+                ' to just say DISTINCT as we are also pulling 'default' which may have different values.
+                SQLStr = "SELECT DISTINCT [" & Me.srcField & "], default FROM [" & Me.srcTable
+                SQLStr &= "] AS t WHERE NOT EXISTS (SELECT * FROM [" & Me.srcTable & "] WHERE "
+                SQLStr &= "[" & Me.srcField & "]=t.[" & Me.srcField & "] AND default AND NOT t.default) "
+                SQLStr &= "AND [" & Me.srcField & "] > '' "
+                SQLStr &= "ORDER BY [" & Me.srcField & "]"
+            End If
+            'Debug.Print(SQLStr)
+            Dim dt As DataTable = Utils.datatableFromSQL(SQLStr)
 
-        Dim tagValue As String
-        ' If reloading...
-        If reload Then
-            'save current selection
-            tagValue = ctrl.SelectedValue
-        Else
-            'otherwise, get selected value from metadata tag
-            tagValue = SimpleGetProperty(tag).Trim()
-
-            ctrl.DisplayMember = Me.srcField
-            ctrl.ValueMember = Me.srcField
-        End If
-
-        ' Bind the ComboBox to a DataTable (well, its default view actually) that contains the options
-        ctrl.DataSource = dt.DefaultView
-
-        If Me.isPartOfCluster Then
-            populateClusterEntry(ctrl)
+            Dim tagValue As String
+            ' If reloading...
             If reload Then
-                If tagValue IsNot Nothing Then
-                    ctrl.SelectedValue = tagValue
+                'save current selection
+                tagValue = ctrl.SelectedValue
+            Else
+                'otherwise, get selected value from metadata tag
+                tagValue = SimpleGetProperty(tag).Trim()
+
+                ctrl.DisplayMember = Me.srcField
+                ctrl.ValueMember = Me.srcField
+            End If
+
+            ' Bind the ComboBox to a DataTable (well, its default view actually) that contains the options
+            ctrl.DataSource = dt.DefaultView
+
+            If Me.isPartOfCluster Then
+                populateClusterEntry(ctrl)
+                If reload Then
+                    If tagValue IsNot Nothing Then
+                        ctrl.SelectedValue = tagValue
+                    End If
+                Else
+                    AddHandler ctrl.SelectionChangeCommitted, AddressOf propagateClusterSelectionChanged
                 End If
             Else
-                AddHandler ctrl.SelectionChangeCommitted, AddressOf propagateClusterSelectionChanged
-            End If
-        Else
-            'Debug.Print(ctrl.Name)
-            If tagValue Is Nothing Then tagValue = ""
-            Dim matchingRows As Array = dt.Select(ctrl.ValueMember & "='" & tagValue.Replace("'", "''") & "'")
-            If matchingRows.Length = 0 Then
-                ' Add an entry for value read from metadata only if it doesn't exist as an option (in the database)
-                Dim dr As DataRow = dt.NewRow()
-                dr(Me.srcField) = tagValue
-                dr("default") = False
-                dt.Rows.Add(dr)
-                ctrl.SelectedValue = tagValue
-            Else
-                ' If the value exists, then select it.
-                ctrl.SelectedValue = matchingRows(0)(Me.srcField)
+                'Debug.Print(ctrl.Name)
+                If tagValue Is Nothing Then tagValue = ""
+                Dim matchingRows As Array = dt.Select(ctrl.ValueMember & "='" & tagValue.Replace("'", "''") & "'")
+                If matchingRows.Length = 0 Then
+                    ' Add an entry for value read from metadata only if it doesn't exist as an option (in the database)
+                    Dim dr As DataRow = dt.NewRow()
+                    dr(Me.srcField) = tagValue
+                    dr("default") = False
+                    dt.Rows.Add(dr)
+                    ctrl.SelectedValue = tagValue
+                Else
+                    ' If the value exists, then select it.
+                    ctrl.SelectedValue = matchingRows(0)(Me.srcField)
+                End If
             End If
         End If
     End Sub
