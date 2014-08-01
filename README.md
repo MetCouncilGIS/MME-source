@@ -4,7 +4,7 @@ Minnesota Metadata Editor
 MME is a DotNet incarnation of a simple editor for GIS metadata XML files that adhere to the [Minnesota Geographic Metadata Guidelines (MGMG version 1.2)](http://www.mngeo.state.mn.us/committee/standards/mgmg/metadata.htm). 
 
 ####MME Version
-    1.1.24
+    1.2.1
 
 1. Force 'mailing and physical' in addrtype fields for contacts if none provided on these tags:
     * 10290 idinfo/ptcontac/cntinfo/cntaddr/addrtype
@@ -20,14 +20,8 @@ MME is a DotNet incarnation of a simple editor for GIS metadata XML files that a
 7. Minnesota County Coordinate System now supports 'feet' as well as 'meters' for NAD83 datum.
 8. Extraneous blank rows in database tables removed. This should prevent poeple from setting blank values as default.
 9. Add check for database version and fail to load if the wrong database is used - link user to a help page.
-
-Pending:
-
-1. New fields / tags for Vertical Datum.
-2. Lineage imports reported as not working correctly -- still seekly example of this.
-3. Browse Graphic Description to support GeoSpatial Commons -- still needed??
-
-    
+10 Add fields: Vertical Datum, vertical Units, depth datum, depth units, browse graphic description
+11. Clean out tables from database   
 
 What it is
 ==========

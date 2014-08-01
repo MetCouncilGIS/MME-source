@@ -21,10 +21,10 @@ Partial Class EditorForm
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(EditorForm))
-        Dim DataGridViewCellStyle28 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle25 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle26 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle27 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle32 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle29 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle30 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle31 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel9 = New System.Windows.Forms.Panel()
         Me.dataqual_complete = New System.Windows.Forms.TextBox()
         Me.dataqual_complete_____warning = New System.Windows.Forms.PictureBox()
@@ -2630,7 +2630,7 @@ Partial Class EditorForm
         '
         Me.idinfo_browse_browsen_____warning.Image = Global.MetadataEditor.My.Resources.Resources.BlinkingRedLed
         Me.idinfo_browse_browsen_____warning.InitialImage = Global.MetadataEditor.My.Resources.Resources.BlinkingRedLed
-        Me.idinfo_browse_browsen_____warning.Location = New System.Drawing.Point(95, 4)
+        Me.idinfo_browse_browsen_____warning.Location = New System.Drawing.Point(74, 2)
         Me.idinfo_browse_browsen_____warning.Name = "idinfo_browse_browsen_____warning"
         Me.idinfo_browse_browsen_____warning.Size = New System.Drawing.Size(13, 14)
         Me.idinfo_browse_browsen_____warning.TabIndex = 38
@@ -2640,9 +2640,9 @@ Partial Class EditorForm
         'idinfo_browse_browsen
         '
         Me.idinfo_browse_browsen.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.idinfo_browse_browsen.Location = New System.Drawing.Point(110, 2)
+        Me.idinfo_browse_browsen.Location = New System.Drawing.Point(93, 2)
         Me.idinfo_browse_browsen.Name = "idinfo_browse_browsen"
-        Me.idinfo_browse_browsen.Size = New System.Drawing.Size(332, 21)
+        Me.idinfo_browse_browsen.Size = New System.Drawing.Size(349, 21)
         Me.idinfo_browse_browsen.TabIndex = 1
         '
         'idinfo_browse_browsen_____help
@@ -2651,10 +2651,10 @@ Partial Class EditorForm
         Me.idinfo_browse_browsen_____help.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.idinfo_browse_browsen_____help.Location = New System.Drawing.Point(4, 6)
         Me.idinfo_browse_browsen_____help.Name = "idinfo_browse_browsen_____help"
-        Me.idinfo_browse_browsen_____help.Size = New System.Drawing.Size(108, 13)
+        Me.idinfo_browse_browsen_____help.Size = New System.Drawing.Size(85, 13)
         Me.idinfo_browse_browsen_____help.TabIndex = 0
         Me.idinfo_browse_browsen_____help.TabStop = True
-        Me.idinfo_browse_browsen_____help.Text = "Link to example map:"
+        Me.idinfo_browse_browsen_____help.Text = "Link to example:"
         '
         'idinfo_descript_____warning
         '
@@ -3327,14 +3327,14 @@ Partial Class EditorForm
         Me.dgv_edom.Location = New System.Drawing.Point(3, 3)
         Me.dgv_edom.Name = "dgv_edom"
         Me.dgv_edom.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
-        DataGridViewCellStyle28.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle28.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle28.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle28.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle28.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgv_edom.RowHeadersDefaultCellStyle = DataGridViewCellStyle28
+        DataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
+        DataGridViewCellStyle32.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle32.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle32.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle32.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle32.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle32.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgv_edom.RowHeadersDefaultCellStyle = DataGridViewCellStyle32
         Me.dgv_edom.RowHeadersVisible = False
         Me.dgv_edom.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgv_edom.Size = New System.Drawing.Size(295, 239)
@@ -3343,8 +3343,8 @@ Partial Class EditorForm
         'Value
         '
         Me.Value.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        DataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
-        Me.Value.DefaultCellStyle = DataGridViewCellStyle25
+        DataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
+        Me.Value.DefaultCellStyle = DataGridViewCellStyle29
         Me.Value.HeaderText = "Value"
         Me.Value.MinimumWidth = 4
         Me.Value.Name = "Value"
@@ -3354,8 +3354,8 @@ Partial Class EditorForm
         'Definition
         '
         Me.Definition.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        DataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
-        Me.Definition.DefaultCellStyle = DataGridViewCellStyle26
+        DataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
+        Me.Definition.DefaultCellStyle = DataGridViewCellStyle30
         Me.Definition.HeaderText = "Definition"
         Me.Definition.MinimumWidth = 4
         Me.Definition.Name = "Definition"
@@ -3366,8 +3366,8 @@ Partial Class EditorForm
         '
         Me.DefinitionSource.AutoComplete = False
         Me.DefinitionSource.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        DataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
-        Me.DefinitionSource.DefaultCellStyle = DataGridViewCellStyle27
+        DataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
+        Me.DefinitionSource.DefaultCellStyle = DataGridViewCellStyle31
         Me.DefinitionSource.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox
         Me.DefinitionSource.HeaderText = "Defn Src"
         Me.DefinitionSource.MinimumWidth = 4
@@ -4109,18 +4109,18 @@ Partial Class EditorForm
         Me.idinfo_browse_browsed_____help.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.idinfo_browse_browsed_____help.Location = New System.Drawing.Point(5, 32)
         Me.idinfo_browse_browsed_____help.Name = "idinfo_browse_browsed_____help"
-        Me.idinfo_browse_browsed_____help.Size = New System.Drawing.Size(143, 13)
+        Me.idinfo_browse_browsed_____help.Size = New System.Drawing.Size(120, 13)
         Me.idinfo_browse_browsed_____help.TabIndex = 2
         Me.idinfo_browse_browsed_____help.TabStop = True
-        Me.idinfo_browse_browsed_____help.Text = "Description of example map:"
+        Me.idinfo_browse_browsed_____help.Text = "Description of example:"
         Me.HoverToolTip.SetToolTip(Me.idinfo_browse_browsed_____help, "Text description of dataset example")
         '
         'idinfo_browse_browsed
         '
         Me.idinfo_browse_browsed.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.idinfo_browse_browsed.Location = New System.Drawing.Point(150, 29)
+        Me.idinfo_browse_browsed.Location = New System.Drawing.Point(125, 29)
         Me.idinfo_browse_browsed.Name = "idinfo_browse_browsed"
-        Me.idinfo_browse_browsed.Size = New System.Drawing.Size(292, 21)
+        Me.idinfo_browse_browsed.Size = New System.Drawing.Size(317, 21)
         Me.idinfo_browse_browsed.TabIndex = 40
         '
         'EditorForm
