@@ -4,7 +4,7 @@
   <description asmv2:iconFile="Resources\MMEIcon_.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="MetadataEditor" version="1.1.0.0" language="neutral" processorArchitecture="x86" />
+    <assemblyIdentity name="MetadataEditor" version="1.2.0.0" language="neutral" processorArchitecture="x86" />
     <commandLine file="MetadataEditor.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -77,13 +77,13 @@
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MetadataEditor.exe" size="415744">
-      <assemblyIdentity name="MetadataEditor" version="1.1.0.0" language="neutral" processorArchitecture="x86" />
+      <assemblyIdentity name="MetadataEditor" version="1.2.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>FfXlZoqb4x9mC50hINlaJssc9xE=</dsig:DigestValue>
+        <dsig:DigestValue>HeSsqmK+tYtNejM2mJAIXxDALEk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -99,13 +99,13 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="MetadataEditor.exe.config" size="6153">
+  <file name="MetadataEditor.exe.config" size="6152">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>3BVkXzN0LjJgEU3XQn7Vvh9J8nY=</dsig:DigestValue>
+      <dsig:DigestValue>DmbDqpfZnmXH7T/xI/yyRDnpqtU=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Resources\chm_icon.gif" size="183">

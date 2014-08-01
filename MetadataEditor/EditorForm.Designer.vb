@@ -21,10 +21,10 @@ Partial Class EditorForm
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(EditorForm))
-        Dim DataGridViewCellStyle24 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle21 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle22 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle23 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle28 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle25 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle26 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle27 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel9 = New System.Windows.Forms.Panel()
         Me.dataqual_complete = New System.Windows.Forms.TextBox()
         Me.dataqual_complete_____warning = New System.Windows.Forms.PictureBox()
@@ -3327,14 +3327,14 @@ Partial Class EditorForm
         Me.dgv_edom.Location = New System.Drawing.Point(3, 3)
         Me.dgv_edom.Name = "dgv_edom"
         Me.dgv_edom.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
-        DataGridViewCellStyle24.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle24.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle24.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle24.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgv_edom.RowHeadersDefaultCellStyle = DataGridViewCellStyle24
+        DataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
+        DataGridViewCellStyle28.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle28.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle28.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle28.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle28.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgv_edom.RowHeadersDefaultCellStyle = DataGridViewCellStyle28
         Me.dgv_edom.RowHeadersVisible = False
         Me.dgv_edom.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgv_edom.Size = New System.Drawing.Size(295, 239)
@@ -3343,8 +3343,8 @@ Partial Class EditorForm
         'Value
         '
         Me.Value.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        DataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
-        Me.Value.DefaultCellStyle = DataGridViewCellStyle21
+        DataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
+        Me.Value.DefaultCellStyle = DataGridViewCellStyle25
         Me.Value.HeaderText = "Value"
         Me.Value.MinimumWidth = 4
         Me.Value.Name = "Value"
@@ -3354,8 +3354,8 @@ Partial Class EditorForm
         'Definition
         '
         Me.Definition.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        DataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
-        Me.Definition.DefaultCellStyle = DataGridViewCellStyle22
+        DataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
+        Me.Definition.DefaultCellStyle = DataGridViewCellStyle26
         Me.Definition.HeaderText = "Definition"
         Me.Definition.MinimumWidth = 4
         Me.Definition.Name = "Definition"
@@ -3366,8 +3366,8 @@ Partial Class EditorForm
         '
         Me.DefinitionSource.AutoComplete = False
         Me.DefinitionSource.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        DataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
-        Me.DefinitionSource.DefaultCellStyle = DataGridViewCellStyle23
+        DataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
+        Me.DefinitionSource.DefaultCellStyle = DataGridViewCellStyle27
         Me.DefinitionSource.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox
         Me.DefinitionSource.HeaderText = "Defn Src"
         Me.DefinitionSource.MinimumWidth = 4
@@ -3550,7 +3550,7 @@ Partial Class EditorForm
         Me.spref_vertdef_altsys_altdatum.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.spref_vertdef_altsys_altdatum.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.spref_vertdef_altsys_altdatum.FormattingEnabled = True
-        Me.spref_vertdef_altsys_altdatum.Items.AddRange(New Object() {"NGVD29", "NAVD88", "NAVD88 (Geoid 03)", "NAVD88 (Geoid 09)", "NAVD88 (Geoid 12A)"})
+        Me.spref_vertdef_altsys_altdatum.Items.AddRange(New Object() {"not applicable", "NGVD29", "NAVD88", "NAVD88 (Geoid 03)", "NAVD88 (Geoid 09)", "NAVD88 (Geoid 12A)"})
         Me.spref_vertdef_altsys_altdatum.Location = New System.Drawing.Point(53, 18)
         Me.spref_vertdef_altsys_altdatum.Name = "spref_vertdef_altsys_altdatum"
         Me.spref_vertdef_altsys_altdatum.Size = New System.Drawing.Size(102, 21)
@@ -4061,7 +4061,7 @@ Partial Class EditorForm
         Me.spref_vertdef_depthsys_depthdn.DropDownWidth = 102
         Me.spref_vertdef_depthsys_depthdn.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.spref_vertdef_depthsys_depthdn.FormattingEnabled = True
-        Me.spref_vertdef_depthsys_depthdn.Items.AddRange(New Object() {"local surface", "mean low water", "mean high water", "mean sea level", "land survey datum", "not applicable"})
+        Me.spref_vertdef_depthsys_depthdn.Items.AddRange(New Object() {"not applicable", "local surface", "mean low water", "mean high water", "mean sea level", "land survey datum"})
         Me.spref_vertdef_depthsys_depthdn.Location = New System.Drawing.Point(213, 18)
         Me.spref_vertdef_depthsys_depthdn.Name = "spref_vertdef_depthsys_depthdn"
         Me.spref_vertdef_depthsys_depthdn.Size = New System.Drawing.Size(102, 21)

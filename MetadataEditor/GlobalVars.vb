@@ -114,7 +114,7 @@ Module GlobalVars
     ''' Some other name references had to be hardwired, so changing the value here alone is not sufficient.
     ''' </summary>
     ''' <remarks></remarks>
-    Public nameStr As String = "Minnesota Metadata Editor v1.1"
+    Public nameStr As String = My.Application.Info.ProductName
 
     ''' <summary>
     ''' Variable that holds the metadata record copy being edited.

@@ -8,10 +8,10 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("Minnesota Metadata Editor v1.1")> 
-<Assembly: AssemblyDescription("Minnesota Metadata Editor v1.1")> 
+<Assembly: AssemblyTitle("Minnesota Metadata Editor v1.2")> 
+<Assembly: AssemblyDescription("Minnesota Metadata Editor v1.2")> 
 <Assembly: AssemblyCompany("")> 
-<Assembly: AssemblyProduct("Minnesota Metadata Editor v1.1")> 
+<Assembly: AssemblyProduct("Minnesota Metadata Editor v1.2")> 
 <Assembly: AssemblyCopyright("")> 
 <Assembly: AssemblyTrademark("")> 
 
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("1.1.0.0")> 
+<Assembly: AssemblyVersion("1.2.0.0")> 
 <Assembly: AssemblyFileVersion("1.0.0.0")> 
