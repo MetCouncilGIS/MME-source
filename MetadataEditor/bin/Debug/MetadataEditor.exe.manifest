@@ -76,14 +76,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MetadataEditor.exe" size="407552">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MetadataEditor.exe" size="415744">
       <assemblyIdentity name="MetadataEditor" version="1.1.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>AmSj4aL3uC9uYx6NlKJ+S1lT1zU=</dsig:DigestValue>
+        <dsig:DigestValue>FfXlZoqb4x9mC50hINlaJssc9xE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -99,13 +99,13 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="MetadataEditor.exe.config" size="6154">
+  <file name="MetadataEditor.exe.config" size="6153">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>di/gVi9igelrzOX13jLOdhovYrk=</dsig:DigestValue>
+      <dsig:DigestValue>3BVkXzN0LjJgEU3XQn7Vvh9J8nY=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Resources\chm_icon.gif" size="183">

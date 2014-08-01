@@ -668,6 +668,13 @@ MetadataEditor
 	<param name="sender"></param>
 	<param name="e"></param>
 	<remarks></remarks>
+</member><member name="M:MetadataEditor.EditorForm.EditorForm_Shown(System.Object,System.EventArgs)">
+	<summary>
+ Tests if we have the right version of the database and provides a link to the help pages for additional info.
+ </summary>
+	<param name="sender"></param>
+	<param name="e"></param>
+	<remarks></remarks>
 </member><member name="M:MetadataEditor.EditorForm.initSpellChecker">
 	<summary>
  Initialize spelling checker component
@@ -754,6 +761,11 @@ MetadataEditor
 </member><member name="M:MetadataEditor.EditorForm.HoverHelpInit">
 	<summary>
  Initialize mouse hovering tips using text stored in the database.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:MetadataEditor.EditorForm.FetchDBReleaseNo">
+	<summary>
+ Fetch the database version number and match to the release number.
  </summary>
 	<remarks></remarks>
 </member><member name="M:MetadataEditor.EditorForm.SpecMatchesControl(System.Windows.Forms.Control@,System.String,System.String)">
@@ -1813,6 +1825,14 @@ MetadataEditor
  Returns a data reader object for the provided SQL string.
  The caller is responsible for proper cleanup after reader is no longer needed.
  </summary>
+</member><member name="M:MetadataEditor.Utils.DbHasTable(System.String)">
+	<summary>
+ Test if a table exists in the database and then close it
+ Use this to verify we're good to go before attempting to load a potentially missing table
+ </summary>
+	<param name="tableName"></param>
+	<returns>True/False</returns>
+	<remarks></remarks>
 </member><member name="M:MetadataEditor.Utils.datatableFromSQL(System.String)">
 	<summary>
  COnstruct a DataTable object using the provided SQL query text.

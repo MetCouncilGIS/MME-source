@@ -19,6 +19,7 @@ MME is a DotNet incarnation of a simple editor for GIS metadata XML files that a
 6. Help links from menu and field label link directly to MnGeo Help URL.
 7. Minnesota County Coordinate System now supports 'feet' as well as 'meters' for NAD83 datum.
 8. Extraneous blank rows in database tables removed. This should prevent poeple from setting blank values as default.
+9. Add check for database version and fail to load if the wrong database is used - link user to a help page.
 
 Pending:
 

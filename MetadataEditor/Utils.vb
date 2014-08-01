@@ -228,6 +228,31 @@ Module Utils
         End Try
         Return Nothing
     End Function
+    ''' <summary>
+    ''' Test if a table exists in the database and then close it
+    ''' Use this to verify we're good to go before attempting to load a potentially missing table
+    ''' </summary>
+    ''' <param name="tableName"></param>
+    ''' <returns>True/False</returns>
+    ''' <remarks></remarks>
+    Public Function DbHasTable(ByVal tableName As String) As Boolean
+        Try
+            Dim theSqlConnection As New OleDb.OleDbConnection(connStr)
+
+            ' Open theSqlConnection.
+            theSqlConnection.Open()
+            Dim theSqlCommand As OleDb.OleDbCommand = theSqlConnection.CreateCommand()
+            ' Assign theQueryString to theSqlCommand's CommandText property.
+            theSqlCommand.CommandText = "select * from " & tableName
+            theSqlCommand.Connection = theSqlConnection
+            theSqlCommand.ExecuteReader()
+            theSqlConnection.Close()
+            Return True
+        Catch ex As Exception
+            Return False
+        End Try
+        Return False
+    End Function
 
     ''' <summary>
     ''' COnstruct a DataTable object using the provided SQL query text.

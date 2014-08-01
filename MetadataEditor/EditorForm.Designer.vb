@@ -21,10 +21,10 @@ Partial Class EditorForm
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(EditorForm))
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle24 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle21 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle22 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle23 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel9 = New System.Windows.Forms.Panel()
         Me.dataqual_complete = New System.Windows.Forms.TextBox()
         Me.dataqual_complete_____warning = New System.Windows.Forms.PictureBox()
@@ -132,7 +132,6 @@ Partial Class EditorForm
         Me.Button2 = New System.Windows.Forms.Button()
         Me.idinfo_citation_citeinfo_pubdate_____help = New System.Windows.Forms.LinkLabel()
         Me.idinfo_citation_citeinfo_pubdate_____today = New System.Windows.Forms.Button()
-        Me.idinfo_citation_citeinfo_pubdate = New System.Windows.Forms.TextBox()
         Me.idinfo_citation_citeinfo_pubinfo_publish_____help = New System.Windows.Forms.LinkLabel()
         Me.idinfo_citation_citeinfo_pubinfo_publish = New System.Windows.Forms.ComboBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
@@ -294,6 +293,8 @@ Partial Class EditorForm
         Me.attrlabl = New System.Windows.Forms.ComboBox()
         Me.GroupBox12 = New System.Windows.Forms.GroupBox()
         Me.Panel11 = New System.Windows.Forms.Panel()
+        Me.spref_vertdef_altsys_altdatum = New System.Windows.Forms.ComboBox()
+        Me.spref_vertdef_altsys_altdatum_____help = New System.Windows.Forms.LinkLabel()
         Me.spref_horizsys_planar_planci_coordrep_ordres = New System.Windows.Forms.TextBox()
         Me.spref_horizsys_planar_planci_coordrep_absres = New System.Windows.Forms.TextBox()
         Me.spref_horizsys_planar_planci_coordrep_ordres_____help = New System.Windows.Forms.LinkLabel()
@@ -350,8 +351,17 @@ Partial Class EditorForm
         Me.toolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.spref_vertdef_altsys_altdatum_____help = New System.Windows.Forms.LinkLabel()
-        Me.spref_vertdef_altsys_altdatum = New System.Windows.Forms.ComboBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.spref_vertdef_altsys_altunits_____help = New System.Windows.Forms.LinkLabel()
+        Me.spref_vertdef_altsys_altunits = New System.Windows.Forms.ComboBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.spref_vertdef_depthsys_depthdn_____help = New System.Windows.Forms.LinkLabel()
+        Me.spref_vertdef_depthsys_depthdn = New System.Windows.Forms.ComboBox()
+        Me.spref_vertdef_depthsys_depthdu_____help = New System.Windows.Forms.LinkLabel()
+        Me.spref_vertdef_depthsys_depthdu = New System.Windows.Forms.ComboBox()
+        Me.idinfo_citation_citeinfo_pubdate = New System.Windows.Forms.ComboBox()
+        Me.idinfo_browse_browsed_____help = New System.Windows.Forms.LinkLabel()
+        Me.idinfo_browse_browsed = New System.Windows.Forms.TextBox()
         Me.Panel9.SuspendLayout()
         CType(Me.dataqual_complete_____warning, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dataqual_logic_____warning, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -476,7 +486,7 @@ Partial Class EditorForm
         Me.Panel9.Controls.Add(Me.dataqual_logic_____help)
         Me.Panel9.Controls.Add(Me.dataqual_logic)
         Me.Panel9.Controls.Add(Me.dataqual_complete_____help)
-        Me.Panel9.Location = New System.Drawing.Point(6, 15)
+        Me.Panel9.Location = New System.Drawing.Point(6, 14)
         Me.Panel9.Name = "Panel9"
         Me.Panel9.Size = New System.Drawing.Size(432, 62)
         Me.Panel9.TabIndex = 32
@@ -515,7 +525,7 @@ Partial Class EditorForm
         '
         Me.dataqual_logic_____help.AutoSize = True
         Me.dataqual_logic_____help.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dataqual_logic_____help.Location = New System.Drawing.Point(8, 9)
+        Me.dataqual_logic_____help.Location = New System.Drawing.Point(12, 9)
         Me.dataqual_logic_____help.Name = "dataqual_logic_____help"
         Me.dataqual_logic_____help.Size = New System.Drawing.Size(82, 13)
         Me.dataqual_logic_____help.TabIndex = 0
@@ -534,7 +544,7 @@ Partial Class EditorForm
         '
         Me.dataqual_complete_____help.AutoSize = True
         Me.dataqual_complete_____help.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dataqual_complete_____help.Location = New System.Drawing.Point(8, 38)
+        Me.dataqual_complete_____help.Location = New System.Drawing.Point(11, 39)
         Me.dataqual_complete_____help.Name = "dataqual_complete_____help"
         Me.dataqual_complete_____help.Size = New System.Drawing.Size(117, 13)
         Me.dataqual_complete_____help.TabIndex = 6
@@ -549,9 +559,9 @@ Partial Class EditorForm
         Me.Horizontal.Controls.Add(Me.dataqual_posacc_horizpa_horizpar_____warning)
         Me.Horizontal.Controls.Add(Me.dataqual_posacc_horizpa_horizpar_____help)
         Me.Horizontal.Controls.Add(Me.Label12)
-        Me.Horizontal.Location = New System.Drawing.Point(6, 75)
+        Me.Horizontal.Location = New System.Drawing.Point(6, 76)
         Me.Horizontal.Name = "Horizontal"
-        Me.Horizontal.Size = New System.Drawing.Size(432, 80)
+        Me.Horizontal.Size = New System.Drawing.Size(432, 77)
         Me.Horizontal.TabIndex = 34
         '
         'dataqual_posacc_horizpa_horizpar
@@ -596,12 +606,14 @@ Partial Class EditorForm
         Me.dataqual_posacc_horizpa_horizpar_____help.TabIndex = 13
         Me.dataqual_posacc_horizpa_horizpar_____help.TabStop = True
         Me.dataqual_posacc_horizpa_horizpar_____help.Text = "Report:"
+        Me.HoverToolTip.SetToolTip(Me.dataqual_posacc_horizpa_horizpar_____help, "Explain the accuracy of the horizontal coordinates; desribe the tests or reasonin" & _
+        "g behind the estimates.")
         '
         'Label12
         '
         Me.Label12.AutoSize = True
         Me.Label12.ForeColor = System.Drawing.Color.Black
-        Me.Label12.Location = New System.Drawing.Point(6, 5)
+        Me.Label12.Location = New System.Drawing.Point(4, 5)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(178, 13)
         Me.Label12.TabIndex = 11
@@ -611,7 +623,7 @@ Partial Class EditorForm
         '
         Me.Label15.AutoSize = True
         Me.Label15.ForeColor = System.Drawing.Color.Black
-        Me.Label15.Location = New System.Drawing.Point(5, 5)
+        Me.Label15.Location = New System.Drawing.Point(5, 3)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(163, 13)
         Me.Label15.TabIndex = 20
@@ -625,12 +637,13 @@ Partial Class EditorForm
         Me.spref_horizsys_Zone.Name = "spref_horizsys_Zone"
         Me.spref_horizsys_Zone.Size = New System.Drawing.Size(125, 21)
         Me.spref_horizsys_Zone.TabIndex = 11
+        Me.HoverToolTip.SetToolTip(Me.spref_horizsys_Zone, "Select a value")
         '
         'spref_horizsys_Zone_____help
         '
         Me.spref_horizsys_Zone_____help.AutoSize = True
         Me.spref_horizsys_Zone_____help.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.spref_horizsys_Zone_____help.Location = New System.Drawing.Point(7, 52)
+        Me.spref_horizsys_Zone_____help.Location = New System.Drawing.Point(9, 53)
         Me.spref_horizsys_Zone_____help.Name = "spref_horizsys_Zone_____help"
         Me.spref_horizsys_Zone_____help.Size = New System.Drawing.Size(35, 13)
         Me.spref_horizsys_Zone_____help.TabIndex = 9
@@ -641,16 +654,16 @@ Partial Class EditorForm
         '
         Me.spref_horizsys_CoordinateSystem.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.spref_horizsys_CoordinateSystem.FormattingEnabled = True
-        Me.spref_horizsys_CoordinateSystem.Location = New System.Drawing.Point(75, 20)
+        Me.spref_horizsys_CoordinateSystem.Location = New System.Drawing.Point(71, 20)
         Me.spref_horizsys_CoordinateSystem.Name = "spref_horizsys_CoordinateSystem"
-        Me.spref_horizsys_CoordinateSystem.Size = New System.Drawing.Size(240, 21)
+        Me.spref_horizsys_CoordinateSystem.Size = New System.Drawing.Size(265, 21)
         Me.spref_horizsys_CoordinateSystem.TabIndex = 7
         '
         'spref_horizsys_CoordinateSystem_____help
         '
         Me.spref_horizsys_CoordinateSystem_____help.AutoSize = True
         Me.spref_horizsys_CoordinateSystem_____help.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.spref_horizsys_CoordinateSystem_____help.Location = New System.Drawing.Point(7, 23)
+        Me.spref_horizsys_CoordinateSystem_____help.Location = New System.Drawing.Point(9, 24)
         Me.spref_horizsys_CoordinateSystem_____help.Name = "spref_horizsys_CoordinateSystem_____help"
         Me.spref_horizsys_CoordinateSystem_____help.Size = New System.Drawing.Size(59, 13)
         Me.spref_horizsys_CoordinateSystem_____help.TabIndex = 5
@@ -666,9 +679,9 @@ Partial Class EditorForm
         Me.GroupBox10.Controls.Add(Me.Horizontal)
         Me.GroupBox10.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox10.ForeColor = System.Drawing.Color.Black
-        Me.GroupBox10.Location = New System.Drawing.Point(6, 156)
+        Me.GroupBox10.Location = New System.Drawing.Point(6, 181)
         Me.GroupBox10.Name = "GroupBox10"
-        Me.GroupBox10.Size = New System.Drawing.Size(443, 359)
+        Me.GroupBox10.Size = New System.Drawing.Size(443, 331)
         Me.GroupBox10.TabIndex = 30
         Me.GroupBox10.TabStop = False
         Me.GroupBox10.Text = "Quality"
@@ -679,9 +692,9 @@ Partial Class EditorForm
         Me.Panel30.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.Panel30.Controls.Add(Me.dataqual_lineage_procstep_procdesc_____help)
         Me.Panel30.Controls.Add(Me.dataqual_lineage_procstep_procdesc)
-        Me.Panel30.Location = New System.Drawing.Point(6, 230)
+        Me.Panel30.Location = New System.Drawing.Point(6, 228)
         Me.Panel30.Name = "Panel30"
-        Me.Panel30.Size = New System.Drawing.Size(432, 125)
+        Me.Panel30.Size = New System.Drawing.Size(432, 98)
         Me.Panel30.TabIndex = 44
         '
         'dataqual_lineage_procstep_procdesc_____help
@@ -690,7 +703,7 @@ Partial Class EditorForm
         Me.dataqual_lineage_procstep_procdesc_____help.AutoSize = True
         Me.dataqual_lineage_procstep_procdesc_____help.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dataqual_lineage_procstep_procdesc_____help.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline
-        Me.dataqual_lineage_procstep_procdesc_____help.Location = New System.Drawing.Point(7, 5)
+        Me.dataqual_lineage_procstep_procdesc_____help.Location = New System.Drawing.Point(7, 1)
         Me.dataqual_lineage_procstep_procdesc_____help.Name = "dataqual_lineage_procstep_procdesc_____help"
         Me.dataqual_lineage_procstep_procdesc_____help.Size = New System.Drawing.Size(51, 13)
         Me.dataqual_lineage_procstep_procdesc_____help.TabIndex = 0
@@ -701,12 +714,12 @@ Partial Class EditorForm
         '
         Me.dataqual_lineage_procstep_procdesc.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.dataqual_lineage_procstep_procdesc.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dataqual_lineage_procstep_procdesc.Location = New System.Drawing.Point(6, 21)
+        Me.dataqual_lineage_procstep_procdesc.Location = New System.Drawing.Point(6, 16)
         Me.dataqual_lineage_procstep_procdesc.MaxLength = 0
         Me.dataqual_lineage_procstep_procdesc.Multiline = True
         Me.dataqual_lineage_procstep_procdesc.Name = "dataqual_lineage_procstep_procdesc"
         Me.dataqual_lineage_procstep_procdesc.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.dataqual_lineage_procstep_procdesc.Size = New System.Drawing.Size(420, 99)
+        Me.dataqual_lineage_procstep_procdesc.Size = New System.Drawing.Size(420, 78)
         Me.dataqual_lineage_procstep_procdesc.TabIndex = 4
         '
         'dataqual_____warning
@@ -728,9 +741,9 @@ Partial Class EditorForm
         Me.Vertical.Controls.Add(Me.dataqual_posacc_vertacc_vertaccr)
         Me.Vertical.Controls.Add(Me.dataqual_posacc_vertacc_vertaccr_____help)
         Me.Vertical.Controls.Add(Me.Label15)
-        Me.Vertical.Location = New System.Drawing.Point(6, 151)
+        Me.Vertical.Location = New System.Drawing.Point(6, 153)
         Me.Vertical.Name = "Vertical"
-        Me.Vertical.Size = New System.Drawing.Size(432, 81)
+        Me.Vertical.Size = New System.Drawing.Size(432, 75)
         Me.Vertical.TabIndex = 36
         '
         'dataqual_posacc_vertacc_____warning
@@ -775,6 +788,8 @@ Partial Class EditorForm
         Me.dataqual_posacc_vertacc_vertaccr_____help.TabIndex = 22
         Me.dataqual_posacc_vertacc_vertaccr_____help.TabStop = True
         Me.dataqual_posacc_vertacc_vertaccr_____help.Text = "Report:"
+        Me.HoverToolTip.SetToolTip(Me.dataqual_posacc_vertacc_vertaccr_____help, "Explain the accuracy of the vertical coordinates; desribe the tests or reasoning " & _
+        "behind the estimates.")
         '
         'Label16
         '
@@ -799,7 +814,7 @@ Partial Class EditorForm
         '
         Me.spref_horizsys_Datum_____help.AutoSize = True
         Me.spref_horizsys_Datum_____help.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.spref_horizsys_Datum_____help.Location = New System.Drawing.Point(307, 52)
+        Me.spref_horizsys_Datum_____help.Location = New System.Drawing.Point(310, 53)
         Me.spref_horizsys_Datum_____help.Name = "spref_horizsys_Datum_____help"
         Me.spref_horizsys_Datum_____help.Size = New System.Drawing.Size(42, 13)
         Me.spref_horizsys_Datum_____help.TabIndex = 18
@@ -810,7 +825,7 @@ Partial Class EditorForm
         '
         Me.spref_horizsys_Units_____help.AutoSize = True
         Me.spref_horizsys_Units_____help.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.spref_horizsys_Units_____help.Location = New System.Drawing.Point(176, 52)
+        Me.spref_horizsys_Units_____help.Location = New System.Drawing.Point(179, 53)
         Me.spref_horizsys_Units_____help.Name = "spref_horizsys_Units_____help"
         Me.spref_horizsys_Units_____help.Size = New System.Drawing.Size(35, 13)
         Me.spref_horizsys_Units_____help.TabIndex = 13
@@ -914,6 +929,7 @@ Partial Class EditorForm
         Me.spref_horizsys_Units.Name = "spref_horizsys_Units"
         Me.spref_horizsys_Units.Size = New System.Drawing.Size(85, 21)
         Me.spref_horizsys_Units.TabIndex = 15
+        Me.HoverToolTip.SetToolTip(Me.spref_horizsys_Units, "Select a value")
         '
         'Panel18
         '
@@ -1612,7 +1628,7 @@ Partial Class EditorForm
         '
         Me.idinfo_citation_____warning.Image = Global.MetadataEditor.My.Resources.Resources.BlinkingRedLed
         Me.idinfo_citation_____warning.InitialImage = Global.MetadataEditor.My.Resources.Resources.BlinkingRedLed
-        Me.idinfo_citation_____warning.Location = New System.Drawing.Point(52, 0)
+        Me.idinfo_citation_____warning.Location = New System.Drawing.Point(56, 0)
         Me.idinfo_citation_____warning.Name = "idinfo_citation_____warning"
         Me.idinfo_citation_____warning.Size = New System.Drawing.Size(13, 14)
         Me.idinfo_citation_____warning.TabIndex = 35
@@ -1622,12 +1638,12 @@ Partial Class EditorForm
         'Panel22
         '
         Me.Panel22.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.Panel22.Controls.Add(Me.idinfo_citation_citeinfo_pubdate)
         Me.Panel22.Controls.Add(Me.idinfo_citation_citeinfo_pubdate_____warning)
         Me.Panel22.Controls.Add(Me.idinfo_citation_citeinfo_pubinfo_publish_____warning)
         Me.Panel22.Controls.Add(Me.Button2)
         Me.Panel22.Controls.Add(Me.idinfo_citation_citeinfo_pubdate_____help)
         Me.Panel22.Controls.Add(Me.idinfo_citation_citeinfo_pubdate_____today)
-        Me.Panel22.Controls.Add(Me.idinfo_citation_citeinfo_pubdate)
         Me.Panel22.Controls.Add(Me.idinfo_citation_citeinfo_pubinfo_publish_____help)
         Me.Panel22.Controls.Add(Me.idinfo_citation_citeinfo_pubinfo_publish)
         Me.Panel22.Location = New System.Drawing.Point(6, 72)
@@ -1639,7 +1655,7 @@ Partial Class EditorForm
         '
         Me.idinfo_citation_citeinfo_pubdate_____warning.Image = Global.MetadataEditor.My.Resources.Resources.BlinkingRedLed
         Me.idinfo_citation_citeinfo_pubdate_____warning.InitialImage = Global.MetadataEditor.My.Resources.Resources.BlinkingRedLed
-        Me.idinfo_citation_citeinfo_pubdate_____warning.Location = New System.Drawing.Point(90, 6)
+        Me.idinfo_citation_citeinfo_pubdate_____warning.Location = New System.Drawing.Point(88, 2)
         Me.idinfo_citation_citeinfo_pubdate_____warning.Name = "idinfo_citation_citeinfo_pubdate_____warning"
         Me.idinfo_citation_citeinfo_pubdate_____warning.Size = New System.Drawing.Size(13, 14)
         Me.idinfo_citation_citeinfo_pubdate_____warning.TabIndex = 35
@@ -1672,7 +1688,7 @@ Partial Class EditorForm
         '
         Me.idinfo_citation_citeinfo_pubdate_____help.AutoSize = True
         Me.idinfo_citation_citeinfo_pubdate_____help.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.idinfo_citation_citeinfo_pubdate_____help.Location = New System.Drawing.Point(8, 12)
+        Me.idinfo_citation_citeinfo_pubdate_____help.Location = New System.Drawing.Point(9, 11)
         Me.idinfo_citation_citeinfo_pubdate_____help.Name = "idinfo_citation_citeinfo_pubdate_____help"
         Me.idinfo_citation_citeinfo_pubdate_____help.Size = New System.Drawing.Size(88, 13)
         Me.idinfo_citation_citeinfo_pubdate_____help.TabIndex = 9
@@ -1683,27 +1699,18 @@ Partial Class EditorForm
         '
         Me.idinfo_citation_citeinfo_pubdate_____today.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.idinfo_citation_citeinfo_pubdate_____today.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.idinfo_citation_citeinfo_pubdate_____today.Location = New System.Drawing.Point(180, 7)
+        Me.idinfo_citation_citeinfo_pubdate_____today.Location = New System.Drawing.Point(232, 6)
         Me.idinfo_citation_citeinfo_pubdate_____today.Name = "idinfo_citation_citeinfo_pubdate_____today"
         Me.idinfo_citation_citeinfo_pubdate_____today.Size = New System.Drawing.Size(43, 23)
         Me.idinfo_citation_citeinfo_pubdate_____today.TabIndex = 15
         Me.idinfo_citation_citeinfo_pubdate_____today.Text = "today"
         Me.idinfo_citation_citeinfo_pubdate_____today.UseVisualStyleBackColor = False
         '
-        'idinfo_citation_citeinfo_pubdate
-        '
-        Me.idinfo_citation_citeinfo_pubdate.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.idinfo_citation_citeinfo_pubdate.Location = New System.Drawing.Point(101, 8)
-        Me.idinfo_citation_citeinfo_pubdate.Name = "idinfo_citation_citeinfo_pubdate"
-        Me.idinfo_citation_citeinfo_pubdate.Size = New System.Drawing.Size(70, 21)
-        Me.idinfo_citation_citeinfo_pubdate.TabIndex = 11
-        Me.idinfo_citation_citeinfo_pubdate.Text = "YYYYMMDD"
-        '
         'idinfo_citation_citeinfo_pubinfo_publish_____help
         '
         Me.idinfo_citation_citeinfo_pubinfo_publish_____help.AutoSize = True
         Me.idinfo_citation_citeinfo_pubinfo_publish_____help.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.idinfo_citation_citeinfo_pubinfo_publish_____help.Location = New System.Drawing.Point(8, 37)
+        Me.idinfo_citation_citeinfo_pubinfo_publish_____help.Location = New System.Drawing.Point(9, 38)
         Me.idinfo_citation_citeinfo_pubinfo_publish_____help.Name = "idinfo_citation_citeinfo_pubinfo_publish_____help"
         Me.idinfo_citation_citeinfo_pubinfo_publish_____help.Size = New System.Drawing.Size(71, 13)
         Me.idinfo_citation_citeinfo_pubinfo_publish_____help.TabIndex = 20
@@ -1717,7 +1724,7 @@ Partial Class EditorForm
         Me.idinfo_citation_citeinfo_pubinfo_publish.DropDownWidth = 600
         Me.idinfo_citation_citeinfo_pubinfo_publish.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.idinfo_citation_citeinfo_pubinfo_publish.FormattingEnabled = True
-        Me.idinfo_citation_citeinfo_pubinfo_publish.Location = New System.Drawing.Point(87, 34)
+        Me.idinfo_citation_citeinfo_pubinfo_publish.Location = New System.Drawing.Point(84, 34)
         Me.idinfo_citation_citeinfo_pubinfo_publish.Name = "idinfo_citation_citeinfo_pubinfo_publish"
         Me.idinfo_citation_citeinfo_pubinfo_publish.Size = New System.Drawing.Size(320, 21)
         Me.idinfo_citation_citeinfo_pubinfo_publish.TabIndex = 25
@@ -2389,7 +2396,7 @@ Partial Class EditorForm
         Me.idinfo_timeperd_current.Location = New System.Drawing.Point(6, 67)
         Me.idinfo_timeperd_current.Multiline = True
         Me.idinfo_timeperd_current.Name = "idinfo_timeperd_current"
-        Me.idinfo_timeperd_current.Size = New System.Drawing.Size(434, 36)
+        Me.idinfo_timeperd_current.Size = New System.Drawing.Size(437, 36)
         Me.idinfo_timeperd_current.TabIndex = 15
         '
         'idinfo_status_update_____warning
@@ -2501,6 +2508,7 @@ Partial Class EditorForm
         Me.idinfo_status_update.Name = "idinfo_status_update"
         Me.idinfo_status_update.Size = New System.Drawing.Size(135, 21)
         Me.idinfo_status_update.TabIndex = 35
+        Me.HoverToolTip.SetToolTip(Me.idinfo_status_update, "Select a value or enter one of your own.")
         '
         'idinfo_status_progress_____help
         '
@@ -2522,6 +2530,7 @@ Partial Class EditorForm
         Me.idinfo_status_progress.Name = "idinfo_status_progress"
         Me.idinfo_status_progress.Size = New System.Drawing.Size(135, 21)
         Me.idinfo_status_progress.TabIndex = 25
+        Me.HoverToolTip.SetToolTip(Me.idinfo_status_progress, "Select a value or enter on of your own.")
         '
         'idinfo_status_update_____help
         '
@@ -2557,7 +2566,7 @@ Partial Class EditorForm
         Me.GroupBox2.ForeColor = System.Drawing.Color.Black
         Me.GroupBox2.Location = New System.Drawing.Point(6, 141)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(458, 244)
+        Me.GroupBox2.Size = New System.Drawing.Size(458, 246)
         Me.GroupBox2.TabIndex = 10
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Description"
@@ -2568,16 +2577,16 @@ Partial Class EditorForm
         Me.Panel7.Controls.Add(Me.idinfo_crossref_citeinfo_title_____warning)
         Me.Panel7.Controls.Add(Me.idinfo_crossref_citeinfo_title)
         Me.Panel7.Controls.Add(Me.idinfo_crossref_citeinfo_title_____help)
-        Me.Panel7.Location = New System.Drawing.Point(6, 194)
+        Me.Panel7.Location = New System.Drawing.Point(6, 209)
         Me.Panel7.Name = "Panel7"
-        Me.Panel7.Size = New System.Drawing.Size(446, 44)
+        Me.Panel7.Size = New System.Drawing.Size(446, 32)
         Me.Panel7.TabIndex = 14
         '
         'idinfo_crossref_citeinfo_title_____warning
         '
         Me.idinfo_crossref_citeinfo_title_____warning.Image = Global.MetadataEditor.My.Resources.Resources.BlinkingRedLed
         Me.idinfo_crossref_citeinfo_title_____warning.InitialImage = Global.MetadataEditor.My.Resources.Resources.BlinkingRedLed
-        Me.idinfo_crossref_citeinfo_title_____warning.Location = New System.Drawing.Point(111, 7)
+        Me.idinfo_crossref_citeinfo_title_____warning.Location = New System.Drawing.Point(102, 3)
         Me.idinfo_crossref_citeinfo_title_____warning.Name = "idinfo_crossref_citeinfo_title_____warning"
         Me.idinfo_crossref_citeinfo_title_____warning.Size = New System.Drawing.Size(13, 14)
         Me.idinfo_crossref_citeinfo_title_____warning.TabIndex = 38
@@ -2587,17 +2596,17 @@ Partial Class EditorForm
         'idinfo_crossref_citeinfo_title
         '
         Me.idinfo_crossref_citeinfo_title.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.idinfo_crossref_citeinfo_title.Location = New System.Drawing.Point(124, 4)
+        Me.idinfo_crossref_citeinfo_title.Location = New System.Drawing.Point(115, 6)
         Me.idinfo_crossref_citeinfo_title.Multiline = True
         Me.idinfo_crossref_citeinfo_title.Name = "idinfo_crossref_citeinfo_title"
-        Me.idinfo_crossref_citeinfo_title.Size = New System.Drawing.Size(318, 36)
-        Me.idinfo_crossref_citeinfo_title.TabIndex = 1
+        Me.idinfo_crossref_citeinfo_title.Size = New System.Drawing.Size(327, 20)
+        Me.idinfo_crossref_citeinfo_title.TabIndex = 3
         '
         'idinfo_crossref_citeinfo_title_____help
         '
         Me.idinfo_crossref_citeinfo_title_____help.AutoSize = True
         Me.idinfo_crossref_citeinfo_title_____help.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.idinfo_crossref_citeinfo_title_____help.Location = New System.Drawing.Point(5, 14)
+        Me.idinfo_crossref_citeinfo_title_____help.Location = New System.Drawing.Point(3, 9)
         Me.idinfo_crossref_citeinfo_title_____help.Name = "idinfo_crossref_citeinfo_title_____help"
         Me.idinfo_crossref_citeinfo_title_____help.Size = New System.Drawing.Size(113, 13)
         Me.idinfo_crossref_citeinfo_title_____help.TabIndex = 0
@@ -2607,19 +2616,21 @@ Partial Class EditorForm
         'Panel5
         '
         Me.Panel5.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.Panel5.Controls.Add(Me.idinfo_browse_browsed)
+        Me.Panel5.Controls.Add(Me.idinfo_browse_browsed_____help)
         Me.Panel5.Controls.Add(Me.idinfo_browse_browsen_____warning)
         Me.Panel5.Controls.Add(Me.idinfo_browse_browsen)
         Me.Panel5.Controls.Add(Me.idinfo_browse_browsen_____help)
-        Me.Panel5.Location = New System.Drawing.Point(6, 162)
+        Me.Panel5.Location = New System.Drawing.Point(6, 158)
         Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(446, 33)
+        Me.Panel5.Size = New System.Drawing.Size(446, 51)
         Me.Panel5.TabIndex = 13
         '
         'idinfo_browse_browsen_____warning
         '
         Me.idinfo_browse_browsen_____warning.Image = Global.MetadataEditor.My.Resources.Resources.BlinkingRedLed
         Me.idinfo_browse_browsen_____warning.InitialImage = Global.MetadataEditor.My.Resources.Resources.BlinkingRedLed
-        Me.idinfo_browse_browsen_____warning.Location = New System.Drawing.Point(113, 4)
+        Me.idinfo_browse_browsen_____warning.Location = New System.Drawing.Point(95, 4)
         Me.idinfo_browse_browsen_____warning.Name = "idinfo_browse_browsen_____warning"
         Me.idinfo_browse_browsen_____warning.Size = New System.Drawing.Size(13, 14)
         Me.idinfo_browse_browsen_____warning.TabIndex = 38
@@ -2629,27 +2640,27 @@ Partial Class EditorForm
         'idinfo_browse_browsen
         '
         Me.idinfo_browse_browsen.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.idinfo_browse_browsen.Location = New System.Drawing.Point(125, 5)
+        Me.idinfo_browse_browsen.Location = New System.Drawing.Point(110, 2)
         Me.idinfo_browse_browsen.Name = "idinfo_browse_browsen"
-        Me.idinfo_browse_browsen.Size = New System.Drawing.Size(317, 21)
+        Me.idinfo_browse_browsen.Size = New System.Drawing.Size(332, 21)
         Me.idinfo_browse_browsen.TabIndex = 1
         '
         'idinfo_browse_browsen_____help
         '
         Me.idinfo_browse_browsen_____help.AutoSize = True
         Me.idinfo_browse_browsen_____help.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.idinfo_browse_browsen_____help.Location = New System.Drawing.Point(12, 8)
+        Me.idinfo_browse_browsen_____help.Location = New System.Drawing.Point(4, 6)
         Me.idinfo_browse_browsen_____help.Name = "idinfo_browse_browsen_____help"
         Me.idinfo_browse_browsen_____help.Size = New System.Drawing.Size(108, 13)
         Me.idinfo_browse_browsen_____help.TabIndex = 0
         Me.idinfo_browse_browsen_____help.TabStop = True
-        Me.idinfo_browse_browsen_____help.Text = "Link to Example Map:"
+        Me.idinfo_browse_browsen_____help.Text = "Link to example map:"
         '
         'idinfo_descript_____warning
         '
         Me.idinfo_descript_____warning.Image = Global.MetadataEditor.My.Resources.Resources.BlinkingRedLed
         Me.idinfo_descript_____warning.InitialImage = Global.MetadataEditor.My.Resources.Resources.BlinkingRedLed
-        Me.idinfo_descript_____warning.Location = New System.Drawing.Point(72, 2)
+        Me.idinfo_descript_____warning.Location = New System.Drawing.Point(76, 2)
         Me.idinfo_descript_____warning.Name = "idinfo_descript_____warning"
         Me.idinfo_descript_____warning.Size = New System.Drawing.Size(13, 14)
         Me.idinfo_descript_____warning.TabIndex = 38
@@ -2748,9 +2759,9 @@ Partial Class EditorForm
         Me.Panel3.Controls.Add(Me.idinfo_descript_supplinf)
         Me.Panel3.Controls.Add(Me.idinfo_descript_supplinf_____warning)
         Me.Panel3.Controls.Add(Me.idinfo_descript_supplinf_____help)
-        Me.Panel3.Location = New System.Drawing.Point(6, 129)
+        Me.Panel3.Location = New System.Drawing.Point(6, 127)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(446, 32)
+        Me.Panel3.Size = New System.Drawing.Size(446, 30)
         Me.Panel3.TabIndex = 12
         '
         'idinfo_descript_supplinf
@@ -2777,7 +2788,7 @@ Partial Class EditorForm
         '
         Me.idinfo_descript_supplinf_____help.AutoSize = True
         Me.idinfo_descript_supplinf_____help.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.idinfo_descript_supplinf_____help.Location = New System.Drawing.Point(3, 9)
+        Me.idinfo_descript_supplinf_____help.Location = New System.Drawing.Point(3, 8)
         Me.idinfo_descript_supplinf_____help.Name = "idinfo_descript_supplinf_____help"
         Me.idinfo_descript_supplinf_____help.Size = New System.Drawing.Size(117, 13)
         Me.idinfo_descript_supplinf_____help.TabIndex = 0
@@ -3316,14 +3327,14 @@ Partial Class EditorForm
         Me.dgv_edom.Location = New System.Drawing.Point(3, 3)
         Me.dgv_edom.Name = "dgv_edom"
         Me.dgv_edom.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
-        DataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgv_edom.RowHeadersDefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
+        DataGridViewCellStyle24.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle24.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle24.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle24.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgv_edom.RowHeadersDefaultCellStyle = DataGridViewCellStyle24
         Me.dgv_edom.RowHeadersVisible = False
         Me.dgv_edom.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgv_edom.Size = New System.Drawing.Size(295, 239)
@@ -3332,8 +3343,8 @@ Partial Class EditorForm
         'Value
         '
         Me.Value.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
-        Me.Value.DefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
+        Me.Value.DefaultCellStyle = DataGridViewCellStyle21
         Me.Value.HeaderText = "Value"
         Me.Value.MinimumWidth = 4
         Me.Value.Name = "Value"
@@ -3343,8 +3354,8 @@ Partial Class EditorForm
         'Definition
         '
         Me.Definition.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
-        Me.Definition.DefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
+        Me.Definition.DefaultCellStyle = DataGridViewCellStyle22
         Me.Definition.HeaderText = "Definition"
         Me.Definition.MinimumWidth = 4
         Me.Definition.Name = "Definition"
@@ -3355,8 +3366,8 @@ Partial Class EditorForm
         '
         Me.DefinitionSource.AutoComplete = False
         Me.DefinitionSource.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
-        Me.DefinitionSource.DefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
+        Me.DefinitionSource.DefaultCellStyle = DataGridViewCellStyle23
         Me.DefinitionSource.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox
         Me.DefinitionSource.HeaderText = "Defn Src"
         Me.DefinitionSource.MinimumWidth = 4
@@ -3505,7 +3516,7 @@ Partial Class EditorForm
         Me.GroupBox12.ForeColor = System.Drawing.Color.Black
         Me.GroupBox12.Location = New System.Drawing.Point(6, 7)
         Me.GroupBox12.Name = "GroupBox12"
-        Me.GroupBox12.Size = New System.Drawing.Size(443, 146)
+        Me.GroupBox12.Size = New System.Drawing.Size(443, 176)
         Me.GroupBox12.TabIndex = 20
         Me.GroupBox12.TabStop = False
         Me.GroupBox12.Text = "Coordinate System Information"
@@ -3513,6 +3524,14 @@ Partial Class EditorForm
         'Panel11
         '
         Me.Panel11.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.Panel11.Controls.Add(Me.spref_vertdef_depthsys_depthdu)
+        Me.Panel11.Controls.Add(Me.spref_vertdef_depthsys_depthdu_____help)
+        Me.Panel11.Controls.Add(Me.spref_vertdef_depthsys_depthdn)
+        Me.Panel11.Controls.Add(Me.spref_vertdef_depthsys_depthdn_____help)
+        Me.Panel11.Controls.Add(Me.Label6)
+        Me.Panel11.Controls.Add(Me.spref_vertdef_altsys_altunits)
+        Me.Panel11.Controls.Add(Me.spref_vertdef_altsys_altunits_____help)
+        Me.Panel11.Controls.Add(Me.Label4)
         Me.Panel11.Controls.Add(Me.spref_vertdef_altsys_altdatum)
         Me.Panel11.Controls.Add(Me.spref_vertdef_altsys_altdatum_____help)
         Me.Panel11.Controls.Add(Me.spref_horizsys_planar_planci_coordrep_ordres)
@@ -3520,58 +3539,84 @@ Partial Class EditorForm
         Me.Panel11.Controls.Add(Me.spref_horizsys_planar_planci_coordrep_ordres_____help)
         Me.Panel11.Controls.Add(Me.spref_horizsys_planar_planci_coordrep_absres_____help)
         Me.Panel11.Controls.Add(Me.Label3)
-        Me.Panel11.Location = New System.Drawing.Point(6, 99)
+        Me.Panel11.Location = New System.Drawing.Point(6, 100)
         Me.Panel11.Name = "Panel11"
-        Me.Panel11.Size = New System.Drawing.Size(432, 44)
+        Me.Panel11.Size = New System.Drawing.Size(432, 71)
         Me.Panel11.TabIndex = 45
+        '
+        'spref_vertdef_altsys_altdatum
+        '
+        Me.spref_vertdef_altsys_altdatum.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
+        Me.spref_vertdef_altsys_altdatum.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.spref_vertdef_altsys_altdatum.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.spref_vertdef_altsys_altdatum.FormattingEnabled = True
+        Me.spref_vertdef_altsys_altdatum.Items.AddRange(New Object() {"NGVD29", "NAVD88", "NAVD88 (Geoid 03)", "NAVD88 (Geoid 09)", "NAVD88 (Geoid 12A)"})
+        Me.spref_vertdef_altsys_altdatum.Location = New System.Drawing.Point(53, 18)
+        Me.spref_vertdef_altsys_altdatum.Name = "spref_vertdef_altsys_altdatum"
+        Me.spref_vertdef_altsys_altdatum.Size = New System.Drawing.Size(102, 21)
+        Me.spref_vertdef_altsys_altdatum.TabIndex = 14
+        Me.HoverToolTip.SetToolTip(Me.spref_vertdef_altsys_altdatum, "Select a value or enter one of your own.")
+        '
+        'spref_vertdef_altsys_altdatum_____help
+        '
+        Me.spref_vertdef_altsys_altdatum_____help.AutoSize = True
+        Me.spref_vertdef_altsys_altdatum_____help.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.spref_vertdef_altsys_altdatum_____help.Location = New System.Drawing.Point(9, 22)
+        Me.spref_vertdef_altsys_altdatum_____help.Name = "spref_vertdef_altsys_altdatum_____help"
+        Me.spref_vertdef_altsys_altdatum_____help.Size = New System.Drawing.Size(42, 13)
+        Me.spref_vertdef_altsys_altdatum_____help.TabIndex = 13
+        Me.spref_vertdef_altsys_altdatum_____help.TabStop = True
+        Me.spref_vertdef_altsys_altdatum_____help.Text = "Datum:"
+        Me.HoverToolTip.SetToolTip(Me.spref_vertdef_altsys_altdatum_____help, "The level surface of reference from which altitudes are measured, if applicable. " & _
+        "")
         '
         'spref_horizsys_planar_planci_coordrep_ordres
         '
         Me.spref_horizsys_planar_planci_coordrep_ordres.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.spref_horizsys_planar_planci_coordrep_ordres.Location = New System.Drawing.Point(187, 16)
+        Me.spref_horizsys_planar_planci_coordrep_ordres.Location = New System.Drawing.Point(375, 44)
         Me.spref_horizsys_planar_planci_coordrep_ordres.Name = "spref_horizsys_planar_planci_coordrep_ordres"
         Me.spref_horizsys_planar_planci_coordrep_ordres.Size = New System.Drawing.Size(50, 21)
-        Me.spref_horizsys_planar_planci_coordrep_ordres.TabIndex = 12
+        Me.spref_horizsys_planar_planci_coordrep_ordres.TabIndex = 28
         '
         'spref_horizsys_planar_planci_coordrep_absres
         '
         Me.spref_horizsys_planar_planci_coordrep_absres.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.spref_horizsys_planar_planci_coordrep_absres.Location = New System.Drawing.Point(67, 16)
+        Me.spref_horizsys_planar_planci_coordrep_absres.Location = New System.Drawing.Point(375, 18)
         Me.spref_horizsys_planar_planci_coordrep_absres.Name = "spref_horizsys_planar_planci_coordrep_absres"
         Me.spref_horizsys_planar_planci_coordrep_absres.Size = New System.Drawing.Size(50, 21)
-        Me.spref_horizsys_planar_planci_coordrep_absres.TabIndex = 7
+        Me.spref_horizsys_planar_planci_coordrep_absres.TabIndex = 25
         '
         'spref_horizsys_planar_planci_coordrep_ordres_____help
         '
         Me.spref_horizsys_planar_planci_coordrep_ordres_____help.AutoSize = True
         Me.spref_horizsys_planar_planci_coordrep_ordres_____help.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.spref_horizsys_planar_planci_coordrep_ordres_____help.Location = New System.Drawing.Point(123, 21)
+        Me.spref_horizsys_planar_planci_coordrep_ordres_____help.Location = New System.Drawing.Point(331, 47)
         Me.spref_horizsys_planar_planci_coordrep_ordres_____help.Name = "spref_horizsys_planar_planci_coordrep_ordres_____help"
-        Me.spref_horizsys_planar_planci_coordrep_ordres_____help.Size = New System.Drawing.Size(62, 13)
-        Me.spref_horizsys_planar_planci_coordrep_ordres_____help.TabIndex = 9
+        Me.spref_horizsys_planar_planci_coordrep_ordres_____help.Size = New System.Drawing.Size(42, 13)
+        Me.spref_horizsys_planar_planci_coordrep_ordres_____help.TabIndex = 27
         Me.spref_horizsys_planar_planci_coordrep_ordres_____help.TabStop = True
-        Me.spref_horizsys_planar_planci_coordrep_ordres_____help.Text = "Cell Height:"
+        Me.spref_horizsys_planar_planci_coordrep_ordres_____help.Text = "Height:"
         '
         'spref_horizsys_planar_planci_coordrep_absres_____help
         '
         Me.spref_horizsys_planar_planci_coordrep_absres_____help.AutoSize = True
         Me.spref_horizsys_planar_planci_coordrep_absres_____help.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.spref_horizsys_planar_planci_coordrep_absres_____help.Location = New System.Drawing.Point(7, 21)
+        Me.spref_horizsys_planar_planci_coordrep_absres_____help.Location = New System.Drawing.Point(334, 22)
         Me.spref_horizsys_planar_planci_coordrep_absres_____help.Name = "spref_horizsys_planar_planci_coordrep_absres_____help"
-        Me.spref_horizsys_planar_planci_coordrep_absres_____help.Size = New System.Drawing.Size(59, 13)
-        Me.spref_horizsys_planar_planci_coordrep_absres_____help.TabIndex = 4
+        Me.spref_horizsys_planar_planci_coordrep_absres_____help.Size = New System.Drawing.Size(39, 13)
+        Me.spref_horizsys_planar_planci_coordrep_absres_____help.TabIndex = 24
         Me.spref_horizsys_planar_planci_coordrep_absres_____help.TabStop = True
-        Me.spref_horizsys_planar_planci_coordrep_absres_____help.Text = "Cell Width:"
+        Me.spref_horizsys_planar_planci_coordrep_absres_____help.Text = "Width:"
         '
         'Label3
         '
         Me.Label3.AutoSize = True
         Me.Label3.ForeColor = System.Drawing.Color.Black
-        Me.Label3.Location = New System.Drawing.Point(6, 3)
+        Me.Label3.Location = New System.Drawing.Point(327, 3)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(45, 13)
-        Me.Label3.TabIndex = 1
-        Me.Label3.Text = "Raster"
+        Me.Label3.Size = New System.Drawing.Size(68, 13)
+        Me.Label3.TabIndex = 20
+        Me.Label3.Text = "Raster Cell"
         '
         'spref_____warning
         '
@@ -3956,30 +4001,127 @@ Partial Class EditorForm
         Me.Label2.Text = "Hint: Double-click in a text field to pop" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "         open a larger window for edit" & _
     "ing." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & " "
         '
-        'spref_vertdef_altsys_altdatum_____help
+        'Label4
         '
-        Me.spref_vertdef_altsys_altdatum_____help.AutoSize = True
-        Me.spref_vertdef_altsys_altdatum_____help.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.spref_vertdef_altsys_altdatum_____help.Location = New System.Drawing.Point(255, 3)
-        Me.spref_vertdef_altsys_altdatum_____help.Name = "spref_vertdef_altsys_altdatum_____help"
-        Me.spref_vertdef_altsys_altdatum_____help.Size = New System.Drawing.Size(76, 13)
-        Me.spref_vertdef_altsys_altdatum_____help.TabIndex = 13
-        Me.spref_vertdef_altsys_altdatum_____help.TabStop = True
-        Me.spref_vertdef_altsys_altdatum_____help.Text = "Vertical Datum"
-        Me.HoverToolTip.SetToolTip(Me.spref_vertdef_altsys_altdatum_____help, "The level surface of reference from which altitudes are measured, if applicable. " & _
-        "")
+        Me.Label4.AutoSize = True
+        Me.Label4.ForeColor = System.Drawing.Color.Black
+        Me.Label4.Location = New System.Drawing.Point(8, 3)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(50, 13)
+        Me.Label4.TabIndex = 15
+        Me.Label4.Text = "Vertical"
         '
-        'spref_vertdef_altsys_altdatum
+        'spref_vertdef_altsys_altunits_____help
         '
-        Me.spref_vertdef_altsys_altdatum.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
-        Me.spref_vertdef_altsys_altdatum.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
-        Me.spref_vertdef_altsys_altdatum.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.spref_vertdef_altsys_altdatum.FormattingEnabled = True
-        Me.spref_vertdef_altsys_altdatum.Items.AddRange(New Object() {"NGVD29", "NAVD88", "NAVD88 (Geoid 03)", "NAVD88 (Geoid 09)", "NAVD88 (Geoid 12A)"})
-        Me.spref_vertdef_altsys_altdatum.Location = New System.Drawing.Point(258, 21)
-        Me.spref_vertdef_altsys_altdatum.Name = "spref_vertdef_altsys_altdatum"
-        Me.spref_vertdef_altsys_altdatum.Size = New System.Drawing.Size(121, 21)
-        Me.spref_vertdef_altsys_altdatum.TabIndex = 14
+        Me.spref_vertdef_altsys_altunits_____help.AutoSize = True
+        Me.spref_vertdef_altsys_altunits_____help.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.spref_vertdef_altsys_altunits_____help.Location = New System.Drawing.Point(16, 47)
+        Me.spref_vertdef_altsys_altunits_____help.Name = "spref_vertdef_altsys_altunits_____help"
+        Me.spref_vertdef_altsys_altunits_____help.Size = New System.Drawing.Size(35, 13)
+        Me.spref_vertdef_altsys_altunits_____help.TabIndex = 16
+        Me.spref_vertdef_altsys_altunits_____help.TabStop = True
+        Me.spref_vertdef_altsys_altunits_____help.Text = "Units:"
+        Me.HoverToolTip.SetToolTip(Me.spref_vertdef_altsys_altunits_____help, "Units in which the vertical height is measured.")
+        '
+        'spref_vertdef_altsys_altunits
+        '
+        Me.spref_vertdef_altsys_altunits.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.spref_vertdef_altsys_altunits.FormattingEnabled = True
+        Me.spref_vertdef_altsys_altunits.Items.AddRange(New Object() {"feet", "meters"})
+        Me.spref_vertdef_altsys_altunits.Location = New System.Drawing.Point(53, 44)
+        Me.spref_vertdef_altsys_altunits.Name = "spref_vertdef_altsys_altunits"
+        Me.spref_vertdef_altsys_altunits.Size = New System.Drawing.Size(102, 21)
+        Me.spref_vertdef_altsys_altunits.TabIndex = 17
+        Me.HoverToolTip.SetToolTip(Me.spref_vertdef_altsys_altunits, "Select a value or enter your own.")
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.ForeColor = System.Drawing.Color.Black
+        Me.Label6.Location = New System.Drawing.Point(169, 4)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(41, 13)
+        Me.Label6.TabIndex = 18
+        Me.Label6.Text = "Depth"
+        '
+        'spref_vertdef_depthsys_depthdn_____help
+        '
+        Me.spref_vertdef_depthsys_depthdn_____help.AutoSize = True
+        Me.spref_vertdef_depthsys_depthdn_____help.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.spref_vertdef_depthsys_depthdn_____help.Location = New System.Drawing.Point(169, 22)
+        Me.spref_vertdef_depthsys_depthdn_____help.Name = "spref_vertdef_depthsys_depthdn_____help"
+        Me.spref_vertdef_depthsys_depthdn_____help.Size = New System.Drawing.Size(42, 13)
+        Me.spref_vertdef_depthsys_depthdn_____help.TabIndex = 19
+        Me.spref_vertdef_depthsys_depthdn_____help.TabStop = True
+        Me.spref_vertdef_depthsys_depthdn_____help.Text = "Datum:"
+        Me.HoverToolTip.SetToolTip(Me.spref_vertdef_depthsys_depthdn_____help, "Surface of reference from which depths are measured.")
+        '
+        'spref_vertdef_depthsys_depthdn
+        '
+        Me.spref_vertdef_depthsys_depthdn.DropDownWidth = 102
+        Me.spref_vertdef_depthsys_depthdn.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.spref_vertdef_depthsys_depthdn.FormattingEnabled = True
+        Me.spref_vertdef_depthsys_depthdn.Items.AddRange(New Object() {"local surface", "mean low water", "mean high water", "mean sea level", "land survey datum", "not applicable"})
+        Me.spref_vertdef_depthsys_depthdn.Location = New System.Drawing.Point(213, 18)
+        Me.spref_vertdef_depthsys_depthdn.Name = "spref_vertdef_depthsys_depthdn"
+        Me.spref_vertdef_depthsys_depthdn.Size = New System.Drawing.Size(102, 21)
+        Me.spref_vertdef_depthsys_depthdn.TabIndex = 20
+        Me.HoverToolTip.SetToolTip(Me.spref_vertdef_depthsys_depthdn, "Select a value or enter one of your own.")
+        '
+        'spref_vertdef_depthsys_depthdu_____help
+        '
+        Me.spref_vertdef_depthsys_depthdu_____help.AutoSize = True
+        Me.spref_vertdef_depthsys_depthdu_____help.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.spref_vertdef_depthsys_depthdu_____help.Location = New System.Drawing.Point(176, 47)
+        Me.spref_vertdef_depthsys_depthdu_____help.Name = "spref_vertdef_depthsys_depthdu_____help"
+        Me.spref_vertdef_depthsys_depthdu_____help.Size = New System.Drawing.Size(35, 13)
+        Me.spref_vertdef_depthsys_depthdu_____help.TabIndex = 21
+        Me.spref_vertdef_depthsys_depthdu_____help.TabStop = True
+        Me.spref_vertdef_depthsys_depthdu_____help.Text = "Units:"
+        Me.HoverToolTip.SetToolTip(Me.spref_vertdef_depthsys_depthdu_____help, "Units in which depths are measured.")
+        '
+        'spref_vertdef_depthsys_depthdu
+        '
+        Me.spref_vertdef_depthsys_depthdu.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.spref_vertdef_depthsys_depthdu.FormattingEnabled = True
+        Me.spref_vertdef_depthsys_depthdu.Items.AddRange(New Object() {"feet", "meters"})
+        Me.spref_vertdef_depthsys_depthdu.Location = New System.Drawing.Point(213, 44)
+        Me.spref_vertdef_depthsys_depthdu.Name = "spref_vertdef_depthsys_depthdu"
+        Me.spref_vertdef_depthsys_depthdu.Size = New System.Drawing.Size(102, 21)
+        Me.spref_vertdef_depthsys_depthdu.TabIndex = 22
+        Me.HoverToolTip.SetToolTip(Me.spref_vertdef_depthsys_depthdu, "Select a value or enter one of your own.")
+        '
+        'idinfo_citation_citeinfo_pubdate
+        '
+        Me.idinfo_citation_citeinfo_pubdate.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.idinfo_citation_citeinfo_pubdate.FormattingEnabled = True
+        Me.idinfo_citation_citeinfo_pubdate.Items.AddRange(New Object() {"unknown", "unpublished material", "periodically revised", ""})
+        Me.idinfo_citation_citeinfo_pubdate.Location = New System.Drawing.Point(100, 7)
+        Me.idinfo_citation_citeinfo_pubdate.Name = "idinfo_citation_citeinfo_pubdate"
+        Me.idinfo_citation_citeinfo_pubdate.Size = New System.Drawing.Size(126, 21)
+        Me.idinfo_citation_citeinfo_pubdate.TabIndex = 11
+        Me.idinfo_citation_citeinfo_pubdate.Text = "YYYYMMDD"
+        Me.HoverToolTip.SetToolTip(Me.idinfo_citation_citeinfo_pubdate, "Select a value or enter a date")
+        '
+        'idinfo_browse_browsed_____help
+        '
+        Me.idinfo_browse_browsed_____help.AutoSize = True
+        Me.idinfo_browse_browsed_____help.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.idinfo_browse_browsed_____help.Location = New System.Drawing.Point(5, 32)
+        Me.idinfo_browse_browsed_____help.Name = "idinfo_browse_browsed_____help"
+        Me.idinfo_browse_browsed_____help.Size = New System.Drawing.Size(143, 13)
+        Me.idinfo_browse_browsed_____help.TabIndex = 2
+        Me.idinfo_browse_browsed_____help.TabStop = True
+        Me.idinfo_browse_browsed_____help.Text = "Description of example map:"
+        Me.HoverToolTip.SetToolTip(Me.idinfo_browse_browsed_____help, "Text description of dataset example")
+        '
+        'idinfo_browse_browsed
+        '
+        Me.idinfo_browse_browsed.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.idinfo_browse_browsed.Location = New System.Drawing.Point(150, 29)
+        Me.idinfo_browse_browsed.Name = "idinfo_browse_browsed"
+        Me.idinfo_browse_browsed.Size = New System.Drawing.Size(292, 21)
+        Me.idinfo_browse_browsed.TabIndex = 40
         '
         'EditorForm
         '
@@ -4240,7 +4382,6 @@ Partial Class EditorForm
     Friend WithEvents idinfo_descript_supplinf_____help As System.Windows.Forms.LinkLabel
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents Panel22 As System.Windows.Forms.Panel
-    Friend WithEvents idinfo_citation_citeinfo_pubdate As System.Windows.Forms.TextBox
     Friend WithEvents idinfo_citation_citeinfo_pubinfo_publish_____help As System.Windows.Forms.LinkLabel
     Friend WithEvents idinfo_citation_citeinfo_pubdate_____help As System.Windows.Forms.LinkLabel
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
@@ -4484,5 +4625,16 @@ Partial Class EditorForm
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents spref_vertdef_altsys_altdatum As System.Windows.Forms.ComboBox
     Friend WithEvents spref_vertdef_altsys_altdatum_____help As System.Windows.Forms.LinkLabel
+    Friend WithEvents spref_vertdef_depthsys_depthdn As System.Windows.Forms.ComboBox
+    Friend WithEvents spref_vertdef_depthsys_depthdn_____help As System.Windows.Forms.LinkLabel
+    Friend WithEvents Label6 As System.Windows.Forms.Label
+    Friend WithEvents spref_vertdef_altsys_altunits As System.Windows.Forms.ComboBox
+    Friend WithEvents spref_vertdef_altsys_altunits_____help As System.Windows.Forms.LinkLabel
+    Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents spref_vertdef_depthsys_depthdu As System.Windows.Forms.ComboBox
+    Friend WithEvents spref_vertdef_depthsys_depthdu_____help As System.Windows.Forms.LinkLabel
+    Friend WithEvents idinfo_citation_citeinfo_pubdate As System.Windows.Forms.ComboBox
+    Friend WithEvents idinfo_browse_browsed As System.Windows.Forms.TextBox
+    Friend WithEvents idinfo_browse_browsed_____help As System.Windows.Forms.LinkLabel
 
 End Class

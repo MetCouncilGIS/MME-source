@@ -174,6 +174,19 @@ Public Class EditorForm
         Me.Text = GlobalVars.nameStr
         updateWindowTitle()
     End Sub
+    ''' <summary>
+    ''' Tests if we have the right version of the database and provides a link to the help pages for additional info.
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
+    Private Sub EditorForm_Shown(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Shown
+        If (FetchDBReleaseNo() Is Nothing) Then
+            Dim msg = "This is the wrong database for this version of the application." + Environment.NewLine + "MME cannot continue."
+            MessageBox.Show(msg, "MME encountered an error", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1, 0, My.Settings.HelpURL.ToString, "Help")
+            Me.Close()
+        End If
+    End Sub
 
     Public Sub updateWindowTitle()
         Dim newTitle As String = GlobalVars.nameStr
@@ -401,6 +414,28 @@ Public Class EditorForm
         ' Close the reader
         dr.Close()
     End Sub
+
+    ''' <summary>
+    ''' Fetch the database version number and match to the release number.
+    ''' </summary>
+    ''' <remarks></remarks>
+    Shared Function FetchDBReleaseNo() As String
+        Dim result As String = Nothing
+        Try
+            If (Utils.DbHasTable("Version")) Then
+                Dim dr As OleDb.OleDbDataReader = Utils.readerForSQL("SELECT * FROM VERSION")
+
+                Do While dr.Read()
+                    result = dr("Version")
+                Loop
+                dr.Close()
+            End If
+
+        Catch ex As Exception
+            Return Nothing
+        End Try
+        Return result
+    End Function
 
     ''' <summary>
     ''' Determine if the name specifications match the given control
@@ -768,7 +803,7 @@ Public Class EditorForm
     ''' </remarks>
     Private Sub today_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles metainfo_metd_____today.Click, idinfo_citation_citeinfo_pubdate_____today.Click, timeinfo_____today.Click
         Dim senderName As String = DirectCast(sender, Button).Name
-        Dim ctrl As TextBox = Me.allControls(senderName.Substring(0, senderName.Length - (idSep & "today").Length))
+        Dim ctrl As Control = Me.allControls(senderName.Substring(0, senderName.Length - (idSep & "today").Length))
         ctrl.Text = Format(Now(), "yyyyMMdd")
     End Sub
 
@@ -840,7 +875,7 @@ Public Class EditorForm
         Dim zone As String = ""
         Dim zoneId As String = ""
         Dim unit As String = ""
-        
+
         If Me.spref_horizsys_CoordinateSystem.SelectedItem IsNot Nothing Then
             coordSys = Me.spref_horizsys_CoordinateSystem.SelectedItem("clusterInfo")
         End If
@@ -882,7 +917,7 @@ Public Class EditorForm
         If coordSys > "" AndAlso zone > "" Then
             filter &= " AND (spcszone='" & zoneId & "' or utmzone='" & zoneId & "' or mgmg4coz='" & zoneId & "')"
         End If
-        
+
         If unit > "" Then
             filter &= " AND (plandu='" & unit & "' or geogunit='" & unit & "')"
         End If

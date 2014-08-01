@@ -415,7 +415,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("http://www.mngeo.state.mn.us/chouse/mme/help/")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("http://www.mngeo.state.mn.us/chouse/mme/help")>  _
         Public Property HelpURL() As String
             Get
                 Return CType(Me("HelpURL"),String)

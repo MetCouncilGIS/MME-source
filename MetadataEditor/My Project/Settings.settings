@@ -98,7 +98,7 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="HelpURL" Type="System.String" Scope="User">
-      <Value Profile="(Default)">http://www.mngeo.state.mn.us/chouse/mme/help/</Value>
+      <Value Profile="(Default)">http://www.mngeo.state.mn.us/chouse/mme/help</Value>
     </Setting>
   </Settings>
 </SettingsFile>
