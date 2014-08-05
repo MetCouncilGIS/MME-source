@@ -250,6 +250,9 @@ Public Class PageController
             If reload Then
                 'save current selection
                 tagValue = ctrl.SelectedValue
+                If tagValue Is Nothing Then
+                    tagValue = ctrl.Text
+                End If
             Else
                 'otherwise, get selected value from metadata tag
                 tagValue = SimpleGetProperty(tag).Trim()
