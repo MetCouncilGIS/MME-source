@@ -15,7 +15,7 @@ MME is a DotNet incarnation of a simple editor for GIS metadata XML files that a
    * allow HTTPS as a URL protocol that HyperLinks.
 3. Remove all references to MnGeo.
 4. Change the spatial extent of data field to a text box (from a combo with pull-down list).
-5. Fix Online linkage field wipe-out when doing a 'refresh from database'.
+5. Fix Online linkage, publisher field wipe-out when doing a 'refresh from database'.
 6. Help links from menu and field label link directly to MnGeo Help URL.
 7. Minnesota County Coordinate System now supports 'feet' as well as 'meters' for NAD83 datum.
 8. Extraneous blank rows in database tables removed. This should prevent poeple from setting blank values as default.
