@@ -829,7 +829,7 @@ Public Class EditorForm
     Public Sub HelpSeekerCustom(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles enttyp_____help2.Click, detailed_____help2.Click, attr_____help2.Click, attrdomv_____help2.Click, timeinfo_____help2.Click
         Dim senderName As String = DirectCast(sender, Control).Name
         Dim helpPage As String = senderName.Substring(0, Math.Max(0, senderName.Length - (idSep & "help2").Length))
-        helpPage = "t" & CStr(Me.tcEME.SelectedIndex + 1) & "_" & helpPage & ".html"
+        helpPage = "/t" & CStr(Me.tcEME.SelectedIndex + 1) & "_" & helpPage & ".html"
         HelpSeeker("dummy", helpPage)
     End Sub
 
