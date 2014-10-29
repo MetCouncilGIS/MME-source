@@ -566,8 +566,9 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 									</xsl:if>
                   <br/>
                   <font size="3"/>
-                  <xsl:value-of select="metadata/idinfo/browse/browsed" />
-                  							
+                  <xsl:call-template name="PreserveLineBreaks">
+                    <xsl:with-param name="text" select="metadata/idinfo/browse/browsed"/>
+                  </xsl:call-template>                 							
 								</xsl:when>
 								<xsl:otherwise>
 									<font size="3" /> None available
