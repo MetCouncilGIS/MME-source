@@ -57,6 +57,6 @@ The *cluster* field designates a root tag for each individual field in the datab
 ### Structure
 Originally, this program came in three-flavors: 1) an installed version that integrated with ESRI ArcMap, 2) an installed version that was stand-alone, and 3) a portable version that required no installation. Eventually flavors 1 ans 2 were removed in favor of 3 as it created the least number of problems. 
 
-The program checks for a \portable directory in the applicaton path and uses this as its database. The database must have a table called *Version* (added in release 1.2.1) or else will fail.
+The program checks for a \portable directory in the applicaton path and uses this as its database. The database must have a table called *Version* (added in release 1.2.1) or else all will fail.
 
 
